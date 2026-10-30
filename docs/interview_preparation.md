@@ -20,6 +20,14 @@
 
 ## 2. Resume Ready Bullet Points (STAR Format)
 
+### Featured Portfolio Summary (Resume Top Pick)
+```text
+MotoPulse 360 – Sales, Inventory & Profitability Analytics | Python, Pandas, MySQL, SQL, Power BI
+• Analysed sales, inventory, profitability, customer cohorts, and channel performance using the AdventureWorksDW dataset.
+• Developed 20 SQL analyses and validated 20 SQL–Pandas metric comparisons with $0.00 variance.
+• Passed 18 data-quality checks and prepared eight star-schema datasets for Power BI reporting.
+```
+
 ### Option A: Business Intelligence / Data Analyst Focus
 - **Architected an enterprise sales and profitability analytics platform** across Direct Retail and Commercial Wholesale channels ($109.8M Net Sales, 121K lines) using MySQL 8.0, Python (Pandas/NumPy), and Power BI.
 - **Engineered a 15-table multi-fact constellation schema**, defining atomic grains, standardizing SCD Type 2 product histories, and establishing single-direction (1:*) star-schema relationships.

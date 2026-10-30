@@ -11,6 +11,12 @@
 
 The project demonstrates complete data analyst competence across the full analytical lifecycle: raw file parsing, non-destructive ETL, Kimball dimensional modeling (Constellation schema), arbitrary-precision decimal financial reconciliation, advanced SQL analytics with window functions, exploratory data science with Pandas/Seaborn, production DAX measures, and executive Power BI dashboards.
 
+### 💼 Portfolio & Resume Highlights
+> **MotoPulse 360 – Sales, Inventory & Profitability Analytics | Python, Pandas, MySQL, SQL, Power BI**
+> - **Analysed sales, inventory, profitability, customer cohorts, and channel performance** using the AdventureWorksDW dataset.
+> - **Developed 20 SQL analyses and validated 20 SQL–Pandas metric comparisons** with $0.00 variance.
+> - **Passed 18 data-quality checks and prepared eight star-schema datasets** for Power BI reporting.
+
 ---
 
 ## 1. Transparency & Dataset Disclosure

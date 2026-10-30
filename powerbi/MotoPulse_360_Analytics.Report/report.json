@@ -1,0 +1,240 @@
+{
+  "config": "{\"version\": \"5.50\", \"themeCollection\": {\"baseTheme\": {\"name\": \"CY24SU02\", \"version\": \"5.50\", \"type\": 2}}, \"activeSectionIndex\": 0, \"defaultDrillFilterOtherVisuals\": true}",
+  "layoutOptimization": 0,
+  "sections": [
+    {
+      "name": "ReportSection_ExecutiveOverview",
+      "displayName": "Executive Overview",
+      "filters": "[]",
+      "height": 720,
+      "width": 1280,
+      "visualContainers": [
+        {
+          "x": 20,
+          "y": 15,
+          "z": 1000,
+          "width": 1240,
+          "height": 50,
+          "config": "{\"name\": \"Banner1\", \"singleVisual\": {\"visualType\": \"textbox\", \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"MotoPulse 360 | Executive Sales & Profitability Overview\", \"textStyle\": {\"fontFamily\": \"Segoe UI Bold\", \"fontSize\": \"16pt\", \"color\": \"#0F172A\"}}, {\"value\": \"   \\u2014   Microsoft AdventureWorksDW Synthetic Bicycle Enterprise Modeling\", \"textStyle\": {\"fontFamily\": \"Segoe UI\", \"fontSize\": \"9pt\", \"color\": \"#64748B\"}}]}]}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 20,
+          "y": 75,
+          "z": 2000,
+          "width": 295,
+          "height": 105,
+          "config": "{\"name\": \"Card_NetSales\", \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Net Sales\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Net Sales\"}, \"Name\": \"_Measures.Net Sales\", \"NativeReferenceName\": \"Net Sales\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Net Sales Revenue'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 335,
+          "y": 75,
+          "z": 2001,
+          "width": 295,
+          "height": 105,
+          "config": "{\"name\": \"Card_GrossProfit\", \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Gross Profit\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Gross Profit\"}, \"Name\": \"_Measures.Gross Profit\", \"NativeReferenceName\": \"Gross Profit\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Gross Profit (Std Cost)'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 650,
+          "y": 75,
+          "z": 2002,
+          "width": 295,
+          "height": 105,
+          "config": "{\"name\": \"Card_GrossMargin\", \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Gross Margin %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Gross Margin %\"}, \"Name\": \"_Measures.Gross Margin %\", \"NativeReferenceName\": \"Gross Margin %\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Gross Margin %'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 965,
+          "y": 75,
+          "z": 2003,
+          "width": 295,
+          "height": 105,
+          "config": "{\"name\": \"Card_TotalOrders\", \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Total Orders\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Total Orders\"}, \"Name\": \"_Measures.Total Orders\", \"NativeReferenceName\": \"Total Orders\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Total Distinct Orders'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 20,
+          "y": 195,
+          "z": 3000,
+          "width": 780,
+          "height": 275,
+          "config": "{\"name\": \"Combo_MonthlyTrend\", \"singleVisual\": {\"visualType\": \"lineStackedColumnComboChart\", \"projections\": {\"Category\": [{\"queryRef\": \"vw_dim_date.Date\", \"active\": true}], \"Y\": [{\"queryRef\": \"_Measures.Net Sales\"}], \"Y2\": [{\"queryRef\": \"_Measures.Gross Profit\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"vw_dim_date\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Date\"}, \"Name\": \"vw_dim_date.Date\", \"NativeReferenceName\": \"Date\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Net Sales\"}, \"Name\": \"_Measures.Net Sales\", \"NativeReferenceName\": \"Net Sales\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Gross Profit\"}, \"Name\": \"_Measures.Gross Profit\", \"NativeReferenceName\": \"Gross Profit\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Date\"}}}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Monthly Net Sales & Gross Profit Velocity'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 820,
+          "y": 195,
+          "z": 3001,
+          "width": 440,
+          "height": 275,
+          "config": "{\"name\": \"Donut_ChannelSplit\", \"singleVisual\": {\"visualType\": \"donutChart\", \"projections\": {\"Category\": [{\"queryRef\": \"vw_sales_fact.Channel\", \"active\": true}], \"Y\": [{\"queryRef\": \"_Measures.Net Sales\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"c\", \"Entity\": \"vw_sales_fact\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"Channel\"}, \"Name\": \"vw_sales_fact.Channel\", \"NativeReferenceName\": \"Channel\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Net Sales\"}, \"Name\": \"_Measures.Net Sales\", \"NativeReferenceName\": \"Net Sales\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Sales Contribution by Commercial Channel'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 20,
+          "y": 485,
+          "z": 4000,
+          "width": 620,
+          "height": 220,
+          "config": "{\"name\": \"Bar_CategoryRevenue\", \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"vw_dim_product.CategoryName\", \"active\": true}], \"Y\": [{\"queryRef\": \"_Measures.Net Sales\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"c\", \"Entity\": \"vw_dim_product\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"CategoryName\"}, \"Name\": \"vw_dim_product.CategoryName\", \"NativeReferenceName\": \"CategoryName\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Net Sales\"}, \"Name\": \"_Measures.Net Sales\", \"NativeReferenceName\": \"Net Sales\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Net Sales\"}}}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Net Sales by Product Category'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 660,
+          "y": 485,
+          "z": 4001,
+          "width": 600,
+          "height": 220,
+          "config": "{\"name\": \"Treemap_Territory\", \"singleVisual\": {\"visualType\": \"treemap\", \"projections\": {\"Group\": [{\"queryRef\": \"vw_dim_territory.SalesTerritoryCountry\", \"active\": true}], \"Values\": [{\"queryRef\": \"_Measures.Net Sales\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"g\", \"Entity\": \"vw_dim_territory\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"g\"}}, \"Property\": \"SalesTerritoryCountry\"}, \"Name\": \"vw_dim_territory.SalesTerritoryCountry\", \"NativeReferenceName\": \"SalesTerritoryCountry\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Net Sales\"}, \"Name\": \"_Measures.Net Sales\", \"NativeReferenceName\": \"Net Sales\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Sales Revenue by Geographic Territory'\"}}}}}]}}}",
+          "filters": "[]"
+        }
+      ]
+    },
+    {
+      "name": "ReportSection_ProductChannel",
+      "displayName": "Product & Channel Intelligence",
+      "filters": "[]",
+      "height": 720,
+      "width": 1280,
+      "visualContainers": [
+        {
+          "x": 20,
+          "y": 15,
+          "z": 1000,
+          "width": 1240,
+          "height": 50,
+          "config": "{\"name\": \"Banner2\", \"singleVisual\": {\"visualType\": \"textbox\", \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"MotoPulse 360 | Product & Commercial Channel Intelligence\", \"textStyle\": {\"fontFamily\": \"Segoe UI Bold\", \"fontSize\": \"16pt\", \"color\": \"#0F172A\"}}, {\"value\": \"   \\u2014   Retail Margin (41.15%) vs Wholesale Margin (0.58%) & Discount Leakage Analysis\", \"textStyle\": {\"fontFamily\": \"Segoe UI\", \"fontSize\": \"9pt\", \"color\": \"#64748B\"}}]}]}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 20,
+          "y": 75,
+          "z": 2000,
+          "width": 295,
+          "height": 105,
+          "config": "{\"name\": \"Card_RetailMargin\", \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Retail Gross Margin %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Retail Gross Margin %\"}, \"Name\": \"_Measures.Retail Gross Margin %\", \"NativeReferenceName\": \"Retail Gross Margin %\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Retail Direct Margin %'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 335,
+          "y": 75,
+          "z": 2001,
+          "width": 295,
+          "height": 105,
+          "config": "{\"name\": \"Card_WholesaleMargin\", \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Wholesale Gross Margin %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Wholesale Gross Margin %\"}, \"Name\": \"_Measures.Wholesale Gross Margin %\", \"NativeReferenceName\": \"Wholesale Gross Margin %\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Wholesale Reseller Margin %'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 650,
+          "y": 75,
+          "z": 2002,
+          "width": 295,
+          "height": 105,
+          "config": "{\"name\": \"Card_WholesaleSales\", \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Wholesale Net Sales\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Wholesale Net Sales\"}, \"Name\": \"_Measures.Wholesale Net Sales\", \"NativeReferenceName\": \"Wholesale Net Sales\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Wholesale Net Revenue'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 965,
+          "y": 75,
+          "z": 2003,
+          "width": 295,
+          "height": 105,
+          "config": "{\"name\": \"Card_Discounts\", \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Discount Amount\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Discount Amount\"}, \"Name\": \"_Measures.Discount Amount\", \"NativeReferenceName\": \"Discount Amount\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Total Volume Discounts Granted'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 20,
+          "y": 195,
+          "z": 3000,
+          "width": 620,
+          "height": 510,
+          "config": "{\"name\": \"Bar_TopProducts\", \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"vw_dim_product.ProductName\", \"active\": true}], \"Y\": [{\"queryRef\": \"_Measures.Net Sales\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"c\", \"Entity\": \"vw_dim_product\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"ProductName\"}, \"Name\": \"vw_dim_product.ProductName\", \"NativeReferenceName\": \"ProductName\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Net Sales\"}, \"Name\": \"_Measures.Net Sales\", \"NativeReferenceName\": \"Net Sales\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Net Sales\"}}}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Top Revenue Generating Products'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 660,
+          "y": 195,
+          "z": 3001,
+          "width": 600,
+          "height": 510,
+          "config": "{\"name\": \"Table_SubcategoryMatrix\", \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"vw_dim_product.SubcategoryName\"}, {\"queryRef\": \"_Measures.Net Sales\"}, {\"queryRef\": \"_Measures.Total Product Cost\"}, {\"queryRef\": \"_Measures.Gross Profit\"}, {\"queryRef\": \"_Measures.Gross Margin %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"vw_dim_product\", \"Type\": 0}, {\"Name\": \"t1\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"SubcategoryName\"}, \"Name\": \"vw_dim_product.SubcategoryName\", \"NativeReferenceName\": \"SubcategoryName\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t1\"}}, \"Property\": \"Net Sales\"}, \"Name\": \"_Measures.Net Sales\", \"NativeReferenceName\": \"Net Sales\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t1\"}}, \"Property\": \"Total Product Cost\"}, \"Name\": \"_Measures.Total Product Cost\", \"NativeReferenceName\": \"Total Product Cost\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t1\"}}, \"Property\": \"Gross Profit\"}, \"Name\": \"_Measures.Gross Profit\", \"NativeReferenceName\": \"Gross Profit\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t1\"}}, \"Property\": \"Gross Margin %\"}, \"Name\": \"_Measures.Gross Margin %\", \"NativeReferenceName\": \"Gross Margin %\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Subcategory Financial Performance Matrix'\"}}}}}]}}}",
+          "filters": "[]"
+        }
+      ]
+    },
+    {
+      "name": "ReportSection_InventoryAlerts",
+      "displayName": "Inventory & Operational Alerts",
+      "filters": "[]",
+      "height": 720,
+      "width": 1280,
+      "visualContainers": [
+        {
+          "x": 20,
+          "y": 15,
+          "z": 1000,
+          "width": 1240,
+          "height": 50,
+          "config": "{\"name\": \"Banner3\", \"singleVisual\": {\"visualType\": \"textbox\", \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"MotoPulse 360 | Supply Chain & Inventory Replenishment Alert Center\", \"textStyle\": {\"fontFamily\": \"Segoe UI Bold\", \"fontSize\": \"16pt\", \"color\": \"#0F172A\"}}, {\"value\": \"   \\u2014   Active Catalog Stock Shortages, Safety Buffers, and Procurement Triggers\", \"textStyle\": {\"fontFamily\": \"Segoe UI\", \"fontSize\": \"9pt\", \"color\": \"#64748B\"}}]}]}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 20,
+          "y": 75,
+          "z": 2000,
+          "width": 295,
+          "height": 105,
+          "config": "{\"name\": \"Card_CurrentStock\", \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Current Stock Balance\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Current Stock Balance\"}, \"Name\": \"_Measures.Current Stock Balance\", \"NativeReferenceName\": \"Current Stock Balance\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Current Units on Hand'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 335,
+          "y": 75,
+          "z": 2001,
+          "width": 295,
+          "height": 105,
+          "config": "{\"name\": \"Card_SafetyStock\", \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Safety Stock Threshold\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Safety Stock Threshold\"}, \"Name\": \"_Measures.Safety Stock Threshold\", \"NativeReferenceName\": \"Safety Stock Threshold\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Mandated Safety Stock Buffer'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 650,
+          "y": 75,
+          "z": 2002,
+          "width": 295,
+          "height": 105,
+          "config": "{\"name\": \"Card_ShortageSKUs\", \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Critical Stock Shortage Items\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Critical Stock Shortage Items\"}, \"Name\": \"_Measures.Critical Stock Shortage Items\", \"NativeReferenceName\": \"Critical Stock Shortage Items\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Critical Stock Shortage SKUs'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 965,
+          "y": 75,
+          "z": 2003,
+          "width": 295,
+          "height": 105,
+          "config": "{\"name\": \"Card_DeficitUnits\", \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Total Stock Deficit Units\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Total Stock Deficit Units\"}, \"Name\": \"_Measures.Total Stock Deficit Units\", \"NativeReferenceName\": \"Total Stock Deficit Units\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Total Restock Deficit Units'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 20,
+          "y": 195,
+          "z": 3000,
+          "width": 420,
+          "height": 510,
+          "config": "{\"name\": \"Donut_StockStatus\", \"singleVisual\": {\"visualType\": \"donutChart\", \"projections\": {\"Category\": [{\"queryRef\": \"vw_inventory_latest.StockStatus\", \"active\": true}], \"Y\": [{\"queryRef\": \"_Measures.Total Stock Deficit Units\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"c\", \"Entity\": \"vw_inventory_latest\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"StockStatus\"}, \"Name\": \"vw_inventory_latest.StockStatus\", \"NativeReferenceName\": \"StockStatus\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Total Stock Deficit Units\"}, \"Name\": \"_Measures.Total Stock Deficit Units\", \"NativeReferenceName\": \"Total Stock Deficit Units\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Catalog Inventory Status Breakdown'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 460,
+          "y": 195,
+          "z": 3001,
+          "width": 800,
+          "height": 510,
+          "config": "{\"name\": \"Table_ProcurementPriority\", \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"vw_inventory_latest.ProductName\"}, {\"queryRef\": \"vw_inventory_latest.UnitsBalance\"}, {\"queryRef\": \"vw_inventory_latest.SafetyStockLevel\"}, {\"queryRef\": \"vw_inventory_latest.ReorderPoint\"}, {\"queryRef\": \"vw_inventory_latest.StockDeficit\"}, {\"queryRef\": \"vw_inventory_latest.StockStatus\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"vw_inventory_latest\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"ProductName\"}, \"Name\": \"vw_inventory_latest.ProductName\", \"NativeReferenceName\": \"ProductName\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"UnitsBalance\"}, \"Name\": \"vw_inventory_latest.UnitsBalance\", \"NativeReferenceName\": \"UnitsBalance\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"SafetyStockLevel\"}, \"Name\": \"vw_inventory_latest.SafetyStockLevel\", \"NativeReferenceName\": \"SafetyStockLevel\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"ReorderPoint\"}, \"Name\": \"vw_inventory_latest.ReorderPoint\", \"NativeReferenceName\": \"ReorderPoint\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"StockDeficit\"}, \"Name\": \"vw_inventory_latest.StockDeficit\", \"NativeReferenceName\": \"StockDeficit\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"StockStatus\"}, \"Name\": \"vw_inventory_latest.StockStatus\", \"NativeReferenceName\": \"StockStatus\"}]}, \"objects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Priority Procurement Replenishment Action Grid'\"}}}}}]}}}",
+          "filters": "[]"
+        }
+      ]
+    }
+  ]
+}

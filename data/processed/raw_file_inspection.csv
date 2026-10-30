@@ -1,0 +1,11 @@
+table,status,encoding,delimiter,has_header,rows,columns
+DimDate,ok,utf-8,'|',False,3652,19
+DimProduct,ok,utf-8,'|',False,606,36
+DimProductSubcategory,ok,utf-8,'|',False,37,6
+DimProductCategory,ok,utf-8,'|',False,4,5
+DimCustomer,ok,utf-8,'|',False,18484,29
+DimReseller,ok,utf-8,'|',False,701,20
+DimSalesTerritory,ok,utf-8,'|',False,11,6
+FactInternetSales,ok,utf-8,'|',False,60398,26
+FactResellerSales,ok,utf-8,'|',False,60855,27
+FactProductInventory,ok,utf-8,'|',False,776286,7

@@ -1,0 +1,16 @@
+Table Name,Rows,Columns,Memory (MB),Blank Cells,Blank %,Duplicate Rows
+DimCurrency,105,3,0.02,0,0.0,0
+DimCustomer,18484,29,33.51,62866,11.73,0
+DimDate,3652,19,4.1,0,0.0,0
+DimGeography,655,11,0.45,0,0.0,0
+DimProduct,606,36,10.66,6236,28.58,0
+DimProductCategory,4,5,0.0,0,0.0,0
+DimProductSubcategory,37,6,0.01,0,0.0,0
+DimPromotion,16,16,0.02,12,4.69,0
+DimReseller,701,20,0.86,1508,10.76,0
+DimSalesTerritory,11,6,0.84,1,1.52,0
+FactCurrencyRate,14264,5,4.8,0,0.0,0
+FactInternetSales,60398,26,95.05,120796,7.69,0
+FactProductInventory,776286,7,319.1,0,0.0,0
+FactResellerSales,60855,27,101.06,0,0.0,0
+FactSalesQuota,163,7,0.07,0,0.0,0

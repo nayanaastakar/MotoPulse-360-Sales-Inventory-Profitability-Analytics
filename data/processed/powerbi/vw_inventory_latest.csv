@@ -1,0 +1,607 @@
+ProductKey,DateKey,MovementDate,UnitCost,UnitsIn,UnitsOut,UnitsBalance,ProductName,SafetyStockLevel,ReorderPoint,StockStatus,StockDeficit
+1,20140630,2014-06-30,0.28,0,0,875,Adjustable Race,1000,750,Critical Shortage,0
+2,20140630,2014-06-30,0.21,0,0,875,Bearing Ball,1000,750,Critical Shortage,0
+3,20140630,2014-06-30,0.21,0,0,700,BB Ball Bearing,800,600,Critical Shortage,0
+4,20140630,2014-06-30,0.26,0,0,700,Headset Ball Bearings,800,600,Critical Shortage,0
+5,20140630,2014-06-30,0.24,0,0,700,Blade,800,600,Critical Shortage,0
+6,20140630,2014-06-30,0.21,0,0,438,LL Crankarm,500,375,Critical Shortage,0
+7,20140630,2014-06-30,0.2,0,0,438,ML Crankarm,500,375,Critical Shortage,0
+8,20140630,2014-06-30,0.24,0,0,438,HL Crankarm,500,375,Critical Shortage,0
+9,20140630,2014-06-30,0.22,0,0,875,Chainring Bolts,1000,750,Critical Shortage,0
+10,20140630,2014-06-30,0.18,0,0,875,Chainring Nut,1000,750,Critical Shortage,0
+11,20140630,2014-06-30,0.32,0,0,875,Chainring,1000,750,Critical Shortage,0
+12,20140630,2014-06-30,0.22,0,0,875,Crown Race,1000,750,Critical Shortage,0
+13,20140630,2014-06-30,0.73,0,0,875,Chain Stays,1000,750,Critical Shortage,0
+14,20140630,2014-06-30,0.17,0,0,875,Decal 1,1000,750,Critical Shortage,0
+15,20140630,2014-06-30,0.25,0,0,875,Decal 2,1000,750,Critical Shortage,0
+16,20140630,2014-06-30,0.19,0,0,700,Down Tube,800,600,Critical Shortage,0
+17,20140630,2014-06-30,0.25,0,0,875,Mountain End Caps,1000,750,Critical Shortage,0
+18,20140630,2014-06-30,0.21,0,0,875,Road End Caps,1000,750,Critical Shortage,0
+19,20140630,2014-06-30,0.3,0,0,875,Touring End Caps,1000,750,Critical Shortage,0
+20,20140630,2014-06-30,0.15,0,0,700,Fork End,800,600,Critical Shortage,0
+21,20140630,2014-06-30,0.21,0,0,438,Freewheel,500,375,Critical Shortage,0
+22,20140630,2014-06-30,0.18,0,0,875,Flat Washer 1,1000,750,Critical Shortage,0
+23,20140630,2014-06-30,0.2,0,0,875,Flat Washer 6,1000,750,Critical Shortage,0
+24,20140630,2014-06-30,0.25,0,0,875,Flat Washer 2,1000,750,Critical Shortage,0
+25,20140630,2014-06-30,0.24,0,0,875,Flat Washer 9,1000,750,Critical Shortage,0
+26,20140630,2014-06-30,0.18,0,0,875,Flat Washer 4,1000,750,Critical Shortage,0
+27,20140630,2014-06-30,0.21,0,0,875,Flat Washer 3,1000,750,Critical Shortage,0
+28,20140630,2014-06-30,0.33,0,0,875,Flat Washer 8,1000,750,Critical Shortage,0
+29,20140630,2014-06-30,0.21,0,0,875,Flat Washer 5,1000,750,Critical Shortage,0
+30,20140630,2014-06-30,0.26,0,0,875,Flat Washer 7,1000,750,Critical Shortage,0
+31,20140630,2014-06-30,0.22,0,0,700,Fork Crown,800,600,Critical Shortage,0
+32,20140630,2014-06-30,0.2,0,0,700,Front Derailleur Cage,800,600,Critical Shortage,0
+33,20140630,2014-06-30,0.21,0,0,700,Front Derailleur Linkage,800,600,Critical Shortage,0
+34,20140630,2014-06-30,0.34,0,0,700,Guide Pulley,800,600,Critical Shortage,0
+35,20140630,2014-06-30,0.52,0,0,700,LL Grip Tape,800,600,Critical Shortage,0
+36,20140630,2014-06-30,0.2,0,0,700,ML Grip Tape,800,600,Critical Shortage,0
+37,20140630,2014-06-30,0.22,0,0,700,HL Grip Tape,800,600,Critical Shortage,0
+38,20140630,2014-06-30,0.22,0,0,875,Thin-Jam Hex Nut 9,1000,750,Critical Shortage,0
+39,20140630,2014-06-30,0.26,0,0,875,Thin-Jam Hex Nut 10,1000,750,Critical Shortage,0
+40,20140630,2014-06-30,0.39,0,0,875,Thin-Jam Hex Nut 1,1000,750,Critical Shortage,0
+41,20140630,2014-06-30,0.48,0,0,875,Thin-Jam Hex Nut 2,1000,750,Critical Shortage,0
+42,20140630,2014-06-30,0.23,0,0,875,Thin-Jam Hex Nut 15,1000,750,Critical Shortage,0
+43,20140630,2014-06-30,0.21,0,0,875,Thin-Jam Hex Nut 16,1000,750,Critical Shortage,0
+44,20140630,2014-06-30,0.2,0,0,875,Thin-Jam Hex Nut 5,1000,750,Critical Shortage,0
+45,20140630,2014-06-30,0.45,0,0,875,Thin-Jam Hex Nut 6,1000,750,Critical Shortage,0
+46,20140630,2014-06-30,0.21,0,0,875,Thin-Jam Hex Nut 3,1000,750,Critical Shortage,0
+47,20140630,2014-06-30,0.29,0,0,875,Thin-Jam Hex Nut 4,1000,750,Critical Shortage,0
+48,20140630,2014-06-30,0.19,0,0,875,Thin-Jam Hex Nut 13,1000,750,Critical Shortage,0
+49,20140630,2014-06-30,0.35,0,0,875,Thin-Jam Hex Nut 14,1000,750,Critical Shortage,0
+50,20140630,2014-06-30,0.22,0,0,875,Thin-Jam Hex Nut 7,1000,750,Critical Shortage,0
+51,20140630,2014-06-30,0.23,0,0,875,Thin-Jam Hex Nut 8,1000,750,Critical Shortage,0
+52,20140630,2014-06-30,0.31,0,0,875,Thin-Jam Hex Nut 12,1000,750,Critical Shortage,0
+53,20140630,2014-06-30,0.42,0,0,875,Thin-Jam Hex Nut 11,1000,750,Critical Shortage,0
+54,20140630,2014-06-30,0.19,0,0,875,Hex Nut 5,1000,750,Critical Shortage,0
+55,20140630,2014-06-30,0.4,0,0,875,Hex Nut 6,1000,750,Critical Shortage,0
+56,20140630,2014-06-30,0.31,0,0,875,Hex Nut 16,1000,750,Critical Shortage,0
+57,20140630,2014-06-30,0.22,0,0,875,Hex Nut 17,1000,750,Critical Shortage,0
+58,20140630,2014-06-30,0.25,0,0,875,Hex Nut 7,1000,750,Critical Shortage,0
+59,20140630,2014-06-30,0.22,0,0,875,Hex Nut 8,1000,750,Critical Shortage,0
+60,20140630,2014-06-30,0.2,0,0,875,Hex Nut 9,1000,750,Critical Shortage,0
+61,20140630,2014-06-30,0.23,0,0,875,Hex Nut 22,1000,750,Critical Shortage,0
+62,20140630,2014-06-30,0.44,0,0,875,Hex Nut 23,1000,750,Critical Shortage,0
+63,20140630,2014-06-30,0.27,0,0,875,Hex Nut 12,1000,750,Critical Shortage,0
+64,20140630,2014-06-30,0.24,0,0,875,Hex Nut 13,1000,750,Critical Shortage,0
+65,20140630,2014-06-30,0.28,0,0,875,Hex Nut 1,1000,750,Critical Shortage,0
+66,20140630,2014-06-30,0.24,0,0,875,Hex Nut 10,1000,750,Critical Shortage,0
+67,20140630,2014-06-30,0.41,0,0,875,Hex Nut 11,1000,750,Critical Shortage,0
+68,20140630,2014-06-30,0.21,0,0,875,Hex Nut 2,1000,750,Critical Shortage,0
+69,20140630,2014-06-30,0.18,0,0,875,Hex Nut 20,1000,750,Critical Shortage,0
+70,20140630,2014-06-30,0.36,0,0,875,Hex Nut 21,1000,750,Critical Shortage,0
+71,20140630,2014-06-30,0.27,0,0,875,Hex Nut 3,1000,750,Critical Shortage,0
+72,20140630,2014-06-30,0.31,0,0,875,Hex Nut 14,1000,750,Critical Shortage,0
+73,20140630,2014-06-30,0.3,0,0,875,Hex Nut 15,1000,750,Critical Shortage,0
+74,20140630,2014-06-30,0.38,0,0,875,Hex Nut 4,1000,750,Critical Shortage,0
+75,20140630,2014-06-30,0.33,0,0,875,Hex Nut 18,1000,750,Critical Shortage,0
+76,20140630,2014-06-30,0.2,0,0,875,Hex Nut 19,1000,750,Critical Shortage,0
+77,20140630,2014-06-30,0.17,0,0,700,Handlebar Tube,800,600,Critical Shortage,0
+78,20140630,2014-06-30,0.3,0,0,700,Head Tube,800,600,Critical Shortage,0
+79,20140630,2014-06-30,0.56,0,0,438,LL Hub,500,375,Critical Shortage,0
+80,20140630,2014-06-30,0.23,0,0,438,HL Hub,500,375,Critical Shortage,0
+81,20140630,2014-06-30,0.24,0,0,875,Keyed Washer,1000,750,Critical Shortage,0
+82,20140630,2014-06-30,0.19,0,0,875,External Lock Washer 3,1000,750,Critical Shortage,0
+83,20140630,2014-06-30,0.2,0,0,875,External Lock Washer 4,1000,750,Critical Shortage,0
+84,20140630,2014-06-30,0.26,0,0,875,External Lock Washer 9,1000,750,Critical Shortage,0
+85,20140630,2014-06-30,0.39,0,0,875,External Lock Washer 5,1000,750,Critical Shortage,0
+86,20140630,2014-06-30,0.22,0,0,875,External Lock Washer 7,1000,750,Critical Shortage,0
+87,20140630,2014-06-30,0.23,0,0,875,External Lock Washer 6,1000,750,Critical Shortage,0
+88,20140630,2014-06-30,0.26,0,0,875,External Lock Washer 1,1000,750,Critical Shortage,0
+89,20140630,2014-06-30,0.25,0,0,875,External Lock Washer 8,1000,750,Critical Shortage,0
+90,20140630,2014-06-30,0.27,0,0,875,External Lock Washer 2,1000,750,Critical Shortage,0
+91,20140630,2014-06-30,0.19,0,0,875,Internal Lock Washer 3,1000,750,Critical Shortage,0
+92,20140630,2014-06-30,0.2,0,0,875,Internal Lock Washer 4,1000,750,Critical Shortage,0
+93,20140630,2014-06-30,0.27,0,0,875,Internal Lock Washer 9,1000,750,Critical Shortage,0
+94,20140630,2014-06-30,0.16,0,0,875,Internal Lock Washer 5,1000,750,Critical Shortage,0
+95,20140630,2014-06-30,0.25,0,0,875,Internal Lock Washer 7,1000,750,Critical Shortage,0
+96,20140630,2014-06-30,0.18,0,0,875,Internal Lock Washer 6,1000,750,Critical Shortage,0
+97,20140630,2014-06-30,0.24,0,0,875,Internal Lock Washer 10,1000,750,Critical Shortage,0
+98,20140630,2014-06-30,0.27,0,0,875,Internal Lock Washer 1,1000,750,Critical Shortage,0
+99,20140630,2014-06-30,0.46,0,0,875,Internal Lock Washer 8,1000,750,Critical Shortage,0
+100,20140630,2014-06-30,0.29,0,0,875,Internal Lock Washer 2,1000,750,Critical Shortage,0
+101,20140630,2014-06-30,0.27,0,0,875,Thin-Jam Lock Nut 9,1000,750,Critical Shortage,0
+102,20140630,2014-06-30,0.23,0,0,875,Thin-Jam Lock Nut 10,1000,750,Critical Shortage,0
+103,20140630,2014-06-30,0.22,0,0,875,Thin-Jam Lock Nut 1,1000,750,Critical Shortage,0
+104,20140630,2014-06-30,0.25,0,0,875,Thin-Jam Lock Nut 2,1000,750,Critical Shortage,0
+105,20140630,2014-06-30,0.32,0,0,875,Thin-Jam Lock Nut 15,1000,750,Critical Shortage,0
+106,20140630,2014-06-30,0.18,0,0,875,Thin-Jam Lock Nut 16,1000,750,Critical Shortage,0
+107,20140630,2014-06-30,0.28,0,0,875,Thin-Jam Lock Nut 5,1000,750,Critical Shortage,0
+108,20140630,2014-06-30,0.19,0,0,875,Thin-Jam Lock Nut 6,1000,750,Critical Shortage,0
+109,20140630,2014-06-30,0.34,0,0,875,Thin-Jam Lock Nut 3,1000,750,Critical Shortage,0
+110,20140630,2014-06-30,0.24,0,0,875,Thin-Jam Lock Nut 4,1000,750,Critical Shortage,0
+111,20140630,2014-06-30,0.15,0,0,875,Thin-Jam Lock Nut 13,1000,750,Critical Shortage,0
+112,20140630,2014-06-30,0.31,0,0,875,Thin-Jam Lock Nut 14,1000,750,Critical Shortage,0
+113,20140630,2014-06-30,0.21,0,0,875,Thin-Jam Lock Nut 7,1000,750,Critical Shortage,0
+114,20140630,2014-06-30,0.2,0,0,875,Thin-Jam Lock Nut 8,1000,750,Critical Shortage,0
+115,20140630,2014-06-30,0.18,0,0,875,Thin-Jam Lock Nut 12,1000,750,Critical Shortage,0
+116,20140630,2014-06-30,0.28,0,0,875,Thin-Jam Lock Nut 11,1000,750,Critical Shortage,0
+117,20140630,2014-06-30,0.25,0,0,875,Lock Nut 5,1000,750,Critical Shortage,0
+118,20140630,2014-06-30,0.24,0,0,875,Lock Nut 6,1000,750,Critical Shortage,0
+119,20140630,2014-06-30,0.21,0,0,875,Lock Nut 16,1000,750,Critical Shortage,0
+120,20140630,2014-06-30,0.22,0,0,875,Lock Nut 17,1000,750,Critical Shortage,0
+121,20140630,2014-06-30,0.32,0,0,875,Lock Nut 7,1000,750,Critical Shortage,0
+122,20140630,2014-06-30,0.35,0,0,875,Lock Nut 8,1000,750,Critical Shortage,0
+123,20140630,2014-06-30,0.17,0,0,875,Lock Nut 9,1000,750,Critical Shortage,0
+124,20140630,2014-06-30,0.29,0,0,875,Lock Nut 22,1000,750,Critical Shortage,0
+125,20140630,2014-06-30,0.19,0,0,875,Lock Nut 23,1000,750,Critical Shortage,0
+126,20140630,2014-06-30,0.22,0,0,875,Lock Nut 12,1000,750,Critical Shortage,0
+127,20140630,2014-06-30,0.32,0,0,875,Lock Nut 13,1000,750,Critical Shortage,0
+128,20140630,2014-06-30,0.19,0,0,875,Lock Nut 1,1000,750,Critical Shortage,0
+129,20140630,2014-06-30,0.32,0,0,875,Lock Nut 10,1000,750,Critical Shortage,0
+130,20140630,2014-06-30,0.26,0,0,875,Lock Nut 11,1000,750,Critical Shortage,0
+131,20140630,2014-06-30,0.3,0,0,875,Lock Nut 2,1000,750,Critical Shortage,0
+132,20140630,2014-06-30,0.21,0,0,875,Lock Nut 20,1000,750,Critical Shortage,0
+133,20140630,2014-06-30,0.29,0,0,875,Lock Nut 21,1000,750,Critical Shortage,0
+134,20140630,2014-06-30,0.29,0,0,875,Lock Nut 3,1000,750,Critical Shortage,0
+135,20140630,2014-06-30,0.22,0,0,875,Lock Nut 14,1000,750,Critical Shortage,0
+136,20140630,2014-06-30,0.19,0,0,875,Lock Nut 15,1000,750,Critical Shortage,0
+137,20140630,2014-06-30,0.36,0,0,875,Lock Nut 4,1000,750,Critical Shortage,0
+138,20140630,2014-06-30,0.3,0,0,875,Lock Nut 19,1000,750,Critical Shortage,0
+139,20140630,2014-06-30,0.28,0,0,875,Lock Nut 18,1000,750,Critical Shortage,0
+140,20140630,2014-06-30,0.29,0,0,875,Lock Ring,1000,750,Critical Shortage,0
+141,20140630,2014-06-30,0.2,0,0,875,Lower Head Race,1000,750,Critical Shortage,0
+142,20140630,2014-06-30,0.29,0,0,875,Lock Washer 4,1000,750,Critical Shortage,0
+143,20140630,2014-06-30,0.24,0,0,875,Lock Washer 5,1000,750,Critical Shortage,0
+144,20140630,2014-06-30,0.2,0,0,875,Lock Washer 10,1000,750,Critical Shortage,0
+145,20140630,2014-06-30,0.37,0,0,875,Lock Washer 6,1000,750,Critical Shortage,0
+146,20140630,2014-06-30,0.2,0,0,875,Lock Washer 13,1000,750,Critical Shortage,0
+147,20140630,2014-06-30,0.23,0,0,875,Lock Washer 8,1000,750,Critical Shortage,0
+148,20140630,2014-06-30,0.22,0,0,875,Lock Washer 1,1000,750,Critical Shortage,0
+149,20140630,2014-06-30,0.32,0,0,875,Lock Washer 7,1000,750,Critical Shortage,0
+150,20140630,2014-06-30,0.24,0,0,875,Lock Washer 12,1000,750,Critical Shortage,0
+151,20140630,2014-06-30,0.23,0,0,875,Lock Washer 2,1000,750,Critical Shortage,0
+152,20140630,2014-06-30,0.31,0,0,875,Lock Washer 9,1000,750,Critical Shortage,0
+153,20140630,2014-06-30,0.25,0,0,875,Lock Washer 3,1000,750,Critical Shortage,0
+154,20140630,2014-06-30,0.26,0,0,875,Lock Washer 11,1000,750,Critical Shortage,0
+155,20140630,2014-06-30,0.22,0,0,875,Metal Angle,1000,750,Critical Shortage,0
+156,20140630,2014-06-30,0.18,0,0,875,Metal Bar 1,1000,750,Critical Shortage,0
+157,20140630,2014-06-30,0.3,0,0,875,Metal Bar 2,1000,750,Critical Shortage,0
+158,20140630,2014-06-30,0.33,0,0,875,Metal Plate 2,1000,750,Critical Shortage,0
+159,20140630,2014-06-30,0.21,0,0,875,Metal Plate 1,1000,750,Critical Shortage,0
+160,20140630,2014-06-30,0.19,0,0,875,Metal Plate 3,1000,750,Critical Shortage,0
+161,20140630,2014-06-30,0.19,0,0,875,Metal Sheet 2,1000,750,Critical Shortage,0
+162,20140630,2014-06-30,0.32,0,0,875,Metal Sheet 3,1000,750,Critical Shortage,0
+163,20140630,2014-06-30,0.26,0,0,875,Metal Sheet 7,1000,750,Critical Shortage,0
+164,20140630,2014-06-30,0.38,0,0,875,Metal Sheet 4,1000,750,Critical Shortage,0
+165,20140630,2014-06-30,0.2,0,0,875,Metal Sheet 5,1000,750,Critical Shortage,0
+166,20140630,2014-06-30,0.25,0,0,875,Metal Sheet 6,1000,750,Critical Shortage,0
+167,20140630,2014-06-30,0.19,0,0,875,Metal Sheet 1,1000,750,Critical Shortage,0
+168,20140630,2014-06-30,0.18,0,0,875,Metal Tread Plate,1000,750,Critical Shortage,0
+169,20140630,2014-06-30,0.23,0,0,875,LL Nipple,1000,750,Critical Shortage,0
+170,20140630,2014-06-30,0.42,0,0,875,HL Nipple,1000,750,Critical Shortage,0
+171,20140630,2014-06-30,0.24,0,0,52,Paint - Black,60,45,Critical Shortage,0
+172,20140630,2014-06-30,0.21,0,0,52,Paint - Red,60,45,Critical Shortage,0
+173,20140630,2014-06-30,0.2,0,0,52,Paint - Silver,60,45,Critical Shortage,0
+174,20140630,2014-06-30,0.28,0,0,52,Paint - Blue,60,45,Critical Shortage,0
+175,20140630,2014-06-30,0.31,0,0,52,Paint - Yellow,60,45,Critical Shortage,0
+176,20140630,2014-06-30,0.26,0,0,875,Pinch Bolt,1000,750,Critical Shortage,0
+177,20140630,2014-06-30,0.23,0,0,875,Cup-Shaped Race,1000,750,Critical Shortage,0
+178,20140630,2014-06-30,0.19,0,0,875,Cone-Shaped Race,1000,750,Critical Shortage,0
+179,20140630,2014-06-30,0.48,0,0,875,Reflector,1000,750,Critical Shortage,0
+180,20140630,2014-06-30,0.21,0,0,700,LL Mountain Rim,800,600,Critical Shortage,0
+181,20140630,2014-06-30,0.23,0,0,700,ML Mountain Rim,800,600,Critical Shortage,0
+182,20140630,2014-06-30,0.31,0,0,700,HL Mountain Rim,800,600,Critical Shortage,0
+183,20140630,2014-06-30,0.23,0,0,700,LL Road Rim,800,600,Critical Shortage,0
+184,20140630,2014-06-30,0.24,0,0,700,ML Road Rim,800,600,Critical Shortage,0
+185,20140630,2014-06-30,0.24,0,0,700,HL Road Rim,800,600,Critical Shortage,0
+186,20140630,2014-06-30,0.24,0,0,700,Touring Rim,800,600,Critical Shortage,0
+187,20140630,2014-06-30,0.29,0,0,438,LL Mountain Seat Assembly,500,375,Critical Shortage,0
+188,20140630,2014-06-30,0.17,0,0,438,ML Mountain Seat Assembly,500,375,Critical Shortage,0
+189,20140630,2014-06-30,0.2,0,0,438,HL Mountain Seat Assembly,500,375,Critical Shortage,0
+190,20140630,2014-06-30,0.31,0,0,438,LL Road Seat Assembly,500,375,Critical Shortage,0
+191,20140630,2014-06-30,0.21,0,0,438,ML Road Seat Assembly,500,375,Critical Shortage,0
+192,20140630,2014-06-30,0.22,0,0,438,HL Road Seat Assembly,500,375,Critical Shortage,0
+193,20140630,2014-06-30,0.29,0,0,438,LL Touring Seat Assembly,500,375,Critical Shortage,0
+194,20140630,2014-06-30,0.36,0,0,438,ML Touring Seat Assembly,500,375,Critical Shortage,0
+195,20140630,2014-06-30,0.21,0,0,438,HL Touring Seat Assembly,500,375,Critical Shortage,0
+196,20140630,2014-06-30,0.19,0,0,438,LL Spindle/Axle,500,375,Critical Shortage,0
+197,20140630,2014-06-30,0.4,0,0,438,HL Spindle/Axle,500,375,Critical Shortage,0
+198,20140630,2014-06-30,0.27,0,0,700,LL Shell,800,600,Critical Shortage,0
+199,20140630,2014-06-30,0.23,0,0,700,HL Shell,800,600,Critical Shortage,0
+200,20140630,2014-06-30,0.24,0,0,875,Spokes,1000,750,Critical Shortage,0
+201,20140630,2014-06-30,0.17,0,0,875,Seat Lug,1000,750,Critical Shortage,0
+202,20140630,2014-06-30,0.18,0,0,438,Stem,500,375,Critical Shortage,0
+203,20140630,2014-06-30,0.45,0,0,438,Seat Post,500,375,Critical Shortage,0
+204,20140630,2014-06-30,0.27,0,0,438,Steerer,500,375,Critical Shortage,0
+205,20140630,2014-06-30,0.19,0,0,700,Seat Stays,800,600,Critical Shortage,0
+206,20140630,2014-06-30,0.22,0,0,438,Seat Tube,500,375,Critical Shortage,0
+207,20140630,2014-06-30,0.33,0,0,438,Top Tube,500,375,Critical Shortage,0
+208,20140630,2014-06-30,0.47,0,0,700,Tension Pulley,800,600,Critical Shortage,0
+209,20140630,2014-06-30,0.4,0,0,438,Rear Derailleur Cage,500,375,Critical Shortage,0
+210,20140630,2014-06-30,0.18,0,0,438,"HL Road Frame - Black, 58",500,375,Critical Shortage,0
+211,20140630,2014-06-30,0.21,0,0,438,"HL Road Frame - Red, 58",500,375,Critical Shortage,0
+212,20140630,2014-06-30,11.25,0,0,4,"Sport-100 Helmet, Red",4,3,Adequate Stock,0
+213,20140630,2014-06-30,12.56,0,0,4,"Sport-100 Helmet, Red",4,3,Adequate Stock,0
+214,20140630,2014-06-30,8.96,0,0,4,"Sport-100 Helmet, Red",4,3,Adequate Stock,0
+215,20140630,2014-06-30,12.52,0,0,4,"Sport-100 Helmet, Black",4,3,Adequate Stock,0
+216,20140630,2014-06-30,12.56,0,0,4,"Sport-100 Helmet, Black",4,3,Adequate Stock,0
+217,20140630,2014-06-30,10.86,0,0,4,"Sport-100 Helmet, Black",4,3,Adequate Stock,0
+218,20140630,2014-06-30,3.12,0,0,4,"Mountain Bike Socks, M",4,3,Adequate Stock,0
+219,20140630,2014-06-30,3.55,0,0,4,"Mountain Bike Socks, L",4,3,Adequate Stock,0
+220,20140630,2014-06-30,12.8,0,0,4,"Sport-100 Helmet, Blue",4,3,Adequate Stock,0
+221,20140630,2014-06-30,9.2,0,0,4,"Sport-100 Helmet, Blue",4,3,Adequate Stock,0
+222,20140630,2014-06-30,10.38,0,0,4,"Sport-100 Helmet, Blue",4,3,Adequate Stock,0
+223,20140630,2014-06-30,3.5,0,0,4,AWC Logo Cap,4,3,Adequate Stock,0
+224,20140630,2014-06-30,2.96,0,0,4,AWC Logo Cap,4,3,Adequate Stock,0
+225,20140630,2014-06-30,2.62,0,0,4,AWC Logo Cap,4,3,Adequate Stock,0
+226,20140630,2014-06-30,33.41,0,0,4,"Long-Sleeve Logo Jersey, S",4,3,Adequate Stock,0
+227,20140630,2014-06-30,31.86,0,0,4,"Long-Sleeve Logo Jersey, S",4,3,Adequate Stock,0
+228,20140630,2014-06-30,27.85,0,0,3,"Long-Sleeve Logo Jersey, S",4,3,Critical Shortage,0
+229,20140630,2014-06-30,23.58,0,0,4,"Long-Sleeve Logo Jersey, M",4,3,Adequate Stock,0
+230,20140630,2014-06-30,21.62,0,0,4,"Long-Sleeve Logo Jersey, M",4,3,Adequate Stock,0
+231,20140630,2014-06-30,14.9,0,0,3,"Long-Sleeve Logo Jersey, M",4,3,Critical Shortage,0
+232,20140630,2014-06-30,20.9,0,0,4,"Long-Sleeve Logo Jersey, L",4,3,Adequate Stock,0
+233,20140630,2014-06-30,20.56,0,0,4,"Long-Sleeve Logo Jersey, L",4,3,Adequate Stock,0
+234,20140630,2014-06-30,15.45,0,0,4,"Long-Sleeve Logo Jersey, L",4,3,Adequate Stock,0
+235,20140630,2014-06-30,20.51,0,0,4,"Long-Sleeve Logo Jersey, XL",4,3,Adequate Stock,0
+236,20140630,2014-06-30,17.42,0,0,4,"Long-Sleeve Logo Jersey, XL",4,3,Adequate Stock,0
+237,20140630,2014-06-30,20.4,0,0,4,"Long-Sleeve Logo Jersey, XL",4,3,Adequate Stock,0
+238,20140630,2014-06-30,533.52,0,0,408,"HL Road Frame - Red, 62",500,375,Critical Shortage,0
+239,20140630,2014-06-30,529.37,0,0,391,"HL Road Frame - Red, 62",500,375,Critical Shortage,0
+240,20140630,2014-06-30,475.51,0,0,381,"HL Road Frame - Red, 62",500,375,Critical Shortage,0
+241,20140630,2014-06-30,596.44,0,0,411,"HL Road Frame - Red, 44",500,375,Critical Shortage,0
+242,20140630,2014-06-30,565.83,0,0,411,"HL Road Frame - Red, 44",500,375,Critical Shortage,0
+243,20140630,2014-06-30,520.54,0,0,391,"HL Road Frame - Red, 44",500,375,Critical Shortage,0
+244,20140630,2014-06-30,790.75,0,0,438,"HL Road Frame - Red, 48",500,375,Critical Shortage,0
+245,20140630,2014-06-30,514.79,0,0,390,"HL Road Frame - Red, 48",500,375,Critical Shortage,0
+246,20140630,2014-06-30,530.35,0,0,377,"HL Road Frame - Red, 48",500,375,Critical Shortage,0
+247,20140630,2014-06-30,663.09,0,0,438,"HL Road Frame - Red, 52",500,375,Critical Shortage,0
+248,20140630,2014-06-30,646.31,0,0,438,"HL Road Frame - Red, 52",500,375,Critical Shortage,0
+249,20140630,2014-06-30,1065.25,0,0,438,"HL Road Frame - Red, 52",500,375,Critical Shortage,0
+250,20140630,2014-06-30,814.45,0,0,438,"HL Road Frame - Red, 56",500,375,Critical Shortage,0
+251,20140630,2014-06-30,762.8,0,0,438,"HL Road Frame - Red, 56",500,375,Critical Shortage,0
+252,20140630,2014-06-30,855.27,0,0,438,"HL Road Frame - Red, 56",500,375,Critical Shortage,0
+253,20140630,2014-06-30,123.77,0,0,457,"LL Road Frame - Black, 58",500,375,Critical Shortage,0
+254,20140630,2014-06-30,114.27,0,0,391,"LL Road Frame - Black, 58",500,375,Critical Shortage,0
+255,20140630,2014-06-30,120.58,0,0,457,"LL Road Frame - Black, 58",500,375,Critical Shortage,0
+256,20140630,2014-06-30,182.42,0,0,437,"LL Road Frame - Black, 60",500,375,Critical Shortage,0
+257,20140630,2014-06-30,111.76,0,0,390,"LL Road Frame - Black, 60",500,375,Critical Shortage,0
+258,20140630,2014-06-30,144.4,0,0,377,"LL Road Frame - Black, 60",500,375,Critical Shortage,0
+259,20140630,2014-06-30,177.84,0,0,438,"LL Road Frame - Black, 62",500,375,Critical Shortage,0
+260,20140630,2014-06-30,169.17,0,0,438,"LL Road Frame - Black, 62",500,375,Critical Shortage,0
+261,20140630,2014-06-30,168.24,0,0,438,"LL Road Frame - Black, 62",500,375,Critical Shortage,0
+262,20140630,2014-06-30,121.08,0,0,438,"LL Road Frame - Red, 44",500,375,Critical Shortage,0
+263,20140630,2014-06-30,140.12,0,0,436,"LL Road Frame - Red, 44",500,375,Critical Shortage,0
+264,20140630,2014-06-30,143.02,0,0,382,"LL Road Frame - Red, 48",500,375,Critical Shortage,0
+265,20140630,2014-06-30,134.7,0,0,391,"LL Road Frame - Red, 48",500,375,Critical Shortage,0
+266,20140630,2014-06-30,132.29,0,0,431,"LL Road Frame - Red, 52",500,375,Critical Shortage,0
+267,20140630,2014-06-30,131.12,0,0,449,"LL Road Frame - Red, 52",500,375,Critical Shortage,0
+268,20140630,2014-06-30,155.86,0,0,438,"LL Road Frame - Red, 58",500,375,Critical Shortage,0
+269,20140630,2014-06-30,210.76,0,0,438,"LL Road Frame - Red, 58",500,375,Critical Shortage,0
+270,20140630,2014-06-30,118.7,0,0,474,"LL Road Frame - Red, 60",500,375,Critical Shortage,0
+271,20140630,2014-06-30,117.23,0,0,483,"LL Road Frame - Red, 60",500,375,Critical Shortage,0
+272,20140630,2014-06-30,142.98,0,0,466,"LL Road Frame - Red, 62",500,375,Critical Shortage,0
+273,20140630,2014-06-30,134.02,0,0,412,"LL Road Frame - Red, 62",500,375,Critical Shortage,0
+274,20140630,2014-06-30,374.6,0,0,438,"ML Road Frame - Red, 44",500,375,Critical Shortage,0
+275,20140630,2014-06-30,315.95,0,0,383,"ML Road Frame - Red, 48",500,375,Critical Shortage,0
+276,20140630,2014-06-30,229.39,0,0,408,"ML Road Frame - Red, 52",500,375,Critical Shortage,0
+277,20140630,2014-06-30,375.58,0,0,438,"ML Road Frame - Red, 58",500,375,Critical Shortage,0
+278,20140630,2014-06-30,382.58,0,0,438,"ML Road Frame - Red, 60",500,375,Critical Shortage,0
+279,20140630,2014-06-30,131.41,0,0,412,"LL Road Frame - Black, 44",500,375,Critical Shortage,0
+280,20140630,2014-06-30,127.02,0,0,437,"LL Road Frame - Black, 44",500,375,Critical Shortage,0
+281,20140630,2014-06-30,128.59,0,0,441,"LL Road Frame - Black, 44",500,375,Critical Shortage,0
+282,20140630,2014-06-30,172.09,0,0,438,"LL Road Frame - Black, 48",500,375,Critical Shortage,0
+283,20140630,2014-06-30,179.02,0,0,438,"LL Road Frame - Black, 48",500,375,Critical Shortage,0
+284,20140630,2014-06-30,197.93,0,0,438,"LL Road Frame - Black, 48",500,375,Critical Shortage,0
+285,20140630,2014-06-30,147.95,0,0,449,"LL Road Frame - Black, 52",500,375,Critical Shortage,0
+286,20140630,2014-06-30,117.01,0,0,426,"LL Road Frame - Black, 52",500,375,Critical Shortage,0
+287,20140630,2014-06-30,170.11,0,0,392,"LL Road Frame - Black, 52",500,375,Critical Shortage,0
+288,20140630,2014-06-30,407.96,0,0,414,"HL Mountain Frame - Silver, 42",500,375,Critical Shortage,0
+289,20140630,2014-06-30,458.79,0,0,380,"HL Mountain Frame - Silver, 42",500,375,Critical Shortage,0
+290,20140630,2014-06-30,388.54,0,0,380,"HL Mountain Frame - Silver, 42",500,375,Critical Shortage,0
+291,20140630,2014-06-30,618.69,0,0,438,"HL Mountain Frame - Silver, 44",500,375,Critical Shortage,0
+292,20140630,2014-06-30,572.6,0,0,486,"HL Mountain Frame - Silver, 48",500,375,Critical Shortage,0
+293,20140630,2014-06-30,478.26,0,0,393,"HL Mountain Frame - Silver, 46",500,375,Critical Shortage,0
+294,20140630,2014-06-30,637.22,0,0,399,"HL Mountain Frame - Silver, 46",500,375,Critical Shortage,0
+295,20140630,2014-06-30,477.79,0,0,486,"HL Mountain Frame - Silver, 46",500,375,Critical Shortage,0
+296,20140630,2014-06-30,444.19,0,0,478,"HL Mountain Frame - Black, 42",500,375,Critical Shortage,0
+297,20140630,2014-06-30,404.19,0,0,390,"HL Mountain Frame - Black, 42",500,375,Critical Shortage,0
+298,20140630,2014-06-30,366.08,0,0,412,"HL Mountain Frame - Black, 42",500,375,Critical Shortage,0
+299,20140630,2014-06-30,633.9,0,0,421,"HL Mountain Frame - Black, 44",500,375,Critical Shortage,0
+300,20140630,2014-06-30,606.03,0,0,438,"HL Mountain Frame - Black, 48",500,375,Critical Shortage,0
+301,20140630,2014-06-30,665.92,0,0,438,"HL Mountain Frame - Black, 46",500,375,Critical Shortage,0
+302,20140630,2014-06-30,590.2,0,0,438,"HL Mountain Frame - Black, 46",500,375,Critical Shortage,0
+303,20140630,2014-06-30,724.72,0,0,438,"HL Mountain Frame - Black, 46",500,375,Critical Shortage,0
+304,20140630,2014-06-30,444.64,0,0,438,"HL Mountain Frame - Black, 38",500,375,Critical Shortage,0
+305,20140630,2014-06-30,526.13,0,0,379,"HL Mountain Frame - Black, 38",500,375,Critical Shortage,0
+306,20140630,2014-06-30,405.45,0,0,456,"HL Mountain Frame - Black, 38",500,375,Critical Shortage,0
+307,20140630,2014-06-30,527.35,0,0,377,"HL Mountain Frame - Silver, 38",500,375,Critical Shortage,0
+308,20140630,2014-06-30,463.0,0,0,437,"HL Mountain Frame - Silver, 38",500,375,Critical Shortage,0
+309,20140630,2014-06-30,407.05,0,0,456,"HL Mountain Frame - Silver, 38",500,375,Critical Shortage,0
+310,20140630,2014-06-30,506.04,0,0,91,"Road-150 Red, 62",100,75,Critical Shortage,0
+311,20140630,2014-06-30,640.25,0,0,84,"Road-150 Red, 44",100,75,Critical Shortage,0
+312,20140630,2014-06-30,563.44,0,0,84,"Road-150 Red, 48",100,75,Critical Shortage,0
+313,20140630,2014-06-30,560.34,0,0,84,"Road-150 Red, 52",100,75,Critical Shortage,0
+314,20140630,2014-06-30,536.15,0,0,88,"Road-150 Red, 56",100,75,Critical Shortage,0
+315,20140630,2014-06-30,566.25,0,0,84,"Road-450 Red, 58",100,75,Critical Shortage,0
+316,20140630,2014-06-30,587.68,0,0,86,"Road-450 Red, 60",100,75,Critical Shortage,0
+317,20140630,2014-06-30,602.13,0,0,80,"Road-450 Red, 44",100,75,Critical Shortage,0
+318,20140630,2014-06-30,628.68,0,0,99,"Road-450 Red, 48",100,75,Critical Shortage,0
+319,20140630,2014-06-30,629.57,0,0,77,"Road-450 Red, 52",100,75,Critical Shortage,0
+320,20140630,2014-06-30,115.12,0,0,77,"Road-650 Red, 58",100,75,Critical Shortage,0
+321,20140630,2014-06-30,291.73,0,0,89,"Road-650 Red, 58",100,75,Critical Shortage,0
+322,20140630,2014-06-30,98.2,0,0,85,"Road-650 Red, 60",100,75,Critical Shortage,0
+323,20140630,2014-06-30,284.85,0,0,79,"Road-650 Red, 60",100,75,Critical Shortage,0
+324,20140630,2014-06-30,290.08,0,0,82,"Road-650 Red, 62",100,75,Critical Shortage,0
+325,20140630,2014-06-30,273.37,0,0,77,"Road-650 Red, 62",100,75,Critical Shortage,0
+326,20140630,2014-06-30,127.54,0,0,97,"Road-650 Red, 44",100,75,Critical Shortage,0
+327,20140630,2014-06-30,150.47,0,0,87,"Road-650 Red, 44",100,75,Critical Shortage,0
+328,20140630,2014-06-30,108.73,0,0,89,"Road-650 Red, 48",100,75,Critical Shortage,0
+329,20140630,2014-06-30,310.57,0,0,78,"Road-650 Red, 48",100,75,Critical Shortage,0
+330,20140630,2014-06-30,121.96,0,0,85,"Road-650 Red, 52",100,75,Critical Shortage,0
+331,20140630,2014-06-30,265.41,0,0,81,"Road-650 Red, 52",100,75,Critical Shortage,0
+332,20140630,2014-06-30,290.1,0,0,78,"Road-650 Black, 58",100,75,Critical Shortage,0
+333,20140630,2014-06-30,301.05,0,0,90,"Road-650 Black, 58",100,75,Critical Shortage,0
+334,20140630,2014-06-30,121.78,0,0,82,"Road-650 Black, 60",100,75,Critical Shortage,0
+335,20140630,2014-06-30,324.37,0,0,92,"Road-650 Black, 60",100,75,Critical Shortage,0
+336,20140630,2014-06-30,272.48,0,0,82,"Road-650 Black, 62",100,75,Critical Shortage,0
+337,20140630,2014-06-30,376.96,0,0,89,"Road-650 Black, 62",100,75,Critical Shortage,0
+338,20140630,2014-06-30,93.76,0,0,87,"Road-650 Black, 44",100,75,Critical Shortage,0
+339,20140630,2014-06-30,329.18,0,0,89,"Road-650 Black, 44",100,75,Critical Shortage,0
+340,20140630,2014-06-30,315.74,0,0,87,"Road-650 Black, 48",100,75,Critical Shortage,0
+341,20140630,2014-06-30,327.87,0,0,90,"Road-650 Black, 48",100,75,Critical Shortage,0
+342,20140630,2014-06-30,101.19,0,0,90,"Road-650 Black, 52",100,75,Critical Shortage,0
+343,20140630,2014-06-30,301.0,0,0,93,"Road-650 Black, 52",100,75,Critical Shortage,0
+344,20140630,2014-06-30,639.15,0,0,88,"Mountain-100 Silver, 38",100,75,Critical Shortage,0
+345,20140630,2014-06-30,671.99,0,0,81,"Mountain-100 Silver, 42",100,75,Critical Shortage,0
+346,20140630,2014-06-30,518.82,0,0,88,"Mountain-100 Silver, 44",100,75,Critical Shortage,0
+347,20140630,2014-06-30,507.73,0,0,79,"Mountain-100 Silver, 48",100,75,Critical Shortage,0
+348,20140630,2014-06-30,494.79,0,0,75,"Mountain-100 Black, 38",100,75,Critical Shortage,0
+349,20140630,2014-06-30,489.07,0,0,80,"Mountain-100 Black, 42",100,75,Critical Shortage,0
+350,20140630,2014-06-30,537.52,0,0,96,"Mountain-100 Black, 44",100,75,Critical Shortage,0
+351,20140630,2014-06-30,534.73,0,0,86,"Mountain-100 Black, 48",100,75,Critical Shortage,0
+352,20140630,2014-06-30,778.38,0,0,91,"Mountain-200 Silver, 38",100,75,Critical Shortage,0
+353,20140630,2014-06-30,724.48,0,0,99,"Mountain-200 Silver, 38",100,75,Critical Shortage,0
+354,20140630,2014-06-30,774.35,0,0,86,"Mountain-200 Silver, 42",100,75,Critical Shortage,0
+355,20140630,2014-06-30,806.79,0,0,76,"Mountain-200 Silver, 42",100,75,Critical Shortage,0
+356,20140630,2014-06-30,838.14,0,0,82,"Mountain-200 Silver, 46",100,75,Critical Shortage,0
+357,20140630,2014-06-30,810.85,0,0,81,"Mountain-200 Silver, 46",100,75,Critical Shortage,0
+358,20140630,2014-06-30,967.04,0,0,76,"Mountain-200 Black, 38",100,75,Critical Shortage,0
+359,20140630,2014-06-30,679.46,0,0,92,"Mountain-200 Black, 38",100,75,Critical Shortage,0
+360,20140630,2014-06-30,783.22,0,0,91,"Mountain-200 Black, 42",100,75,Critical Shortage,0
+361,20140630,2014-06-30,694.14,0,0,76,"Mountain-200 Black, 42",100,75,Critical Shortage,0
+362,20140630,2014-06-30,820.12,0,0,97,"Mountain-200 Black, 46",100,75,Critical Shortage,0
+363,20140630,2014-06-30,709.66,0,0,93,"Mountain-200 Black, 46",100,75,Critical Shortage,0
+364,20140630,2014-06-30,562.82,0,0,86,"Mountain-300 Black, 38",100,75,Critical Shortage,0
+365,20140630,2014-06-30,463.25,0,0,93,"Mountain-300 Black, 40",100,75,Critical Shortage,0
+366,20140630,2014-06-30,434.01,0,0,77,"Mountain-300 Black, 44",100,75,Critical Shortage,0
+367,20140630,2014-06-30,383.71,0,0,88,"Mountain-300 Black, 48",100,75,Critical Shortage,0
+368,20140630,2014-06-30,887.02,0,0,86,"Road-250 Red, 44",100,75,Critical Shortage,0
+369,20140630,2014-06-30,970.18,0,0,79,"Road-250 Red, 48",100,75,Critical Shortage,0
+370,20140630,2014-06-30,912.82,0,0,88,"Road-250 Red, 52",100,75,Critical Shortage,0
+371,20140630,2014-06-30,1131.25,0,0,92,"Road-250 Red, 58",100,75,Critical Shortage,0
+372,20140630,2014-06-30,987.87,0,0,80,"Road-250 Red, 58",100,75,Critical Shortage,0
+373,20140630,2014-06-30,1015.04,0,0,80,"Road-250 Black, 44",100,75,Critical Shortage,0
+374,20140630,2014-06-30,980.98,0,0,84,"Road-250 Black, 44",100,75,Critical Shortage,0
+375,20140630,2014-06-30,796.14,0,0,96,"Road-250 Black, 48",100,75,Critical Shortage,0
+376,20140630,2014-06-30,916.6,0,0,98,"Road-250 Black, 48",100,75,Critical Shortage,0
+377,20140630,2014-06-30,894.7,0,0,88,"Road-250 Black, 52",100,75,Critical Shortage,0
+378,20140630,2014-06-30,957.5,0,0,88,"Road-250 Black, 52",100,75,Critical Shortage,0
+379,20140630,2014-06-30,951.95,0,0,91,"Road-250 Black, 58",100,75,Critical Shortage,0
+380,20140630,2014-06-30,877.82,0,0,89,"Road-250 Black, 58",100,75,Critical Shortage,0
+381,20140630,2014-06-30,353.11,0,0,79,"Road-550-W Yellow, 38",100,75,Critical Shortage,0
+382,20140630,2014-06-30,427.35,0,0,84,"Road-550-W Yellow, 38",100,75,Critical Shortage,0
+383,20140630,2014-06-30,456.33,0,0,90,"Road-550-W Yellow, 40",100,75,Critical Shortage,0
+384,20140630,2014-06-30,523.5,0,0,80,"Road-550-W Yellow, 40",100,75,Critical Shortage,0
+385,20140630,2014-06-30,466.39,0,0,89,"Road-550-W Yellow, 42",100,75,Critical Shortage,0
+386,20140630,2014-06-30,562.83,0,0,81,"Road-550-W Yellow, 42",100,75,Critical Shortage,0
+387,20140630,2014-06-30,427.53,0,0,80,"Road-550-W Yellow, 44",100,75,Critical Shortage,0
+388,20140630,2014-06-30,492.35,0,0,81,"Road-550-W Yellow, 44",100,75,Critical Shortage,0
+389,20140630,2014-06-30,378.15,0,0,91,"Road-550-W Yellow, 48",100,75,Critical Shortage,0
+390,20140630,2014-06-30,423.51,0,0,85,"Road-550-W Yellow, 48",100,75,Critical Shortage,0
+391,20140630,2014-06-30,72.41,0,0,479,LL Fork,500,375,Critical Shortage,0
+392,20140630,2014-06-30,75.83,0,0,438,ML Fork,500,375,Critical Shortage,0
+393,20140630,2014-06-30,72.23,0,0,443,HL Fork,500,375,Critical Shortage,0
+394,20140630,2014-06-30,14.71,0,0,417,LL Headset,500,375,Critical Shortage,0
+395,20140630,2014-06-30,37.3,0,0,409,ML Headset,500,375,Critical Shortage,0
+396,20140630,2014-06-30,42.05,0,0,415,HL Headset,500,375,Critical Shortage,0
+397,20140630,2014-06-30,21.61,0,0,418,LL Mountain Handlebars,500,375,Critical Shortage,0
+398,20140630,2014-06-30,13.73,0,0,387,LL Mountain Handlebars,500,375,Critical Shortage,0
+399,20140630,2014-06-30,22.19,0,0,379,ML Mountain Handlebars,500,375,Critical Shortage,0
+400,20140630,2014-06-30,19.22,0,0,379,ML Mountain Handlebars,500,375,Critical Shortage,0
+401,20140630,2014-06-30,39.23,0,0,410,HL Mountain Handlebars,500,375,Critical Shortage,0
+402,20140630,2014-06-30,39.79,0,0,379,HL Mountain Handlebars,500,375,Critical Shortage,0
+403,20140630,2014-06-30,15.69,0,0,427,LL Road Handlebars,500,375,Critical Shortage,0
+404,20140630,2014-06-30,18.34,0,0,401,LL Road Handlebars,500,375,Critical Shortage,0
+405,20140630,2014-06-30,28.76,0,0,438,ML Road Handlebars,500,375,Critical Shortage,0
+406,20140630,2014-06-30,28.27,0,0,438,ML Road Handlebars,500,375,Critical Shortage,0
+407,20140630,2014-06-30,43.61,0,0,416,HL Road Handlebars,500,375,Critical Shortage,0
+408,20140630,2014-06-30,42.59,0,0,378,HL Road Handlebars,500,375,Critical Shortage,0
+409,20140630,2014-06-30,141.37,0,0,436,"ML Mountain Frame - Black, 38",500,375,Critical Shortage,0
+410,20140630,2014-06-30,25.38,0,0,384,LL Mountain Front Wheel,500,375,Critical Shortage,0
+411,20140630,2014-06-30,83.95,0,0,493,ML Mountain Front Wheel,500,375,Critical Shortage,0
+412,20140630,2014-06-30,106.97,0,0,404,HL Mountain Front Wheel,500,375,Critical Shortage,0
+413,20140630,2014-06-30,29.66,0,0,438,LL Road Front Wheel,500,375,Critical Shortage,0
+414,20140630,2014-06-30,84.79,0,0,459,ML Road Front Wheel,500,375,Critical Shortage,0
+415,20140630,2014-06-30,146.99,0,0,477,HL Road Front Wheel,500,375,Critical Shortage,0
+416,20140630,2014-06-30,84.1,0,0,438,Touring Front Wheel,500,375,Critical Shortage,0
+417,20140630,2014-06-30,193.42,0,0,391,"ML Road Frame-W - Yellow, 38",500,375,Critical Shortage,0
+418,20140630,2014-06-30,221.71,0,0,458,"ML Road Frame-W - Yellow, 38",500,375,Critical Shortage,0
+419,20140630,2014-06-30,33.91,0,0,378,LL Mountain Rear Wheel,500,375,Critical Shortage,0
+420,20140630,2014-06-30,87.97,0,0,380,ML Mountain Rear Wheel,500,375,Critical Shortage,0
+421,20140630,2014-06-30,153.37,0,0,405,HL Mountain Rear Wheel,500,375,Critical Shortage,0
+422,20140630,2014-06-30,47.71,0,0,378,LL Road Rear Wheel,500,375,Critical Shortage,0
+423,20140630,2014-06-30,116.73,0,0,386,ML Road Rear Wheel,500,375,Critical Shortage,0
+424,20140630,2014-06-30,141.39,0,0,389,HL Road Rear Wheel,500,375,Critical Shortage,0
+425,20140630,2014-06-30,113.56,0,0,438,Touring Rear Wheel,500,375,Critical Shortage,0
+426,20140630,2014-06-30,133.23,0,0,453,"ML Mountain Frame - Black, 40",500,375,Critical Shortage,0
+427,20140630,2014-06-30,135.28,0,0,406,"ML Mountain Frame - Black, 44",500,375,Critical Shortage,0
+428,20140630,2014-06-30,139.34,0,0,396,"ML Mountain Frame - Black, 48",500,375,Critical Shortage,0
+429,20140630,2014-06-30,231.12,0,0,420,"ML Road Frame-W - Yellow, 40",500,375,Critical Shortage,0
+430,20140630,2014-06-30,255.25,0,0,426,"ML Road Frame-W - Yellow, 40",500,375,Critical Shortage,0
+431,20140630,2014-06-30,282.63,0,0,438,"ML Road Frame-W - Yellow, 42",500,375,Critical Shortage,0
+432,20140630,2014-06-30,361.7,0,0,438,"ML Road Frame-W - Yellow, 42",500,375,Critical Shortage,0
+433,20140630,2014-06-30,196.99,0,0,378,"ML Road Frame-W - Yellow, 44",500,375,Critical Shortage,0
+434,20140630,2014-06-30,207.43,0,0,425,"ML Road Frame-W - Yellow, 44",500,375,Critical Shortage,0
+435,20140630,2014-06-30,224.19,0,0,393,"ML Road Frame-W - Yellow, 48",500,375,Critical Shortage,0
+436,20140630,2014-06-30,261.52,0,0,377,"ML Road Frame-W - Yellow, 48",500,375,Critical Shortage,0
+437,20140630,2014-06-30,719.22,0,0,438,"HL Road Frame - Black, 62",500,375,Critical Shortage,0
+438,20140630,2014-06-30,849.33,0,0,438,"HL Road Frame - Black, 62",500,375,Critical Shortage,0
+439,20140630,2014-06-30,627.14,0,0,392,"HL Road Frame - Black, 44",500,375,Critical Shortage,0
+440,20140630,2014-06-30,600.86,0,0,409,"HL Road Frame - Black, 44",500,375,Critical Shortage,0
+441,20140630,2014-06-30,481.71,0,0,390,"HL Road Frame - Black, 48",500,375,Critical Shortage,0
+442,20140630,2014-06-30,568.93,0,0,377,"HL Road Frame - Black, 48",500,375,Critical Shortage,0
+443,20140630,2014-06-30,745.62,0,0,438,"HL Road Frame - Black, 52",500,375,Critical Shortage,0
+444,20140630,2014-06-30,937.88,0,0,438,"HL Road Frame - Black, 52",500,375,Critical Shortage,0
+445,20140630,2014-06-30,26.92,0,0,4,"Men's Sports Shorts, S",4,3,Adequate Stock,0
+446,20140630,2014-06-30,52.68,0,0,4,"Touring-Panniers, Large",4,3,Adequate Stock,0
+447,20140630,2014-06-30,9.41,0,0,4,Cable Lock,4,3,Adequate Stock,0
+448,20140630,2014-06-30,9.07,0,0,4,Minipump,4,3,Adequate Stock,0
+449,20140630,2014-06-30,12.44,0,0,4,Mountain Pump,4,3,Adequate Stock,0
+450,20140630,2014-06-30,6.37,0,0,4,Taillights - Battery-Powered,4,3,Adequate Stock,0
+451,20140630,2014-06-30,18.94,0,0,4,Headlights - Dual-Beam,4,3,Adequate Stock,0
+452,20140630,2014-06-30,18.35,0,0,4,Headlights - Weatherproof,4,3,Adequate Stock,0
+453,20140630,2014-06-30,21.12,0,0,4,"Men's Sports Shorts, M",4,3,Adequate Stock,0
+454,20140630,2014-06-30,24.55,0,0,4,"Men's Sports Shorts, L",4,3,Adequate Stock,0
+455,20140630,2014-06-30,22.3,0,0,4,"Men's Sports Shorts, XL",4,3,Adequate Stock,0
+456,20140630,2014-06-30,30.91,0,0,4,"Women's Tights, S",4,3,Adequate Stock,0
+457,20140630,2014-06-30,30.64,0,0,4,"Women's Tights, M",4,3,Adequate Stock,0
+458,20140630,2014-06-30,27.95,0,0,4,"Women's Tights, L",4,3,Adequate Stock,0
+459,20140630,2014-06-30,36.17,0,0,4,"Men's Bib-Shorts, S",4,3,Adequate Stock,0
+460,20140630,2014-06-30,32.8,0,0,4,"Men's Bib-Shorts, M",4,3,Adequate Stock,0
+461,20140630,2014-06-30,38.71,0,0,4,"Men's Bib-Shorts, L",4,3,Adequate Stock,0
+462,20140630,2014-06-30,11.12,0,0,4,"Half-Finger Gloves, S",4,3,Adequate Stock,0
+463,20140630,2014-06-30,10.33,0,0,3,"Half-Finger Gloves, S",4,3,Critical Shortage,0
+464,20140630,2014-06-30,9.62,0,0,4,"Half-Finger Gloves, M",4,3,Adequate Stock,0
+465,20140630,2014-06-30,7.87,0,0,4,"Half-Finger Gloves, M",4,3,Adequate Stock,0
+466,20140630,2014-06-30,10.39,0,0,4,"Half-Finger Gloves, L",4,3,Adequate Stock,0
+467,20140630,2014-06-30,7.62,0,0,3,"Half-Finger Gloves, L",4,3,Critical Shortage,0
+468,20140630,2014-06-30,15.41,0,0,4,"Full-Finger Gloves, S",4,3,Adequate Stock,0
+469,20140630,2014-06-30,14.22,0,0,4,"Full-Finger Gloves, M",4,3,Adequate Stock,0
+470,20140630,2014-06-30,13.01,0,0,4,"Full-Finger Gloves, L",4,3,Adequate Stock,0
+471,20140630,2014-06-30,16.44,0,0,4,"Classic Vest, S",4,3,Adequate Stock,0
+472,20140630,2014-06-30,17.93,0,0,4,"Classic Vest, M",4,3,Adequate Stock,0
+473,20140630,2014-06-30,28.93,0,0,4,"Classic Vest, L",4,3,Adequate Stock,0
+474,20140630,2014-06-30,19.86,0,0,3,"Women's Mountain Shorts, S",4,3,Critical Shortage,0
+475,20140630,2014-06-30,26.71,0,0,4,"Women's Mountain Shorts, M",4,3,Adequate Stock,0
+476,20140630,2014-06-30,21.54,0,0,4,"Women's Mountain Shorts, L",4,3,Adequate Stock,0
+477,20140630,2014-06-30,1.92,0,0,4,Water Bottle - 30 oz.,4,3,Adequate Stock,0
+478,20140630,2014-06-30,4.63,0,0,4,Mountain Bottle Cage,4,3,Adequate Stock,0
+479,20140630,2014-06-30,3.26,0,0,4,Road Bottle Cage,4,3,Adequate Stock,0
+480,20140630,2014-06-30,0.77,0,0,4,Patch Kit/8 Patches,4,3,Adequate Stock,0
+481,20140630,2014-06-30,3.72,0,0,3,"Racing Socks, M",4,3,Critical Shortage,0
+482,20140630,2014-06-30,4.11,0,0,3,"Racing Socks, L",4,3,Critical Shortage,0
+483,20140630,2014-06-30,37.22,0,0,4,Hitch Rack - 4-Bike,4,3,Adequate Stock,0
+484,20140630,2014-06-30,2.95,0,0,4,Bike Wash - Dissolver,4,3,Adequate Stock,0
+485,20140630,2014-06-30,8.91,0,0,4,Fender Set - Mountain,4,3,Adequate Stock,0
+486,20140630,2014-06-30,61.67,0,0,3,All-Purpose Bike Stand,4,3,Critical Shortage,0
+487,20140630,2014-06-30,19.15,0,0,4,Hydration Pack - 70 oz.,4,3,Adequate Stock,0
+488,20140630,2014-06-30,15.01,0,0,3,"Short-Sleeve Classic Jersey, S",4,3,Critical Shortage,0
+489,20140630,2014-06-30,33.31,0,0,3,"Short-Sleeve Classic Jersey, M",4,3,Critical Shortage,0
+490,20140630,2014-06-30,17.67,0,0,4,"Short-Sleeve Classic Jersey, L",4,3,Adequate Stock,0
+491,20140630,2014-06-30,18.61,0,0,3,"Short-Sleeve Classic Jersey, XL",4,3,Critical Shortage,0
+492,20140630,2014-06-30,295.54,0,0,388,"HL Touring Frame - Yellow, 60",500,375,Critical Shortage,0
+493,20140630,2014-06-30,108.12,0,0,436,"LL Touring Frame - Yellow, 62",500,375,Critical Shortage,0
+494,20140630,2014-06-30,328.34,0,0,439,"HL Touring Frame - Yellow, 46",500,375,Critical Shortage,0
+495,20140630,2014-06-30,351.72,0,0,407,"HL Touring Frame - Yellow, 50",500,375,Critical Shortage,0
+496,20140630,2014-06-30,346.31,0,0,406,"HL Touring Frame - Yellow, 54",500,375,Critical Shortage,0
+497,20140630,2014-06-30,350.25,0,0,383,"HL Touring Frame - Blue, 46",500,375,Critical Shortage,0
+498,20140630,2014-06-30,313.29,0,0,461,"HL Touring Frame - Blue, 50",500,375,Critical Shortage,0
+499,20140630,2014-06-30,300.67,0,0,500,"HL Touring Frame - Blue, 54",500,375,Adequate Stock,0
+500,20140630,2014-06-30,341.77,0,0,493,"HL Touring Frame - Blue, 60",500,375,Critical Shortage,0
+501,20140630,2014-06-30,39.49,0,0,410,Rear Derailleur,500,375,Critical Shortage,0
+502,20140630,2014-06-30,102.97,0,0,387,"LL Touring Frame - Blue, 50",500,375,Critical Shortage,0
+503,20140630,2014-06-30,134.59,0,0,391,"LL Touring Frame - Blue, 54",500,375,Critical Shortage,0
+504,20140630,2014-06-30,110.17,0,0,434,"LL Touring Frame - Blue, 58",500,375,Critical Shortage,0
+505,20140630,2014-06-30,96.24,0,0,423,"LL Touring Frame - Blue, 62",500,375,Critical Shortage,0
+506,20140630,2014-06-30,114.65,0,0,417,"LL Touring Frame - Yellow, 44",500,375,Critical Shortage,0
+507,20140630,2014-06-30,108.89,0,0,459,"LL Touring Frame - Yellow, 50",500,375,Critical Shortage,0
+508,20140630,2014-06-30,173.33,0,0,438,"LL Touring Frame - Yellow, 54",500,375,Critical Shortage,0
+509,20140630,2014-06-30,124.54,0,0,402,"LL Touring Frame - Yellow, 58",500,375,Critical Shortage,0
+510,20140630,2014-06-30,114.21,0,0,413,"LL Touring Frame - Blue, 44",500,375,Critical Shortage,0
+511,20140630,2014-06-30,119.14,0,0,408,"ML Mountain Frame-W - Silver, 40",500,375,Critical Shortage,0
+512,20140630,2014-06-30,121.57,0,0,432,"ML Mountain Frame-W - Silver, 42",500,375,Critical Shortage,0
+513,20140630,2014-06-30,122.6,0,0,376,"ML Mountain Frame-W - Silver, 46",500,375,Critical Shortage,0
+514,20140630,2014-06-30,36.98,0,0,438,Rear Brakes,500,375,Critical Shortage,0
+515,20140630,2014-06-30,9.47,0,0,382,LL Mountain Seat/Saddle,500,375,Critical Shortage,0
+516,20140630,2014-06-30,13.57,0,0,376,ML Mountain Seat/Saddle,500,375,Critical Shortage,0
+517,20140630,2014-06-30,15.67,0,0,476,HL Mountain Seat/Saddle,500,375,Critical Shortage,0
+518,20140630,2014-06-30,8.91,0,0,428,LL Road Seat/Saddle,500,375,Critical Shortage,0
+519,20140630,2014-06-30,17.41,0,0,438,ML Road Seat/Saddle,500,375,Critical Shortage,0
+520,20140630,2014-06-30,24.44,0,0,456,HL Road Seat/Saddle,500,375,Critical Shortage,0
+521,20140630,2014-06-30,9.12,0,0,391,LL Touring Seat/Saddle,500,375,Critical Shortage,0
+522,20140630,2014-06-30,14.27,0,0,434,ML Touring Seat/Saddle,500,375,Critical Shortage,0
+523,20140630,2014-06-30,15.38,0,0,377,HL Touring Seat/Saddle,500,375,Critical Shortage,0
+524,20140630,2014-06-30,75.26,0,0,413,"LL Mountain Frame - Silver, 42",500,375,Critical Shortage,0
+525,20140630,2014-06-30,98.96,0,0,378,"LL Mountain Frame - Silver, 44",500,375,Critical Shortage,0
+526,20140630,2014-06-30,93.13,0,0,394,"LL Mountain Frame - Silver, 48",500,375,Critical Shortage,0
+527,20140630,2014-06-30,82.41,0,0,422,"LL Mountain Frame - Silver, 52",500,375,Critical Shortage,0
+528,20140630,2014-06-30,1.97,0,0,384,Mountain Tire Tube,500,375,Critical Shortage,0
+529,20140630,2014-06-30,1.21,0,0,451,Road Tire Tube,500,375,Critical Shortage,0
+530,20140630,2014-06-30,1.82,0,0,443,Touring Tire Tube,500,375,Critical Shortage,0
+531,20140630,2014-06-30,69.28,0,0,419,"LL Mountain Frame - Black, 42",500,375,Critical Shortage,0
+532,20140630,2014-06-30,76.88,0,0,471,"LL Mountain Frame - Black, 44",500,375,Critical Shortage,0
+533,20140630,2014-06-30,97.42,0,0,381,"LL Mountain Frame - Black, 48",500,375,Critical Shortage,0
+534,20140630,2014-06-30,118.79,0,0,423,"LL Mountain Frame - Black, 52",500,375,Critical Shortage,0
+535,20140630,2014-06-30,7.93,0,0,446,LL Mountain Tire,500,375,Critical Shortage,0
+536,20140630,2014-06-30,9.61,0,0,380,ML Mountain Tire,500,375,Critical Shortage,0
+537,20140630,2014-06-30,12.06,0,0,406,HL Mountain Tire,500,375,Critical Shortage,0
+538,20140630,2014-06-30,8.66,0,0,377,LL Road Tire,500,375,Critical Shortage,0
+539,20140630,2014-06-30,10.0,0,0,380,ML Road Tire,500,375,Critical Shortage,0
+540,20140630,2014-06-30,11.33,0,0,389,HL Road Tire,500,375,Critical Shortage,0
+541,20140630,2014-06-30,9.72,0,0,443,Touring Tire,500,375,Critical Shortage,0
+542,20140630,2014-06-30,17.45,0,0,391,LL Mountain Pedal,500,375,Critical Shortage,0
+543,20140630,2014-06-30,17.57,0,0,459,ML Mountain Pedal,500,375,Critical Shortage,0
+544,20140630,2014-06-30,24.31,0,0,385,HL Mountain Pedal,500,375,Critical Shortage,0
+545,20140630,2014-06-30,12.62,0,0,427,LL Road Pedal,500,375,Critical Shortage,0
+546,20140630,2014-06-30,27.54,0,0,473,ML Road Pedal,500,375,Critical Shortage,0
+547,20140630,2014-06-30,33.66,0,0,385,HL Road Pedal,500,375,Critical Shortage,0
+548,20140630,2014-06-30,24.9,0,0,441,Touring Pedal,500,375,Critical Shortage,0
+549,20140630,2014-06-30,209.32,0,0,431,"ML Mountain Frame-W - Silver, 38",500,375,Critical Shortage,0
+550,20140630,2014-06-30,133.2,0,0,430,"LL Mountain Frame - Black, 40",500,375,Critical Shortage,0
+551,20140630,2014-06-30,88.25,0,0,462,"LL Mountain Frame - Silver, 40",500,375,Critical Shortage,0
+552,20140630,2014-06-30,31.53,0,0,392,Front Derailleur,500,375,Critical Shortage,0
+553,20140630,2014-06-30,14.96,0,0,382,LL Touring Handlebars,500,375,Critical Shortage,0
+554,20140630,2014-06-30,34.96,0,0,428,HL Touring Handlebars,500,375,Critical Shortage,0
+555,20140630,2014-06-30,29.62,0,0,416,Front Brakes,500,375,Critical Shortage,0
+556,20140630,2014-06-30,66.83,0,0,435,LL Crankset,500,375,Critical Shortage,0
+557,20140630,2014-06-30,93.19,0,0,409,ML Crankset,500,375,Critical Shortage,0
+558,20140630,2014-06-30,132.94,0,0,450,HL Crankset,500,375,Critical Shortage,0
+559,20140630,2014-06-30,7.19,0,0,464,Chain,500,375,Critical Shortage,0
+560,20140630,2014-06-30,408.02,0,0,79,"Touring-2000 Blue, 60",100,75,Critical Shortage,0
+561,20140630,2014-06-30,465.15,0,0,83,"Touring-1000 Yellow, 46",100,75,Critical Shortage,0
+562,20140630,2014-06-30,664.06,0,0,78,"Touring-1000 Yellow, 50",100,75,Critical Shortage,0
+563,20140630,2014-06-30,688.63,0,0,79,"Touring-1000 Yellow, 54",100,75,Critical Shortage,0
+564,20140630,2014-06-30,522.54,0,0,81,"Touring-1000 Yellow, 60",100,75,Critical Shortage,0
+565,20140630,2014-06-30,176.03,0,0,77,"Touring-3000 Blue, 54",100,75,Critical Shortage,0
+566,20140630,2014-06-30,194.08,0,0,81,"Touring-3000 Blue, 58",100,75,Critical Shortage,0
+567,20140630,2014-06-30,204.88,0,0,88,"Touring-3000 Blue, 62",100,75,Critical Shortage,0
+568,20140630,2014-06-30,163.49,0,0,84,"Touring-3000 Yellow, 44",100,75,Critical Shortage,0
+569,20140630,2014-06-30,179.18,0,0,90,"Touring-3000 Yellow, 50",100,75,Critical Shortage,0
+570,20140630,2014-06-30,162.05,0,0,92,"Touring-3000 Yellow, 54",100,75,Critical Shortage,0
+571,20140630,2014-06-30,172.82,0,0,78,"Touring-3000 Yellow, 58",100,75,Critical Shortage,0
+572,20140630,2014-06-30,163.11,0,0,80,"Touring-3000 Yellow, 62",100,75,Critical Shortage,0
+573,20140630,2014-06-30,856.7,0,0,79,"Touring-1000 Blue, 46",100,75,Critical Shortage,0
+574,20140630,2014-06-30,703.25,0,0,78,"Touring-1000 Blue, 50",100,75,Critical Shortage,0
+575,20140630,2014-06-30,654.88,0,0,86,"Touring-1000 Blue, 54",100,75,Critical Shortage,0
+576,20140630,2014-06-30,625.95,0,0,94,"Touring-1000 Blue, 60",100,75,Critical Shortage,0
+577,20140630,2014-06-30,434.61,0,0,82,"Touring-2000 Blue, 46",100,75,Critical Shortage,0
+578,20140630,2014-06-30,402.03,0,0,75,"Touring-2000 Blue, 50",100,75,Critical Shortage,0
+579,20140630,2014-06-30,403.33,0,0,82,"Touring-2000 Blue, 54",100,75,Critical Shortage,0
+580,20140630,2014-06-30,780.1,0,0,77,"Road-350-W Yellow, 40",100,75,Critical Shortage,0
+581,20140630,2014-06-30,569.05,0,0,89,"Road-350-W Yellow, 42",100,75,Critical Shortage,0
+582,20140630,2014-06-30,733.51,0,0,75,"Road-350-W Yellow, 44",100,75,Critical Shortage,0
+583,20140630,2014-06-30,598.22,0,0,84,"Road-350-W Yellow, 48",100,75,Critical Shortage,0
+584,20140630,2014-06-30,270.84,0,0,78,"Road-750 Black, 58",100,75,Critical Shortage,0
+585,20140630,2014-06-30,209.43,0,0,77,"Touring-3000 Blue, 44",100,75,Critical Shortage,0
+586,20140630,2014-06-30,172.14,0,0,76,"Touring-3000 Blue, 50",100,75,Critical Shortage,0
+587,20140630,2014-06-30,345.25,0,0,84,"Mountain-400-W Silver, 38",100,75,Critical Shortage,0
+588,20140630,2014-06-30,265.24,0,0,77,"Mountain-400-W Silver, 40",100,75,Critical Shortage,0
+589,20140630,2014-06-30,338.63,0,0,97,"Mountain-400-W Silver, 42",100,75,Critical Shortage,0
+590,20140630,2014-06-30,292.66,0,0,82,"Mountain-400-W Silver, 46",100,75,Critical Shortage,0
+591,20140630,2014-06-30,81.99,0,0,85,"Mountain-500 Silver, 40",100,75,Critical Shortage,0
+592,20140630,2014-06-30,65.98,0,0,89,"Mountain-500 Silver, 42",100,75,Critical Shortage,0
+593,20140630,2014-06-30,83.44,0,0,93,"Mountain-500 Silver, 44",100,75,Critical Shortage,0
+594,20140630,2014-06-30,75.86,0,0,75,"Mountain-500 Silver, 48",100,75,Critical Shortage,0
+595,20140630,2014-06-30,63.93,0,0,89,"Mountain-500 Silver, 52",100,75,Critical Shortage,0
+596,20140630,2014-06-30,198.58,0,0,89,"Mountain-500 Black, 40",100,75,Critical Shortage,0
+597,20140630,2014-06-30,162.1,0,0,83,"Mountain-500 Black, 42",100,75,Critical Shortage,0
+598,20140630,2014-06-30,200.26,0,0,94,"Mountain-500 Black, 44",100,75,Critical Shortage,0
+599,20140630,2014-06-30,180.02,0,0,87,"Mountain-500 Black, 48",100,75,Critical Shortage,0
+600,20140630,2014-06-30,190.01,0,0,87,"Mountain-500 Black, 52",100,75,Critical Shortage,0
+601,20140630,2014-06-30,14.38,0,0,385,LL Bottom Bracket,500,375,Critical Shortage,0
+602,20140630,2014-06-30,43.17,0,0,438,ML Bottom Bracket,500,375,Critical Shortage,0
+603,20140630,2014-06-30,37.75,0,0,389,HL Bottom Bracket,500,375,Critical Shortage,0
+604,20140630,2014-06-30,230.47,0,0,97,"Road-750 Black, 44",100,75,Critical Shortage,0
+605,20140630,2014-06-30,196.44,0,0,91,"Road-750 Black, 48",100,75,Critical Shortage,0
+606,20140630,2014-06-30,234.93,0,0,82,"Road-750 Black, 52",100,75,Critical Shortage,0

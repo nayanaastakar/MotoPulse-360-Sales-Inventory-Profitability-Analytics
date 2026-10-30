@@ -1,0 +1,997 @@
+{
+  "name": "MotoPulse_360_Analytics",
+  "compatibilityLevel": 1567,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "fastCombine": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "vw_sales_fact",
+        "columns": [
+          {
+            "name": "SalesOrderNumber",
+            "dataType": "string",
+            "sourceColumn": "SalesOrderNumber"
+          },
+          {
+            "name": "SalesOrderLineNumber",
+            "dataType": "int64",
+            "sourceColumn": "SalesOrderLineNumber"
+          },
+          {
+            "name": "Channel",
+            "dataType": "string",
+            "sourceColumn": "Channel"
+          },
+          {
+            "name": "OrderDateKey",
+            "dataType": "int64",
+            "sourceColumn": "OrderDateKey"
+          },
+          {
+            "name": "DueDateKey",
+            "dataType": "int64",
+            "sourceColumn": "DueDateKey"
+          },
+          {
+            "name": "ShipDateKey",
+            "dataType": "int64",
+            "sourceColumn": "ShipDateKey"
+          },
+          {
+            "name": "CustomerKey",
+            "dataType": "int64",
+            "sourceColumn": "CustomerKey"
+          },
+          {
+            "name": "ResellerKey",
+            "dataType": "int64",
+            "sourceColumn": "ResellerKey"
+          },
+          {
+            "name": "ProductKey",
+            "dataType": "int64",
+            "sourceColumn": "ProductKey"
+          },
+          {
+            "name": "PromotionKey",
+            "dataType": "int64",
+            "sourceColumn": "PromotionKey"
+          },
+          {
+            "name": "CurrencyKey",
+            "dataType": "int64",
+            "sourceColumn": "CurrencyKey"
+          },
+          {
+            "name": "SalesTerritoryKey",
+            "dataType": "int64",
+            "sourceColumn": "SalesTerritoryKey"
+          },
+          {
+            "name": "OrderQuantity",
+            "dataType": "int64",
+            "sourceColumn": "OrderQuantity"
+          },
+          {
+            "name": "UnitPrice",
+            "dataType": "double",
+            "sourceColumn": "UnitPrice",
+            "formatString": "\\$#,##0.00"
+          },
+          {
+            "name": "ExtendedAmount",
+            "dataType": "double",
+            "sourceColumn": "ExtendedAmount",
+            "formatString": "\\$#,##0.00"
+          },
+          {
+            "name": "UnitPriceDiscountPct",
+            "dataType": "double",
+            "sourceColumn": "UnitPriceDiscountPct",
+            "formatString": "0.00%"
+          },
+          {
+            "name": "DiscountAmount",
+            "dataType": "double",
+            "sourceColumn": "DiscountAmount",
+            "formatString": "\\$#,##0.00"
+          },
+          {
+            "name": "ProductStandardCost",
+            "dataType": "double",
+            "sourceColumn": "ProductStandardCost",
+            "formatString": "\\$#,##0.00"
+          },
+          {
+            "name": "TotalProductCost",
+            "dataType": "double",
+            "sourceColumn": "TotalProductCost",
+            "formatString": "\\$#,##0.00"
+          },
+          {
+            "name": "SalesAmount",
+            "dataType": "double",
+            "sourceColumn": "SalesAmount",
+            "formatString": "\\$#,##0.00"
+          },
+          {
+            "name": "TaxAmt",
+            "dataType": "double",
+            "sourceColumn": "TaxAmt",
+            "formatString": "\\$#,##0.00"
+          },
+          {
+            "name": "Freight",
+            "dataType": "double",
+            "sourceColumn": "Freight",
+            "formatString": "\\$#,##0.00"
+          },
+          {
+            "name": "GrossProfit",
+            "dataType": "double",
+            "sourceColumn": "GrossProfit",
+            "formatString": "\\$#,##0.00"
+          },
+          {
+            "name": "GrossMarginPct",
+            "dataType": "double",
+            "sourceColumn": "GrossMarginPct",
+            "formatString": "0.00%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "vw_sales_fact",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360-Claude-Handover/MotoPulse-360/data/processed/powerbi/vw_sales_fact.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"SalesOrderNumber\", type text}, {\"SalesOrderLineNumber\", Int64.Type}, {\"Channel\", type text}, {\"OrderDateKey\", Int64.Type}, {\"DueDateKey\", Int64.Type}, {\"ShipDateKey\", Int64.Type}, {\"CustomerKey\", Int64.Type}, {\"ResellerKey\", Int64.Type}, {\"ProductKey\", Int64.Type}, {\"PromotionKey\", Int64.Type}, {\"CurrencyKey\", Int64.Type}, {\"SalesTerritoryKey\", Int64.Type}, {\"OrderQuantity\", Int64.Type}, {\"UnitPrice\", type number}, {\"ExtendedAmount\", type number}, {\"UnitPriceDiscountPct\", type number}, {\"DiscountAmount\", type number}, {\"ProductStandardCost\", type number}, {\"TotalProductCost\", type number}, {\"SalesAmount\", type number}, {\"TaxAmt\", type number}, {\"Freight\", type number}, {\"GrossProfit\", type number}, {\"GrossMarginPct\", type number}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "vw_dim_date",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "formatString": "yyyy-MM-dd"
+          },
+          {
+            "name": "DayNumberOfWeek",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfWeek"
+          },
+          {
+            "name": "EnglishDayNameOfWeek",
+            "dataType": "string",
+            "sourceColumn": "EnglishDayNameOfWeek"
+          },
+          {
+            "name": "DayNumberOfMonth",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfMonth"
+          },
+          {
+            "name": "DayNumberOfYear",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfYear"
+          },
+          {
+            "name": "WeekNumberOfYear",
+            "dataType": "int64",
+            "sourceColumn": "WeekNumberOfYear"
+          },
+          {
+            "name": "EnglishMonthName",
+            "dataType": "string",
+            "sourceColumn": "EnglishMonthName",
+            "sortByColumn": "MonthNumberOfYear"
+          },
+          {
+            "name": "MonthNumberOfYear",
+            "dataType": "int64",
+            "sourceColumn": "MonthNumberOfYear"
+          },
+          {
+            "name": "CalendarQuarter",
+            "dataType": "int64",
+            "sourceColumn": "CalendarQuarter"
+          },
+          {
+            "name": "CalendarYear",
+            "dataType": "int64",
+            "sourceColumn": "CalendarYear"
+          },
+          {
+            "name": "CalendarSemester",
+            "dataType": "int64",
+            "sourceColumn": "CalendarSemester"
+          },
+          {
+            "name": "FiscalQuarter",
+            "dataType": "int64",
+            "sourceColumn": "FiscalQuarter"
+          },
+          {
+            "name": "FiscalYear",
+            "dataType": "int64",
+            "sourceColumn": "FiscalYear"
+          },
+          {
+            "name": "FiscalSemester",
+            "dataType": "int64",
+            "sourceColumn": "FiscalSemester"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "vw_dim_date",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360-Claude-Handover/MotoPulse-360/data/processed/powerbi/vw_dim_date.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"DateKey\", Int64.Type}, {\"Date\", type date}, {\"DayNumberOfWeek\", Int64.Type}, {\"EnglishDayNameOfWeek\", type text}, {\"DayNumberOfMonth\", Int64.Type}, {\"DayNumberOfYear\", Int64.Type}, {\"WeekNumberOfYear\", Int64.Type}, {\"EnglishMonthName\", type text}, {\"MonthNumberOfYear\", Int64.Type}, {\"CalendarQuarter\", Int64.Type}, {\"CalendarYear\", Int64.Type}, {\"CalendarSemester\", Int64.Type}, {\"FiscalQuarter\", Int64.Type}, {\"FiscalYear\", Int64.Type}, {\"FiscalSemester\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "vw_dim_product",
+        "columns": [
+          {
+            "name": "ProductKey",
+            "dataType": "int64",
+            "sourceColumn": "ProductKey"
+          },
+          {
+            "name": "ProductAlternateKey",
+            "dataType": "string",
+            "sourceColumn": "ProductAlternateKey"
+          },
+          {
+            "name": "ProductName",
+            "dataType": "string",
+            "sourceColumn": "ProductName"
+          },
+          {
+            "name": "StandardCost",
+            "dataType": "double",
+            "sourceColumn": "StandardCost",
+            "formatString": "\\$#,##0.00"
+          },
+          {
+            "name": "Color",
+            "dataType": "string",
+            "sourceColumn": "Color"
+          },
+          {
+            "name": "SafetyStockLevel",
+            "dataType": "int64",
+            "sourceColumn": "SafetyStockLevel"
+          },
+          {
+            "name": "ReorderPoint",
+            "dataType": "int64",
+            "sourceColumn": "ReorderPoint"
+          },
+          {
+            "name": "ListPrice",
+            "dataType": "double",
+            "sourceColumn": "ListPrice",
+            "formatString": "\\$#,##0.00"
+          },
+          {
+            "name": "Size",
+            "dataType": "string",
+            "sourceColumn": "Size"
+          },
+          {
+            "name": "SizeRange",
+            "dataType": "string",
+            "sourceColumn": "SizeRange"
+          },
+          {
+            "name": "DaysToManufacture",
+            "dataType": "int64",
+            "sourceColumn": "DaysToManufacture"
+          },
+          {
+            "name": "ProductLine",
+            "dataType": "string",
+            "sourceColumn": "ProductLine"
+          },
+          {
+            "name": "DealerPrice",
+            "dataType": "double",
+            "sourceColumn": "DealerPrice",
+            "formatString": "\\$#,##0.00"
+          },
+          {
+            "name": "Class",
+            "dataType": "string",
+            "sourceColumn": "Class"
+          },
+          {
+            "name": "Style",
+            "dataType": "string",
+            "sourceColumn": "Style"
+          },
+          {
+            "name": "ModelName",
+            "dataType": "string",
+            "sourceColumn": "ModelName"
+          },
+          {
+            "name": "ProductDescription",
+            "dataType": "string",
+            "sourceColumn": "ProductDescription"
+          },
+          {
+            "name": "StartDate",
+            "dataType": "string",
+            "sourceColumn": "StartDate"
+          },
+          {
+            "name": "EndDate",
+            "dataType": "string",
+            "sourceColumn": "EndDate"
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status"
+          },
+          {
+            "name": "SubcategoryName",
+            "dataType": "string",
+            "sourceColumn": "SubcategoryName"
+          },
+          {
+            "name": "CategoryName",
+            "dataType": "string",
+            "sourceColumn": "CategoryName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "vw_dim_product",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360-Claude-Handover/MotoPulse-360/data/processed/powerbi/vw_dim_product.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ProductKey\", Int64.Type}, {\"ProductAlternateKey\", type text}, {\"ProductName\", type text}, {\"StandardCost\", type number}, {\"Color\", type text}, {\"SafetyStockLevel\", Int64.Type}, {\"ReorderPoint\", Int64.Type}, {\"ListPrice\", type number}, {\"Size\", type text}, {\"SizeRange\", type text}, {\"DaysToManufacture\", Int64.Type}, {\"ProductLine\", type text}, {\"DealerPrice\", type number}, {\"Class\", type text}, {\"Style\", type text}, {\"ModelName\", type text}, {\"ProductDescription\", type text}, {\"StartDate\", type text}, {\"EndDate\", type text}, {\"Status\", type text}, {\"SubcategoryName\", type text}, {\"CategoryName\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "vw_dim_customer",
+        "columns": [
+          {
+            "name": "CustomerKey",
+            "dataType": "int64",
+            "sourceColumn": "CustomerKey"
+          },
+          {
+            "name": "CustomerAlternateKey",
+            "dataType": "string",
+            "sourceColumn": "CustomerAlternateKey"
+          },
+          {
+            "name": "CustomerFullName",
+            "dataType": "string",
+            "sourceColumn": "CustomerFullName"
+          },
+          {
+            "name": "EmailAddress",
+            "dataType": "string",
+            "sourceColumn": "EmailAddress"
+          },
+          {
+            "name": "YearlyIncome",
+            "dataType": "double",
+            "sourceColumn": "YearlyIncome",
+            "formatString": "\\$#,##0"
+          },
+          {
+            "name": "TotalChildren",
+            "dataType": "int64",
+            "sourceColumn": "TotalChildren"
+          },
+          {
+            "name": "EnglishEducation",
+            "dataType": "string",
+            "sourceColumn": "EnglishEducation"
+          },
+          {
+            "name": "EnglishOccupation",
+            "dataType": "string",
+            "sourceColumn": "EnglishOccupation"
+          },
+          {
+            "name": "HouseOwnerFlag",
+            "dataType": "int64",
+            "sourceColumn": "HouseOwnerFlag"
+          },
+          {
+            "name": "NumberCarsOwned",
+            "dataType": "int64",
+            "sourceColumn": "NumberCarsOwned"
+          },
+          {
+            "name": "CommuteDistance",
+            "dataType": "string",
+            "sourceColumn": "CommuteDistance"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City"
+          },
+          {
+            "name": "StateProvinceName",
+            "dataType": "string",
+            "sourceColumn": "StateProvinceName"
+          },
+          {
+            "name": "EnglishCountryRegionName",
+            "dataType": "string",
+            "sourceColumn": "EnglishCountryRegionName"
+          },
+          {
+            "name": "PostalCode",
+            "dataType": "string",
+            "sourceColumn": "PostalCode"
+          },
+          {
+            "name": "SalesTerritoryKey",
+            "dataType": "int64",
+            "sourceColumn": "SalesTerritoryKey"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "vw_dim_customer",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360-Claude-Handover/MotoPulse-360/data/processed/powerbi/vw_dim_customer.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"CustomerKey\", Int64.Type}, {\"CustomerAlternateKey\", type text}, {\"CustomerFullName\", type text}, {\"EmailAddress\", type text}, {\"YearlyIncome\", type number}, {\"TotalChildren\", Int64.Type}, {\"EnglishEducation\", type text}, {\"EnglishOccupation\", type text}, {\"HouseOwnerFlag\", Int64.Type}, {\"NumberCarsOwned\", Int64.Type}, {\"CommuteDistance\", type text}, {\"City\", type text}, {\"StateProvinceName\", type text}, {\"EnglishCountryRegionName\", type text}, {\"PostalCode\", type text}, {\"SalesTerritoryKey\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "vw_dim_reseller",
+        "columns": [
+          {
+            "name": "ResellerKey",
+            "dataType": "int64",
+            "sourceColumn": "ResellerKey"
+          },
+          {
+            "name": "ResellerAlternateKey",
+            "dataType": "string",
+            "sourceColumn": "ResellerAlternateKey"
+          },
+          {
+            "name": "ResellerName",
+            "dataType": "string",
+            "sourceColumn": "ResellerName"
+          },
+          {
+            "name": "BusinessType",
+            "dataType": "string",
+            "sourceColumn": "BusinessType"
+          },
+          {
+            "name": "NumberEmployees",
+            "dataType": "int64",
+            "sourceColumn": "NumberEmployees"
+          },
+          {
+            "name": "OrderFrequency",
+            "dataType": "string",
+            "sourceColumn": "OrderFrequency"
+          },
+          {
+            "name": "AnnualSales",
+            "dataType": "double",
+            "sourceColumn": "AnnualSales",
+            "formatString": "\\$#,##0"
+          },
+          {
+            "name": "AnnualRevenue",
+            "dataType": "double",
+            "sourceColumn": "AnnualRevenue",
+            "formatString": "\\$#,##0"
+          },
+          {
+            "name": "YearOpened",
+            "dataType": "int64",
+            "sourceColumn": "YearOpened"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City"
+          },
+          {
+            "name": "StateProvinceName",
+            "dataType": "string",
+            "sourceColumn": "StateProvinceName"
+          },
+          {
+            "name": "EnglishCountryRegionName",
+            "dataType": "string",
+            "sourceColumn": "EnglishCountryRegionName"
+          },
+          {
+            "name": "PostalCode",
+            "dataType": "string",
+            "sourceColumn": "PostalCode"
+          },
+          {
+            "name": "SalesTerritoryKey",
+            "dataType": "int64",
+            "sourceColumn": "SalesTerritoryKey"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "vw_dim_reseller",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360-Claude-Handover/MotoPulse-360/data/processed/powerbi/vw_dim_reseller.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ResellerKey\", Int64.Type}, {\"ResellerAlternateKey\", type text}, {\"ResellerName\", type text}, {\"BusinessType\", type text}, {\"NumberEmployees\", Int64.Type}, {\"OrderFrequency\", type text}, {\"AnnualSales\", type number}, {\"AnnualRevenue\", type number}, {\"YearOpened\", Int64.Type}, {\"City\", type text}, {\"StateProvinceName\", type text}, {\"EnglishCountryRegionName\", type text}, {\"PostalCode\", type text}, {\"SalesTerritoryKey\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "vw_dim_territory",
+        "columns": [
+          {
+            "name": "SalesTerritoryKey",
+            "dataType": "int64",
+            "sourceColumn": "SalesTerritoryKey"
+          },
+          {
+            "name": "SalesTerritoryAlternateKey",
+            "dataType": "int64",
+            "sourceColumn": "SalesTerritoryAlternateKey"
+          },
+          {
+            "name": "SalesTerritoryRegion",
+            "dataType": "string",
+            "sourceColumn": "SalesTerritoryRegion"
+          },
+          {
+            "name": "SalesTerritoryCountry",
+            "dataType": "string",
+            "sourceColumn": "SalesTerritoryCountry"
+          },
+          {
+            "name": "SalesTerritoryGroup",
+            "dataType": "string",
+            "sourceColumn": "SalesTerritoryGroup"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "vw_dim_territory",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360-Claude-Handover/MotoPulse-360/data/processed/powerbi/vw_dim_territory.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"SalesTerritoryKey\", Int64.Type}, {\"SalesTerritoryAlternateKey\", Int64.Type}, {\"SalesTerritoryRegion\", type text}, {\"SalesTerritoryCountry\", type text}, {\"SalesTerritoryGroup\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "vw_inventory_latest",
+        "columns": [
+          {
+            "name": "ProductKey",
+            "dataType": "int64",
+            "sourceColumn": "ProductKey"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey"
+          },
+          {
+            "name": "MovementDate",
+            "dataType": "string",
+            "sourceColumn": "MovementDate"
+          },
+          {
+            "name": "UnitCost",
+            "dataType": "double",
+            "sourceColumn": "UnitCost",
+            "formatString": "\\$#,##0.00"
+          },
+          {
+            "name": "UnitsIn",
+            "dataType": "int64",
+            "sourceColumn": "UnitsIn"
+          },
+          {
+            "name": "UnitsOut",
+            "dataType": "int64",
+            "sourceColumn": "UnitsOut"
+          },
+          {
+            "name": "UnitsBalance",
+            "dataType": "int64",
+            "sourceColumn": "UnitsBalance"
+          },
+          {
+            "name": "ProductName",
+            "dataType": "string",
+            "sourceColumn": "ProductName"
+          },
+          {
+            "name": "SafetyStockLevel",
+            "dataType": "int64",
+            "sourceColumn": "SafetyStockLevel"
+          },
+          {
+            "name": "ReorderPoint",
+            "dataType": "int64",
+            "sourceColumn": "ReorderPoint"
+          },
+          {
+            "name": "StockStatus",
+            "dataType": "string",
+            "sourceColumn": "StockStatus"
+          },
+          {
+            "name": "StockDeficit",
+            "dataType": "int64",
+            "sourceColumn": "StockDeficit"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "vw_inventory_latest",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360-Claude-Handover/MotoPulse-360/data/processed/powerbi/vw_inventory_latest.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ProductKey\", Int64.Type}, {\"DateKey\", Int64.Type}, {\"MovementDate\", type text}, {\"UnitCost\", type number}, {\"UnitsIn\", Int64.Type}, {\"UnitsOut\", Int64.Type}, {\"UnitsBalance\", Int64.Type}, {\"ProductName\", type text}, {\"SafetyStockLevel\", Int64.Type}, {\"ReorderPoint\", Int64.Type}, {\"StockStatus\", type text}, {\"StockDeficit\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "_Measures",
+        "columns": [
+          {
+            "name": "RowId",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "RowId"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "_Measures",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #table(type table [RowId = Int64.Type], {{1}})",
+                "in",
+                "    Source"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Gross Sales",
+            "expression": "SUM(vw_sales_fact[ExtendedAmount])",
+            "formatString": "\\$#,##0.00",
+            "displayFolder": "01. Core Sales & Volume"
+          },
+          {
+            "name": "Discount Amount",
+            "expression": "SUM(vw_sales_fact[DiscountAmount])",
+            "formatString": "\\$#,##0.00",
+            "displayFolder": "01. Core Sales & Volume"
+          },
+          {
+            "name": "Net Sales",
+            "expression": "SUM(vw_sales_fact[SalesAmount])",
+            "formatString": "\\$#,##0.00",
+            "displayFolder": "01. Core Sales & Volume"
+          },
+          {
+            "name": "Units Sold",
+            "expression": "SUM(vw_sales_fact[OrderQuantity])",
+            "formatString": "#,##0",
+            "displayFolder": "01. Core Sales & Volume"
+          },
+          {
+            "name": "Total Orders",
+            "expression": "DISTINCTCOUNT(vw_sales_fact[SalesOrderNumber])",
+            "formatString": "#,##0",
+            "displayFolder": "01. Core Sales & Volume"
+          },
+          {
+            "name": "Order Lines",
+            "expression": "COUNTROWS(vw_sales_fact)",
+            "formatString": "#,##0",
+            "displayFolder": "01. Core Sales & Volume"
+          },
+          {
+            "name": "Average Order Value (AOV)",
+            "expression": "DIVIDE([Net Sales], [Total Orders], 0)",
+            "formatString": "\\$#,##0.00",
+            "displayFolder": "01. Core Sales & Volume"
+          },
+          {
+            "name": "Discount Rate %",
+            "expression": "DIVIDE([Discount Amount], [Gross Sales], 0)",
+            "formatString": "0.00%",
+            "displayFolder": "01. Core Sales & Volume"
+          },
+          {
+            "name": "Total Product Cost",
+            "expression": "SUM(vw_sales_fact[TotalProductCost])",
+            "formatString": "\\$#,##0.00",
+            "displayFolder": "02. Cost & Profitability (Standard Cost)"
+          },
+          {
+            "name": "Gross Profit",
+            "expression": "[Net Sales] - [Total Product Cost]",
+            "formatString": "\\$#,##0.00",
+            "displayFolder": "02. Cost & Profitability (Standard Cost)"
+          },
+          {
+            "name": "Gross Margin %",
+            "expression": "DIVIDE([Gross Profit], [Net Sales], 0)",
+            "formatString": "0.00%",
+            "displayFolder": "02. Cost & Profitability (Standard Cost)"
+          },
+          {
+            "name": "Retail Net Sales",
+            "expression": "CALCULATE([Net Sales], KEEPFILTERS(vw_sales_fact[Channel] = \"Internet\"))",
+            "formatString": "\\$#,##0.00",
+            "displayFolder": "03. Channel Intelligence"
+          },
+          {
+            "name": "Wholesale Net Sales",
+            "expression": "CALCULATE([Net Sales], KEEPFILTERS(vw_sales_fact[Channel] = \"Reseller\"))",
+            "formatString": "\\$#,##0.00",
+            "displayFolder": "03. Channel Intelligence"
+          },
+          {
+            "name": "Retail Gross Profit",
+            "expression": "CALCULATE([Gross Profit], KEEPFILTERS(vw_sales_fact[Channel] = \"Internet\"))",
+            "formatString": "\\$#,##0.00",
+            "displayFolder": "03. Channel Intelligence"
+          },
+          {
+            "name": "Wholesale Gross Profit",
+            "expression": "CALCULATE([Gross Profit], KEEPFILTERS(vw_sales_fact[Channel] = \"Reseller\"))",
+            "formatString": "\\$#,##0.00",
+            "displayFolder": "03. Channel Intelligence"
+          },
+          {
+            "name": "Retail Gross Margin %",
+            "expression": "DIVIDE([Retail Gross Profit], [Retail Net Sales], 0)",
+            "formatString": "0.00%",
+            "displayFolder": "03. Channel Intelligence"
+          },
+          {
+            "name": "Wholesale Gross Margin %",
+            "expression": "DIVIDE([Wholesale Gross Profit], [Wholesale Net Sales], 0)",
+            "formatString": "0.00%",
+            "displayFolder": "03. Channel Intelligence"
+          },
+          {
+            "name": "Net Sales Prior Year",
+            "expression": "CALCULATE([Net Sales], SAMEPERIODLASTYEAR(vw_dim_date[Date]))",
+            "formatString": "\\$#,##0.00",
+            "displayFolder": "04. Time Intelligence & Variance"
+          },
+          {
+            "name": "Net Sales YoY Growth $",
+            "expression": "VAR CurrentSales = [Net Sales]\nVAR PreviousSales = [Net Sales Prior Year]\nRETURN IF(NOT ISBLANK(PreviousSales), CurrentSales - PreviousSales, BLANK())",
+            "formatString": "\\$#,##0.00",
+            "displayFolder": "04. Time Intelligence & Variance"
+          },
+          {
+            "name": "Net Sales YoY Growth %",
+            "expression": "DIVIDE([Net Sales YoY Growth $], [Net Sales Prior Year], BLANK())",
+            "formatString": "0.0%",
+            "displayFolder": "04. Time Intelligence & Variance"
+          },
+          {
+            "name": "Net Sales YTD",
+            "expression": "TOTALYTD([Net Sales], vw_dim_date[Date])",
+            "formatString": "\\$#,##0.00",
+            "displayFolder": "04. Time Intelligence & Variance"
+          },
+          {
+            "name": "% of Total Sales",
+            "expression": "DIVIDE([Net Sales], CALCULATE([Net Sales], ALLSELECTED(vw_sales_fact)), 0)",
+            "formatString": "0.0%",
+            "displayFolder": "05. Contribution & Dynamic Rankings"
+          },
+          {
+            "name": "Product Revenue Rank",
+            "expression": "IF(NOT ISBLANK([Net Sales]), RANKX(ALLSELECTED(vw_dim_product[ProductName]), [Net Sales], , DESC, Dense))",
+            "formatString": "0",
+            "displayFolder": "05. Contribution & Dynamic Rankings"
+          },
+          {
+            "name": "Current Stock Balance",
+            "expression": "SUM(vw_inventory_latest[UnitsBalance])",
+            "formatString": "#,##0",
+            "displayFolder": "06. Inventory & Operational Health"
+          },
+          {
+            "name": "Safety Stock Threshold",
+            "expression": "SUM(vw_inventory_latest[SafetyStockLevel])",
+            "formatString": "#,##0",
+            "displayFolder": "06. Inventory & Operational Health"
+          },
+          {
+            "name": "Critical Stock Shortage Items",
+            "expression": "CALCULATE(COUNTROWS(vw_inventory_latest), vw_inventory_latest[StockStatus] = \"Critical Shortage\")",
+            "formatString": "#,##0",
+            "displayFolder": "06. Inventory & Operational Health"
+          },
+          {
+            "name": "Reorder Alert Items",
+            "expression": "CALCULATE(COUNTROWS(vw_inventory_latest), vw_inventory_latest[StockStatus] IN {\"Critical Shortage\", \"Reorder Needed\"})",
+            "formatString": "#,##0",
+            "displayFolder": "06. Inventory & Operational Health"
+          },
+          {
+            "name": "Total Stock Deficit Units",
+            "expression": "SUM(vw_inventory_latest[StockDeficit])",
+            "formatString": "#,##0",
+            "displayFolder": "06. Inventory & Operational Health"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "vw_sales_fact_vw_dim_date_OrderDate",
+        "fromTable": "vw_sales_fact",
+        "fromColumn": "OrderDateKey",
+        "toTable": "vw_dim_date",
+        "toColumn": "DateKey",
+        "isActive": true
+      },
+      {
+        "name": "vw_sales_fact_vw_dim_date_ShipDate",
+        "fromTable": "vw_sales_fact",
+        "fromColumn": "ShipDateKey",
+        "toTable": "vw_dim_date",
+        "toColumn": "DateKey",
+        "isActive": false
+      },
+      {
+        "name": "vw_sales_fact_vw_dim_date_DueDate",
+        "fromTable": "vw_sales_fact",
+        "fromColumn": "DueDateKey",
+        "toTable": "vw_dim_date",
+        "toColumn": "DateKey",
+        "isActive": false
+      },
+      {
+        "name": "vw_sales_fact_vw_dim_product",
+        "fromTable": "vw_sales_fact",
+        "fromColumn": "ProductKey",
+        "toTable": "vw_dim_product",
+        "toColumn": "ProductKey",
+        "isActive": true
+      },
+      {
+        "name": "vw_sales_fact_vw_dim_customer",
+        "fromTable": "vw_sales_fact",
+        "fromColumn": "CustomerKey",
+        "toTable": "vw_dim_customer",
+        "toColumn": "CustomerKey",
+        "isActive": true
+      },
+      {
+        "name": "vw_sales_fact_vw_dim_reseller",
+        "fromTable": "vw_sales_fact",
+        "fromColumn": "ResellerKey",
+        "toTable": "vw_dim_reseller",
+        "toColumn": "ResellerKey",
+        "isActive": true
+      },
+      {
+        "name": "vw_sales_fact_vw_dim_territory",
+        "fromTable": "vw_sales_fact",
+        "fromColumn": "SalesTerritoryKey",
+        "toTable": "vw_dim_territory",
+        "toColumn": "SalesTerritoryKey",
+        "isActive": true
+      },
+      {
+        "name": "vw_inventory_latest_vw_dim_product",
+        "fromTable": "vw_inventory_latest",
+        "fromColumn": "ProductKey",
+        "toTable": "vw_dim_product",
+        "toColumn": "ProductKey",
+        "isActive": true
+      }
+    ],
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"vw_sales_fact\",\"vw_dim_date\",\"vw_dim_product\",\"vw_dim_customer\",\"vw_dim_reseller\",\"vw_dim_territory\",\"vw_inventory_latest\",\"_Measures\"]"
+      }
+    ]
+  }
+}

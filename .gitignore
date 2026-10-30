@@ -1,0 +1,13 @@
+# Created by Claude during handover packaging.
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.env
+*.pbix.bak
+# Raw source data is not committed
+data/raw/*
+!data/raw/.gitkeep
+# Credentials
+*.pem
+secrets*

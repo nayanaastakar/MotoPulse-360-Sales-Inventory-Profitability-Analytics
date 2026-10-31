@@ -285,6 +285,20 @@ MotoPulse-360/
 
 ## 9. Reproduction & Setup Instructions (Windows / PowerShell)
 
+### 🚀 One-Command End-to-End Execution
+Run the complete analytical pipeline (raw audit ➔ ETL ➔ 18 data checks ➔ 20 SQL queries ➔ financial audit ➔ Power BI export):
+```powershell
+python run_pipeline.py
+```
+To run the full pipeline and immediately open the dashboard in Power BI Desktop:
+```powershell
+python run_pipeline.py --open-pbi
+```
+
+---
+
+### Step-by-Step Execution Guide
+
 ### Step 1: Clone Repository & Install Dependencies
 Ensure Python 3.11+ is installed. Clone the repository and install pinned dependencies:
 ```powershell

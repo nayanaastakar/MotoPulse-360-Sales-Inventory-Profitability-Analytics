@@ -230,6 +230,8 @@ MotoPulse-360/
 |       |-- data_profiling_summary.csv       # Profiling output
 |       |-- clean/                          # Clean, UTF-8, comma-delimited CSVs
 |       `-- powerbi/                        # Pre-modeled Star Schema CSV views for Power BI
+|-- frontend/
+|   -- index.html                          # Interactive zero-dependency executive web dashboard
 |-- docs/
 |   |-- raw_file_inspection_findings.md     # Full inspection report
 |   |-- data_model.md                       # Mermaid ER diagram, fact grains, SCD strategy
@@ -334,6 +336,12 @@ Generate and execute all 4 Jupyter notebooks with real cell outputs and visualiz
 python python/build_and_run_notebooks.py
 ```
 *Expected Output: All 4 notebooks in `python/` executed with embedded outputs and charts saved to `reports/figures/`.*
+
+### Step 7: Interactive Web Dashboard (Zero-Install Browser Access)
+For instant access on any device or presentation without Power BI Desktop:
+- Open [rontend/index.html](frontend/index.html) directly in any web browser (Chrome, Edge, Firefox, Safari).
+- Or run python run_pipeline.py --open-web to launch it automatically.
+- Includes 3 operational tabs (Executive Overview, Product & Channel Intelligence, Supply Chain Alerts) and dynamic Retail vs. Wholesale channel filtering.
 
 ### Step 6: Power BI Report & Dashboard Opening
 Power BI Desktop is installed. You can open and save the report using either method:

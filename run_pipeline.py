@@ -12,7 +12,8 @@ Executes the complete data lifecycle with a single command:
 
 Usage:
   python run_pipeline.py             # Run complete analytical pipeline
-  python run_pipeline.py --open-pbi  # Run pipeline and launch Power BI dashboard
+  python run_pipeline.py --open-web  # Run pipeline and open Web Dashboard in browser
+  python run_pipeline.py --open-pbi  # Run pipeline and launch Power BI Desktop
 """
 
 import sys
@@ -20,6 +21,7 @@ import os
 import subprocess
 import time
 import argparse
+import webbrowser
 
 # Ensure standard UTF-8 console output on Windows
 if hasattr(sys.stdout, "reconfigure"):
@@ -119,6 +121,7 @@ def print_executive_scorecard():
 def main():
     parser = argparse.ArgumentParser(description="MotoPulse 360 End-to-End Pipeline Runner")
     parser.add_argument("--open-pbi", action="store_true", help="Launch Power BI Desktop with the dashboard")
+    parser.add_argument("--open-web", "--web", dest="open_web", action="store_true", help="Launch interactive Web Dashboard in browser")
     args = parser.parse_args()
 
     print(f"\n{DIVIDER}")
@@ -135,9 +138,18 @@ def main():
     total_elapsed = time.time() - start_total
     print_executive_scorecard()
     print(f"[OK] All 8 pipeline stages executed successfully in {total_elapsed:.2f} seconds!")
-    print(f"Dashboard File: powerbi/MotoPulse_360_Analytics.pbip / .pbix")
+    print(f"Web Dashboard:  frontend/index.html")
+    print(f"Power BI File:  powerbi/MotoPulse_360_Analytics.pbip / .pbix")
     print(f"Audit Reports:  reports/executive_summary.md | financial_reconciliation_audit.md")
     print(f"{DIVIDER}\n")
+
+    if args.open_web:
+        web_file = os.path.abspath(os.path.join(os.getcwd(), "frontend", "index.html"))
+        if os.path.exists(web_file):
+            print(f">> Launching Web Dashboard in browser: {web_file} ...")
+            webbrowser.open(f"file://{web_file}")
+        else:
+            print(f"[WARN] Web dashboard file not found at: {web_file}")
 
     if args.open_pbi:
         pbi_file = os.path.join("powerbi", "MotoPulse_360_Analytics.pbix")

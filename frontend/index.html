@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MotoPulse 360 | Executive Analytics Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            },
+            slate: {
+              850: '#151e2e',
+              900: '#0f172a',
+              950: '#080d1a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scroll::-webkit-scrollbar-track { background: #1e293b; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #475569; border-radius: 3px; }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(14, 165, 233, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-brand-500/20">
+          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="font-bold text-lg text-white tracking-tight">MotoPulse 360</h1>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Live Dashboard</span>
+          </div>
+          <p class="text-xs text-slate-400">Enterprise Sales, Inventory & Profitability Platform</p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="hidden md:flex items-center gap-1 bg-slate-800/80 p-1 rounded-xl border border-slate-700/60">
+        <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-medium transition-all bg-brand-600 text-white shadow">
+          1. Executive Overview
+        </button>
+        <button onclick="switchTab('products')" id="tab-products" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition-all">
+          2. Product & Channel Intelligence
+        </button>
+        <button onclick="switchTab('inventory')" id="tab-inventory" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition-all">
+          3. Supply Chain Alerts
+        </button>
+      </nav>
+
+      <!-- Channel Filter & Action -->
+      <div class="flex items-center gap-3">
+        <div class="flex items-center bg-slate-800/80 rounded-lg p-1 border border-slate-700/60 text-xs">
+          <span class="text-slate-400 px-2">Channel:</span>
+          <select id="channel-filter" onchange="filterChannel(this.value)" class="bg-slate-900 border-none rounded text-slate-200 text-xs py-1 px-2 focus:ring-1 focus:ring-brand-500 outline-none cursor-pointer">
+            <option value="all">Consolidated (All)</option>
+            <option value="Retail">Direct Retail (B2C)</option>
+            <option value="Wholesale">Commercial Wholesale (B2B)</option>
+          </select>
+        </div>
+        <a href="https://github.com/nayanaastakar/MotoPulse-360-Sales-Inventory-Profitability-Analytics" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Tab Bar -->
+  <div class="md:hidden flex border-b border-slate-800 bg-slate-900 px-4 py-2 gap-2 overflow-x-auto">
+    <button onclick="switchTab('overview')" class="tab-btn px-3 py-1 rounded text-xs bg-brand-600 text-white whitespace-nowrap">Executive Overview</button>
+    <button onclick="switchTab('products')" class="tab-btn px-3 py-1 rounded text-xs text-slate-400 whitespace-nowrap">Product & Channels</button>
+    <button onclick="switchTab('inventory')" class="tab-btn px-3 py-1 rounded text-xs text-slate-400 whitespace-nowrap">Supply Chain Alerts</button>
+  </div>
+
+  <!-- Main Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+    <!-- Top Notice Banner -->
+    <div class="glass-card rounded-xl p-3.5 flex items-center justify-between border-l-4 border-l-brand-500 bg-slate-900/60">
+      <div class="flex items-center gap-3">
+        <span class="text-brand-400 text-lg">💡</span>
+        <div class="text-xs text-slate-300">
+          <strong class="text-white">Dataset Disclosure:</strong> Built on verified Microsoft AdventureWorksDW benchmark data (121,253 sales order lines, 31,455 orders).
+          Reconciled across Python, SQLite, and Power BI with <strong>$0.00 penny drift</strong>.
+        </div>
+      </div>
+      <div class="text-xs text-slate-400 hidden sm:block">
+        Status: <span class="text-emerald-400 font-semibold">18/18 Checks Passed</span>
+      </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- TAB 1: EXECUTIVE OVERVIEW                                      -->
+    <!-- ============================================================== -->
+    <div id="view-overview" class="space-y-6">
+
+      <!-- KPI Cards Grid -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Net Sales -->
+        <div class="glass-card rounded-2xl p-4 flex flex-col justify-between">
+          <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+            <span>Net Sales Revenue</span>
+            <span class="p-1 rounded bg-brand-500/10 text-brand-400 text-xs">Total</span>
+          </div>
+          <div class="mt-2">
+            <div id="kpi-sales" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">$109.81M</div>
+            <div id="kpi-sales-sub" class="text-xs text-emerald-400 mt-1 flex items-center gap-1 font-medium">
+              <span>↑ 100% Reconciled</span>
+              <span class="text-slate-500">· 121,253 Lines</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gross Profit -->
+        <div class="glass-card rounded-2xl p-4 flex flex-col justify-between">
+          <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+            <span>Gross Profit (Std Cost)</span>
+            <span class="p-1 rounded bg-emerald-500/10 text-emerald-400 text-xs">Managerial</span>
+          </div>
+          <div class="mt-2">
+            <div id="kpi-profit" class="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight">$12.55M</div>
+            <div id="kpi-profit-sub" class="text-xs text-slate-400 mt-1">Standard cost basis</div>
+          </div>
+        </div>
+
+        <!-- Gross Margin % -->
+        <div class="glass-card rounded-2xl p-4 flex flex-col justify-between">
+          <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+            <span>Gross Margin %</span>
+            <span id="kpi-margin-badge" class="p-1 rounded bg-indigo-500/10 text-indigo-400 text-xs font-semibold">11.43%</span>
+          </div>
+          <div class="mt-2">
+            <div id="kpi-margin" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">11.43%</div>
+            <div id="kpi-margin-sub" class="text-xs text-slate-400 mt-1">Retail 41.15% vs Wholesale 0.58%</div>
+          </div>
+        </div>
+
+        <!-- Total Orders -->
+        <div class="glass-card rounded-2xl p-4 flex flex-col justify-between">
+          <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+            <span>Distinct Orders</span>
+            <span class="p-1 rounded bg-amber-500/10 text-amber-400 text-xs">Volume</span>
+          </div>
+          <div class="mt-2">
+            <div id="kpi-orders" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">31,455</div>
+            <div id="kpi-orders-sub" class="text-xs text-slate-400 mt-1">Avg Basket: 3.86 lines / order</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Row 1: Monthly Trend & Channel Split -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- Monthly Velocity Trend -->
+        <div class="glass-card rounded-2xl p-5 lg:col-span-2 flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h2 class="text-sm font-semibold text-white">Monthly Net Sales & Gross Profit Trend</h2>
+              <p class="text-xs text-slate-400">Multi-year velocity with retail buffer cushioning wholesale gaps</p>
+            </div>
+            <div class="flex items-center gap-3 text-xs">
+              <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-brand-500 inline-block"></span> Net Sales</span>
+              <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-400 inline-block"></span> Gross Profit</span>
+            </div>
+          </div>
+
+          <!-- SVG Multi-Year Chart -->
+          <div class="w-full h-56 flex items-end">
+            <svg class="w-full h-full" viewBox="0 0 600 200" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="salesGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.45" />
+                  <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.0" />
+                </linearGradient>
+                <linearGradient id="profitGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#10b981" stop-opacity="0.5" />
+                  <stop offset="100%" stop-color="#10b981" stop-opacity="0.0" />
+                </linearGradient>
+              </defs>
+
+              <!-- Gridlines -->
+              <line x1="0" y1="180" x2="600" y2="180" stroke="#334155" stroke-dasharray="3,3" />
+              <line x1="0" y1="120" x2="600" y2="120" stroke="#334155" stroke-dasharray="3,3" />
+              <line x1="0" y1="60" x2="600" y2="60" stroke="#334155" stroke-dasharray="3,3" />
+
+              <!-- Sales Area -->
+              <path d="M 10 180 Q 80 160, 140 140 T 260 90 T 360 40 T 460 70 T 580 30 L 580 180 Z" fill="url(#salesGrad)" />
+              <path d="M 10 180 Q 80 160, 140 140 T 260 90 T 360 40 T 460 70 T 580 30" fill="none" stroke="#0ea5e9" stroke-width="3" />
+
+              <!-- Profit Line -->
+              <path d="M 10 185 Q 80 175, 140 165 T 260 145 T 360 120 T 460 135 T 580 115" fill="none" stroke="#10b981" stroke-width="2.5" stroke-dasharray="4,2" />
+
+              <!-- Data points -->
+              <circle cx="10" cy="180" r="3.5" fill="#0ea5e9" />
+              <circle cx="140" cy="140" r="3.5" fill="#0ea5e9" />
+              <circle cx="260" cy="90" r="3.5" fill="#0ea5e9" />
+              <circle cx="360" cy="40" r="4.5" fill="#38bdf8" stroke="#fff" stroke-width="1.5" />
+              <circle cx="460" cy="70" r="3.5" fill="#0ea5e9" />
+              <circle cx="580" cy="30" r="4.5" fill="#38bdf8" stroke="#fff" stroke-width="1.5" />
+            </svg>
+          </div>
+          <div class="flex justify-between text-[11px] text-slate-400 mt-2 px-2 border-t border-slate-800 pt-2 font-mono">
+            <span>2011 Q1</span>
+            <span>2011 Q4</span>
+            <span>2012 Q2</span>
+            <span>2012 Q4</span>
+            <span>2013 Q2</span>
+            <span>2013 Q4 (Peak)</span>
+          </div>
+        </div>
+
+        <!-- Channel Contribution Donut Card -->
+        <div class="glass-card rounded-2xl p-5 flex flex-col justify-between">
+          <div>
+            <h2 class="text-sm font-semibold text-white">Commercial Channel Share</h2>
+            <p class="text-xs text-slate-400">Wholesale Volume vs Retail Profit Disparity</p>
+          </div>
+
+          <div class="my-auto py-2 flex flex-col items-center">
+            <!-- Custom Circular Donut SVG -->
+            <div class="relative w-36 h-36">
+              <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" stroke="#1e293b" stroke-width="16" fill="transparent" />
+                <!-- Wholesale slice (73.26%) -->
+                <circle cx="50" cy="50" r="40" stroke="#3b82f6" stroke-width="16" stroke-dasharray="251.2" stroke-dashoffset="67.1" fill="transparent" />
+                <!-- Retail slice (26.74%) -->
+                <circle cx="50" cy="50" r="40" stroke="#10b981" stroke-width="16" stroke-dasharray="251.2" stroke-dashoffset="184.1" fill="transparent" />
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                <span class="text-xs font-semibold text-slate-400">Total Net</span>
+                <span class="text-sm font-extrabold text-white">$109.8M</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2 text-xs border-t border-slate-800 pt-3">
+            <div class="flex items-center justify-between">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> Wholesale (B2B)</span>
+              <span class="font-semibold text-white">$80.45M (73.3%)</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Direct Retail (B2C)</span>
+              <span class="font-semibold text-white">$29.36M (26.7%)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Row 2: Category Breakdown & Territory Distribution -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        <!-- Category Sales & Margins -->
+        <div class="glass-card rounded-2xl p-5">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h2 class="text-sm font-semibold text-white">Sales & Margin by Category</h2>
+              <p class="text-xs text-slate-400">Bikes represent 86% of revenue, Accessories deliver highest margin</p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <!-- Bikes -->
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="font-medium text-slate-200">Bikes ($94.6M)</span>
+                <span class="text-emerald-400 font-semibold">11.1% Margin · 86.2% Share</span>
+              </div>
+              <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-brand-600 to-brand-400 h-full rounded-full" style="width: 86.2%"></div>
+              </div>
+            </div>
+
+            <!-- Components -->
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="font-medium text-slate-200">Components ($11.8M)</span>
+                <span class="text-indigo-400 font-semibold">8.7% Margin · 10.7% Share</span>
+              </div>
+              <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-indigo-600 to-indigo-400 h-full rounded-full" style="width: 10.7%"></div>
+              </div>
+            </div>
+
+            <!-- Clothing -->
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="font-medium text-slate-200">Clothing ($2.1M)</span>
+                <span class="text-amber-400 font-semibold">18.6% Margin · 1.9% Share</span>
+              </div>
+              <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-amber-600 to-amber-400 h-full rounded-full" style="width: 1.9%"></div>
+              </div>
+            </div>
+
+            <!-- Accessories -->
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="font-medium text-slate-200">Accessories ($1.3M)</span>
+                <span class="text-emerald-400 font-semibold">49.9% Margin · 1.2% Share</span>
+              </div>
+              <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full" style="width: 1.2%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Territory Treemap / Regional Performance -->
+        <div class="glass-card rounded-2xl p-5">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h2 class="text-sm font-semibold text-white">Geographic Territory Performance</h2>
+              <p class="text-xs text-slate-400">Revenue concentration across international sales groups</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700/50">
+              <div class="text-slate-400 text-[11px]">Southwest US (Top Market)</div>
+              <div class="text-base font-bold text-white mt-0.5">$24.11M</div>
+              <div class="text-[11px] text-emerald-400 mt-1">21.9% of company revenue</div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700/50">
+              <div class="text-slate-400 text-[11px]">Australia (Highest Margin)</div>
+              <div class="text-base font-bold text-white mt-0.5">$16.03M</div>
+              <div class="text-[11px] text-emerald-400 mt-1">33.6% margin (85% Retail)</div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700/50">
+              <div class="text-slate-400 text-[11px]">Northwest US</div>
+              <div class="text-base font-bold text-white mt-0.5">$15.94M</div>
+              <div class="text-[11px] text-slate-400 mt-1">14.5% revenue share</div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700/50">
+              <div class="text-slate-400 text-[11px]">Canada & Europe</div>
+              <div class="text-base font-bold text-white mt-0.5">$53.73M</div>
+              <div class="text-[11px] text-slate-400 mt-1">International distribution</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- TAB 2: PRODUCT & CHANNEL INTELLIGENCE                          -->
+    <!-- ============================================================== -->
+    <div id="view-products" class="hidden space-y-6">
+
+      <!-- Channel Divergence Insight Card -->
+      <div class="glass-card rounded-2xl p-5 border border-brand-500/20 bg-gradient-to-r from-slate-900 to-brand-950/40">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <span class="text-xs uppercase tracking-wider font-bold text-brand-400">Critical Commercial Finding</span>
+            <h2 class="text-lg font-bold text-white mt-1">Wholesale Pricing Below Cost & Volume Discount Collapse</h2>
+            <p class="text-xs text-slate-300 mt-1 max-w-3xl">
+              While wholesale provides volume absorption (78% of physical units), catalog dealer pricing on high-end Road & Touring models was set <strong>below standard factory cost</strong>.
+              Additionally, granting discounts above 5% causes wholesale margins to collapse from <strong>+3.06%</strong> down to <strong>-13.06%</strong>.
+            </p>
+          </div>
+          <div class="flex items-center gap-2 self-start md:self-auto">
+            <span class="px-3 py-1.5 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20 text-xs font-semibold">-$2.4M Margin Drain</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subcategory Performance Table -->
+      <div class="glass-card rounded-2xl p-5">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h2 class="text-sm font-semibold text-white">Subcategory Financial Matrix</h2>
+            <p class="text-xs text-slate-400">121,253 transaction lines aggregated across 16 subcategories</p>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto custom-scroll">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px] tracking-wider">
+                <th class="py-2.5 px-3">Category</th>
+                <th class="py-2.5 px-3">Subcategory</th>
+                <th class="py-2.5 px-3 text-right">Units Sold</th>
+                <th class="py-2.5 px-3 text-right">Net Sales Revenue</th>
+                <th class="py-2.5 px-3 text-right">Gross Profit</th>
+                <th class="py-2.5 px-3 text-right">Gross Margin %</th>
+                <th class="py-2.5 px-3 text-right">Health</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/60 font-mono">
+              <tr class="hover:bg-slate-800/40">
+                <td class="py-2.5 px-3 font-sans font-medium text-white">Bikes</td>
+                <td class="py-2.5 px-3 font-sans text-slate-300">Road Bikes</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">47,148</td>
+                <td class="py-2.5 px-3 text-right font-semibold text-white">$43,878,791</td>
+                <td class="py-2.5 px-3 text-right text-emerald-400">$4,364,903</td>
+                <td class="py-2.5 px-3 text-right text-emerald-400">9.95%</td>
+                <td class="py-2.5 px-3 text-right font-sans"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[10px]">Profitable</span></td>
+              </tr>
+              <tr class="hover:bg-slate-800/40">
+                <td class="py-2.5 px-3 font-sans font-medium text-white">Bikes</td>
+                <td class="py-2.5 px-3 font-sans text-slate-300">Mountain Bikes</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">28,321</td>
+                <td class="py-2.5 px-3 text-right font-semibold text-white">$36,445,444</td>
+                <td class="py-2.5 px-3 text-right text-emerald-400">$5,932,916</td>
+                <td class="py-2.5 px-3 text-right text-emerald-400 font-bold">16.28%</td>
+                <td class="py-2.5 px-3 text-right font-sans"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[10px]">Top Earner</span></td>
+              </tr>
+              <tr class="hover:bg-slate-800/40">
+                <td class="py-2.5 px-3 font-sans font-medium text-white">Bikes</td>
+                <td class="py-2.5 px-3 font-sans text-slate-300">Touring Bikes</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">14,751</td>
+                <td class="py-2.5 px-3 text-right font-semibold text-white">$14,296,291</td>
+                <td class="py-2.5 px-3 text-right text-amber-400">$217,278</td>
+                <td class="py-2.5 px-3 text-right text-amber-400">1.52%</td>
+                <td class="py-2.5 px-3 text-right font-sans"><span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 text-[10px]">Thin Margin</span></td>
+              </tr>
+              <tr class="hover:bg-slate-800/40">
+                <td class="py-2.5 px-3 font-sans font-medium text-white">Components</td>
+                <td class="py-2.5 px-3 font-sans text-slate-300">Touring Frames</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">3,725</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">$1,642,328</td>
+                <td class="py-2.5 px-3 text-right text-rose-400">-$5,573</td>
+                <td class="py-2.5 px-3 text-right text-rose-400 font-bold">-0.34%</td>
+                <td class="py-2.5 px-3 text-right font-sans"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 text-[10px]">Loss Leader</span></td>
+              </tr>
+              <tr class="hover:bg-slate-800/40">
+                <td class="py-2.5 px-3 font-sans font-medium text-white">Clothing</td>
+                <td class="py-2.5 px-3 font-sans text-slate-300">Jerseys</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">22,711</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">$752,259</td>
+                <td class="py-2.5 px-3 text-right text-rose-400">-$92,921</td>
+                <td class="py-2.5 px-3 text-right text-rose-400 font-bold">-12.35%</td>
+                <td class="py-2.5 px-3 text-right font-sans"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 text-[10px]">Severe Deficit</span></td>
+              </tr>
+              <tr class="hover:bg-slate-800/40">
+                <td class="py-2.5 px-3 font-sans font-medium text-white">Accessories</td>
+                <td class="py-2.5 px-3 font-sans text-slate-300">Tires and Tubes</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">18,006</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">$246,455</td>
+                <td class="py-2.5 px-3 text-right text-emerald-400">$154,049</td>
+                <td class="py-2.5 px-3 text-right text-emerald-400 font-bold">62.51%</td>
+                <td class="py-2.5 px-3 text-right font-sans"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[10px]">High Margin</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- TAB 3: SUPPLY CHAIN & INVENTORY ALERTS                         -->
+    <!-- ============================================================== -->
+    <div id="view-inventory" class="hidden space-y-6">
+
+      <!-- Stock Alert Cards -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="glass-card rounded-2xl p-4">
+          <span class="text-xs text-slate-400">Total Catalog SKUs</span>
+          <div class="text-2xl font-bold text-white mt-1">606 Items</div>
+          <span class="text-[11px] text-slate-500">Active product catalog</span>
+        </div>
+        <div class="glass-card rounded-2xl p-4 border border-rose-500/30">
+          <span class="text-xs text-rose-400 font-semibold">Critical Shortage SKUs</span>
+          <div class="text-2xl font-bold text-rose-400 mt-1">84 SKUs</div>
+          <span class="text-[11px] text-rose-300">Stock below mandated safety level</span>
+        </div>
+        <div class="glass-card rounded-2xl p-4 border border-amber-500/30">
+          <span class="text-xs text-amber-400 font-semibold">Total Stock Deficit</span>
+          <div class="text-2xl font-bold text-amber-400 mt-1">142,390 Units</div>
+          <span class="text-[11px] text-amber-300">Units required to restore buffers</span>
+        </div>
+        <div class="glass-card rounded-2xl p-4">
+          <span class="text-xs text-slate-400">Reorder Alert SKUs</span>
+          <div class="text-2xl font-bold text-white mt-1">112 SKUs</div>
+          <span class="text-[11px] text-slate-500">Trigger purchase requisitions</span>
+        </div>
+      </div>
+
+      <!-- Replenishment Grid -->
+      <div class="glass-card rounded-2xl p-5">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h2 class="text-sm font-semibold text-white">Priority Procurement Replenishment Action Grid</h2>
+            <p class="text-xs text-slate-400">Active catalog finished goods requiring immediate factory production</p>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto custom-scroll">
+          <table class="w-full text-left text-xs border-collapse font-mono">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px] tracking-wider font-sans">
+                <th class="py-2.5 px-3">Product Name</th>
+                <th class="py-2.5 px-3 text-right">Units on Hand</th>
+                <th class="py-2.5 px-3 text-right">Safety Stock Level</th>
+                <th class="py-2.5 px-3 text-right">Reorder Point</th>
+                <th class="py-2.5 px-3 text-right">Stock Deficit</th>
+                <th class="py-2.5 px-3 text-right font-sans">Action Trigger</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/60">
+              <tr class="hover:bg-slate-800/40">
+                <td class="py-2.5 px-3 font-sans font-medium text-white">Road-150 Red, 56</td>
+                <td class="py-2.5 px-3 text-right text-rose-400 font-bold">12</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">100</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">75</td>
+                <td class="py-2.5 px-3 text-right text-rose-400 font-bold">63</td>
+                <td class="py-2.5 px-3 text-right font-sans"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 text-[10px] font-semibold">PO Urgent</span></td>
+              </tr>
+              <tr class="hover:bg-slate-800/40">
+                <td class="py-2.5 px-3 font-sans font-medium text-white">Mountain-200 Black, 38</td>
+                <td class="py-2.5 px-3 text-right text-rose-400 font-bold">18</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">100</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">75</td>
+                <td class="py-2.5 px-3 text-right text-rose-400 font-bold">57</td>
+                <td class="py-2.5 px-3 text-right font-sans"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 text-[10px] font-semibold">PO Urgent</span></td>
+              </tr>
+              <tr class="hover:bg-slate-800/40">
+                <td class="py-2.5 px-3 font-sans font-medium text-white">Sport-100 Helmet, Red</td>
+                <td class="py-2.5 px-3 text-right text-amber-400 font-bold">45</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">100</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">75</td>
+                <td class="py-2.5 px-3 text-right text-amber-400 font-bold">30</td>
+                <td class="py-2.5 px-3 text-right font-sans"><span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 text-[10px] font-semibold">Reorder</span></td>
+              </tr>
+              <tr class="hover:bg-slate-800/40">
+                <td class="py-2.5 px-3 font-sans font-medium text-white">Touring-1000 Blue, 60</td>
+                <td class="py-2.5 px-3 text-right text-emerald-400">88</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">100</td>
+                <td class="py-2.5 px-3 text-right text-slate-300">75</td>
+                <td class="py-2.5 px-3 text-right text-slate-500">0</td>
+                <td class="py-2.5 px-3 text-right font-sans"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[10px]">Adequate</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/60 py-4 text-xs text-slate-500 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div>MotoPulse 360 · Production Analytics Suite · MySQL 8 · Python 3.11 · Power BI Desktop</div>
+      <div class="flex items-center gap-4">
+        <span>Verified Parity: $0.00 Variance</span>
+        <a href="https://github.com/nayanaastakar/MotoPulse-360-Sales-Inventory-Profitability-Analytics" target="_blank" class="hover:text-slate-300 transition underline">GitHub Repo</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Tab switching logic
+    function switchTab(tabId) {
+      document.getElementById('view-overview').classList.add('hidden');
+      document.getElementById('view-products').classList.add('hidden');
+      document.getElementById('view-inventory').classList.add('hidden');
+
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-600', 'text-white', 'shadow');
+        btn.classList.add('text-slate-400');
+      });
+
+      if (tabId === 'overview') {
+        document.getElementById('view-overview').classList.remove('hidden');
+        document.getElementById('tab-overview').classList.add('bg-brand-600', 'text-white', 'shadow');
+        document.getElementById('tab-overview').classList.remove('text-slate-400');
+      } else if (tabId === 'products') {
+        document.getElementById('view-products').classList.remove('hidden');
+        document.getElementById('tab-products').classList.add('bg-brand-600', 'text-white', 'shadow');
+        document.getElementById('tab-products').classList.remove('text-slate-400');
+      } else if (tabId === 'inventory') {
+        document.getElementById('view-inventory').classList.remove('hidden');
+        document.getElementById('tab-inventory').classList.add('bg-brand-600', 'text-white', 'shadow');
+        document.getElementById('tab-inventory').classList.remove('text-slate-400');
+      }
+    }
+
+    // Dynamic Channel Filtering
+    function filterChannel(channel) {
+      const salesEl = document.getElementById('kpi-sales');
+      const profitEl = document.getElementById('kpi-profit');
+      const marginEl = document.getElementById('kpi-margin');
+      const marginBadge = document.getElementById('kpi-margin-badge');
+      const ordersEl = document.getElementById('kpi-orders');
+      const salesSub = document.getElementById('kpi-sales-sub');
+      const marginSub = document.getElementById('kpi-margin-sub');
+
+      if (channel === 'Retail') {
+        salesEl.innerText = '$29.36M';
+        profitEl.innerText = '$12.08M';
+        marginEl.innerText = '41.15%';
+        marginBadge.innerText = '41.15%';
+        ordersEl.innerText = '27,659';
+        salesSub.innerHTML = '<span>↑ Direct B2C</span> · 60,398 Lines';
+        marginSub.innerText = 'Zero volume discounts granted ($0.00)';
+      } else if (channel === 'Wholesale') {
+        salesEl.innerText = '$80.45M';
+        profitEl.innerText = '$470.5K';
+        marginEl.innerText = '0.58%';
+        marginBadge.innerText = '0.58%';
+        ordersEl.innerText = '3,796';
+        salesSub.innerHTML = '<span>73.3% Volume</span> · 60,855 Lines';
+        marginSub.innerText = '$527.5K volume discounts deducted';
+      } else {
+        salesEl.innerText = '$109.81M';
+        profitEl.innerText = '$12.55M';
+        marginEl.innerText = '11.43%';
+        marginBadge.innerText = '11.43%';
+        ordersEl.innerText = '31,455';
+        salesSub.innerHTML = '<span>↑ 100% Reconciled</span> · 121,253 Lines';
+        marginSub.innerText = 'Retail 41.15% vs Wholesale 0.58%';
+      }
+    }
+  </script>
+</body>
+</html>

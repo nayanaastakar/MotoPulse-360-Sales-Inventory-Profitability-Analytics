@@ -345,10 +345,16 @@ For instant access on any device or presentation without Power BI Desktop:
 
 ### Step 6: Power BI Report & Dashboard Opening
 Power BI Desktop is installed. You can open and save the report using either method:
-- **Instant Project Load (`.pbip` / `.pbit`):** Double-click [`powerbi/MotoPulse_360_Analytics.pbip`](powerbi/MotoPulse_360_Analytics.pbip) or [`powerbi/MotoPulse_360_Analytics.pbit`](powerbi/MotoPulse_360_Analytics.pbit). Power BI Desktop opens with the complete Star Schema model, all 25+ DAX measures, and all 3 pre-built report pages!
-- Click **File -> Save As...** and save as `powerbi/MotoPulse_360_Analytics.pbix`.
-- Capture full-screen screenshots of the 3 pages and save them into `powerbi/screenshots/`.
-- Alternatively, if customizing from scratch, run `python powerbi/export_powerbi_datasets.py` and follow [`powerbi/dashboard_build_guide.md`](powerbi/dashboard_build_guide.md).
+- **Instant Project Load (.pbip / .pbit):** Double-click [powerbi/MotoPulse_360_Analytics.pbip](powerbi/MotoPulse_360_Analytics.pbip) or [powerbi/MotoPulse_360_Analytics.pbit](powerbi/MotoPulse_360_Analytics.pbit). Power BI Desktop opens with the complete Star Schema model, all 25+ DAX measures, and all 3 pre-built report pages!
+- Click **File -> Save As...** and save as powerbi/MotoPulse_360_Analytics.pbix.
+- Capture full-screen screenshots of the 3 pages and save them into powerbi/screenshots/.
+- Alternatively, if customizing from scratch, run python powerbi/export_powerbi_datasets.py and follow [powerbi/dashboard_build_guide.md](powerbi/dashboard_build_guide.md).
+
+### Step 7: Interactive Web Dashboard (Zero-Install Browser Access)
+For instant access on any device or presentation without Power BI Desktop:
+- Open [rontend/index.html](frontend/index.html) directly in any web browser (Chrome, Edge, Firefox, Safari).
+- Or run python run_pipeline.py --open-web to launch it automatically.
+- Includes 3 operational tabs (Executive Overview, Product & Channel Intelligence, Supply Chain Alerts) and dynamic Retail vs. Wholesale channel filtering.
 
 ---
 

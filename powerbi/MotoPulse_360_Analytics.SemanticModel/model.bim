@@ -153,7 +153,7 @@
               "type": "m",
               "expression": [
                 "let",
-                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360/data/processed/powerbi/vw_sales_fact.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360-Claude-Handover/MotoPulse-360/data/processed/powerbi/vw_sales_fact.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"SalesOrderNumber\", type text}, {\"SalesOrderLineNumber\", Int64.Type}, {\"Channel\", type text}, {\"OrderDateKey\", Int64.Type}, {\"DueDateKey\", Int64.Type}, {\"ShipDateKey\", Int64.Type}, {\"CustomerKey\", Int64.Type}, {\"ResellerKey\", Int64.Type}, {\"ProductKey\", Int64.Type}, {\"PromotionKey\", Int64.Type}, {\"CurrencyKey\", Int64.Type}, {\"SalesTerritoryKey\", Int64.Type}, {\"OrderQuantity\", Int64.Type}, {\"UnitPrice\", type number}, {\"ExtendedAmount\", type number}, {\"UnitPriceDiscountPct\", type number}, {\"DiscountAmount\", type number}, {\"ProductStandardCost\", type number}, {\"TotalProductCost\", type number}, {\"SalesAmount\", type number}, {\"TaxAmt\", type number}, {\"Freight\", type number}, {\"GrossProfit\", type number}, {\"GrossMarginPct\", type number}})",
                 "in",
@@ -252,7 +252,7 @@
               "type": "m",
               "expression": [
                 "let",
-                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360/data/processed/powerbi/vw_dim_date.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360-Claude-Handover/MotoPulse-360/data/processed/powerbi/vw_dim_date.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"DateKey\", Int64.Type}, {\"Date\", type date}, {\"DayNumberOfWeek\", Int64.Type}, {\"EnglishDayNameOfWeek\", type text}, {\"DayNumberOfMonth\", Int64.Type}, {\"DayNumberOfYear\", Int64.Type}, {\"WeekNumberOfYear\", Int64.Type}, {\"EnglishMonthName\", type text}, {\"MonthNumberOfYear\", Int64.Type}, {\"CalendarQuarter\", Int64.Type}, {\"CalendarYear\", Int64.Type}, {\"CalendarSemester\", Int64.Type}, {\"FiscalQuarter\", Int64.Type}, {\"FiscalYear\", Int64.Type}, {\"FiscalSemester\", Int64.Type}})",
                 "in",
@@ -387,7 +387,7 @@
               "type": "m",
               "expression": [
                 "let",
-                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360/data/processed/powerbi/vw_dim_product.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360-Claude-Handover/MotoPulse-360/data/processed/powerbi/vw_dim_product.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ProductKey\", Int64.Type}, {\"ProductAlternateKey\", type text}, {\"ProductName\", type text}, {\"StandardCost\", type number}, {\"Color\", type text}, {\"SafetyStockLevel\", Int64.Type}, {\"ReorderPoint\", Int64.Type}, {\"ListPrice\", type number}, {\"Size\", type text}, {\"SizeRange\", type text}, {\"DaysToManufacture\", Int64.Type}, {\"ProductLine\", type text}, {\"DealerPrice\", type number}, {\"Class\", type text}, {\"Style\", type text}, {\"ModelName\", type text}, {\"ProductDescription\", type text}, {\"StartDate\", type text}, {\"EndDate\", type text}, {\"Status\", type text}, {\"SubcategoryName\", type text}, {\"CategoryName\", type text}})",
                 "in",
@@ -490,7 +490,7 @@
               "type": "m",
               "expression": [
                 "let",
-                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360/data/processed/powerbi/vw_dim_customer.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360-Claude-Handover/MotoPulse-360/data/processed/powerbi/vw_dim_customer.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"CustomerKey\", Int64.Type}, {\"CustomerAlternateKey\", type text}, {\"CustomerFullName\", type text}, {\"EmailAddress\", type text}, {\"YearlyIncome\", type number}, {\"TotalChildren\", Int64.Type}, {\"EnglishEducation\", type text}, {\"EnglishOccupation\", type text}, {\"HouseOwnerFlag\", Int64.Type}, {\"NumberCarsOwned\", Int64.Type}, {\"CommuteDistance\", type text}, {\"City\", type text}, {\"StateProvinceName\", type text}, {\"EnglishCountryRegionName\", type text}, {\"PostalCode\", type text}, {\"SalesTerritoryKey\", Int64.Type}})",
                 "in",
@@ -584,7 +584,7 @@
               "type": "m",
               "expression": [
                 "let",
-                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360/data/processed/powerbi/vw_dim_reseller.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360-Claude-Handover/MotoPulse-360/data/processed/powerbi/vw_dim_reseller.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ResellerKey\", Int64.Type}, {\"ResellerAlternateKey\", type text}, {\"ResellerName\", type text}, {\"BusinessType\", type text}, {\"NumberEmployees\", Int64.Type}, {\"OrderFrequency\", type text}, {\"AnnualSales\", type number}, {\"AnnualRevenue\", type number}, {\"YearOpened\", Int64.Type}, {\"City\", type text}, {\"StateProvinceName\", type text}, {\"EnglishCountryRegionName\", type text}, {\"PostalCode\", type text}, {\"SalesTerritoryKey\", Int64.Type}})",
                 "in",
@@ -631,7 +631,7 @@
               "type": "m",
               "expression": [
                 "let",
-                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360/data/processed/powerbi/vw_dim_territory.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360-Claude-Handover/MotoPulse-360/data/processed/powerbi/vw_dim_territory.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"SalesTerritoryKey\", Int64.Type}, {\"SalesTerritoryAlternateKey\", Int64.Type}, {\"SalesTerritoryRegion\", type text}, {\"SalesTerritoryCountry\", type text}, {\"SalesTerritoryGroup\", type text}})",
                 "in",
@@ -714,7 +714,7 @@
               "type": "m",
               "expression": [
                 "let",
-                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360/data/processed/powerbi/vw_inventory_latest.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Source = Csv.Document(File.Contents(\"D:/Projects/MotoPulse-360-Claude-Handover/MotoPulse-360/data/processed/powerbi/vw_inventory_latest.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ProductKey\", Int64.Type}, {\"DateKey\", Int64.Type}, {\"MovementDate\", type text}, {\"UnitCost\", type number}, {\"UnitsIn\", Int64.Type}, {\"UnitsOut\", Int64.Type}, {\"UnitsBalance\", Int64.Type}, {\"ProductName\", type text}, {\"SafetyStockLevel\", Int64.Type}, {\"ReorderPoint\", Int64.Type}, {\"StockStatus\", type text}, {\"StockDeficit\", Int64.Type}})",
                 "in",

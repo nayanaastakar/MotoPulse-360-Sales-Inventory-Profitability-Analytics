@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="modern-blue" class="dark">
+<html lang="en" data-theme="sorbet">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,15 +24,16 @@
   </script>
   <style>
     :root {
-      --theme-bg-app: #080d1a;
-      --theme-bg-card: rgba(15, 23, 42, 0.85);
-      --theme-bg-elevated: rgba(30, 41, 59, 0.7);
-      --theme-primary: #2563eb;
-      --theme-primary-hover: #1d4ed8;
-      --theme-accent: #38bdf8;
-      --theme-border: rgba(255, 255, 255, 0.08);
-      --theme-text-main: #f8fafc;
-      --theme-text-muted: #94a3b8;
+      --theme-bg-app: #EDECEC;
+      --theme-bg-card: #FEFEFE;
+      --theme-bg-elevated: #E0E7D7;
+      --theme-primary: #B7C396;
+      --theme-primary-hover: #9fad7a;
+      --theme-primary-text: #1b2218;
+      --theme-accent: #BA9A91;
+      --theme-border: #CCCCCC;
+      --theme-text-main: #242c22;
+      --theme-text-muted: #626d5f;
     }
 
     body {
@@ -59,8 +60,8 @@
     .text-theme-main { color: var(--theme-text-main); }
     .text-theme-muted { color: var(--theme-text-muted); }
     .border-theme { border-color: var(--theme-border); }
-    .btn-primary-theme { background-color: var(--theme-primary); color: #ffffff; }
-    .btn-primary-theme:hover { background-color: var(--theme-primary-hover); }
+    .btn-primary-theme { background-color: var(--theme-primary) !important; color: var(--theme-primary-text, #ffffff) !important; }
+    .btn-primary-theme:hover { background-color: var(--theme-primary-hover) !important; }
 
     .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
     .custom-scroll::-webkit-scrollbar-track { background: rgba(30, 41, 59, 0.4); }
@@ -82,7 +83,7 @@
         
         <!-- Logo & Title -->
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center shadow-lg text-white font-black text-xl">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg font-black text-xl transition-all" style="background: linear-gradient(135deg, var(--theme-primary), var(--theme-accent)); color: var(--theme-primary-text);">
             ⚡
           </div>
           <div>
@@ -122,6 +123,7 @@
           <div class="flex items-center bg-theme-elevated rounded-xl border border-theme px-2 py-1 text-xs">
             <span class="text-theme-muted mr-1.5 hidden sm:inline">🎨 Theme:</span>
             <select id="theme-selector" onchange="changeTheme(this.value)" class="bg-transparent border-none text-theme-main text-xs font-semibold focus:ring-0 outline-none cursor-pointer">
+              <option value="sorbet" selected>Sorbet (Sage & Clay)</option>
               <option value="modern-blue">Modern Blue</option>
               <option value="purple-gradient">Purple Gradient</option>
               <option value="emerald-green">Emerald Green</option>
@@ -401,8 +403,8 @@
               <p class="text-xs text-theme-muted">Multi-year velocity curve (Hover for exact figures; updates with slicers)</p>
             </div>
             <div class="flex items-center gap-3 text-xs">
-              <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-500 inline-block"></span> Net Sales</span>
-              <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-400 inline-block"></span> Gross Profit</span>
+              <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded inline-block" style="background-color: var(--theme-primary);"></span> Net Sales</span>
+              <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded inline-block" style="background-color: var(--theme-accent);"></span> Gross Profit</span>
             </div>
           </div>
 
@@ -435,11 +437,11 @@
 
           <div class="space-y-2 text-xs border-t border-theme pt-3">
             <div class="flex items-center justify-between cursor-pointer hover:opacity-80 transition" onclick="toggleChannelFilter('Wholesale')">
-              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> Commercial Wholesale (B2B)</span>
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full inline-block" style="background-color: var(--theme-primary);"></span> Commercial Wholesale (B2B)</span>
               <span class="font-semibold text-theme-main" id="legend-wholesale-val">$80.45M (73.3%)</span>
             </div>
             <div class="flex items-center justify-between cursor-pointer hover:opacity-80 transition" onclick="toggleChannelFilter('Retail')">
-              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Direct Retail (B2C)</span>
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full inline-block" style="background-color: var(--theme-accent);"></span> Direct Retail (B2C)</span>
               <span class="font-semibold text-theme-main" id="legend-retail-val">$29.36M (26.7%)</span>
             </div>
           </div>
@@ -872,9 +874,35 @@
   <!-- ============================================================== -->
   <script>
     // ==========================================
-    // A. THEME SYSTEM CONFIGURATION (6 Palettes)
+    // A. THEME SYSTEM CONFIGURATION (7 Palettes)
     // ==========================================
     const THEMES = {
+      'sorbet': {
+        name: 'Sorbet (Sage & Clay)',
+        primary: '#B7C396',
+        primaryHover: '#9fad7a',
+        primaryText: '#1b2218',
+        accent: '#BA9A91',
+        chartPrimary: '#B7C396',
+        chartSecondary: '#BA9A91',
+        chartAccent: '#8a9a6c',
+        dark: {
+          bgApp: '#121612',
+          bgCard: 'rgba(24, 30, 24, 0.90)',
+          bgElevated: 'rgba(36, 46, 36, 0.75)',
+          border: 'rgba(183, 195, 150, 0.22)',
+          textMain: '#f4f6f2',
+          textMuted: '#a2af9c'
+        },
+        light: {
+          bgApp: '#EDECEC',
+          bgCard: '#FEFEFE',
+          bgElevated: '#E0E7D7',
+          border: '#CCCCCC',
+          textMain: '#242c22',
+          textMuted: '#626d5f'
+        }
+      },
       'modern-blue': {
         name: 'Modern Blue',
         primary: '#2563eb',
@@ -1027,8 +1055,8 @@
       }
     };
 
-    let activeTheme = localStorage.getItem('motopulse-theme') || 'modern-blue';
-    let isDarkMode = localStorage.getItem('motopulse-mode') !== 'light';
+    let activeTheme = localStorage.getItem('motopulse-theme') || 'sorbet';
+    let isDarkMode = localStorage.getItem('motopulse-mode') === 'dark';
 
     function applyThemeTokens() {
       const themeConfig = THEMES[activeTheme] || THEMES['modern-blue'];
@@ -1053,6 +1081,7 @@
       root.style.setProperty('--theme-text-muted', modeConfig.textMuted);
       root.style.setProperty('--theme-primary', themeConfig.primary);
       root.style.setProperty('--theme-primary-hover', themeConfig.primaryHover);
+      root.style.setProperty('--theme-primary-text', themeConfig.primaryText || '#ffffff');
       root.style.setProperty('--theme-accent', themeConfig.accent);
 
       document.getElementById('theme-selector').value = activeTheme;
@@ -1211,7 +1240,7 @@
 
       pills.forEach(p => {
         const span = document.createElement('span');
-        span.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-600 text-white font-medium text-[11px] shadow-sm animate-fadeIn';
+        span.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg btn-primary-theme font-medium text-[11px] shadow-sm animate-fadeIn';
         span.innerHTML = `
           <span>${p.label}</span>
           <button onclick="setSlicer('${p.key}', 'all')" class="hover:bg-blue-800 rounded px-1 transition text-white">✕</button>
@@ -1316,7 +1345,7 @@
                 label: 'Net Sales ($)',
                 data: ymSales,
                 borderColor: themeConfig.chartPrimary,
-                backgroundColor: 'rgba(37, 99, 235, 0.12)',
+                backgroundColor: isDarkMode ? 'rgba(183, 195, 150, 0.15)' : 'rgba(183, 195, 150, 0.25)',
                 fill: true,
                 tension: 0.35,
                 borderWidth: 2.5,
@@ -1326,7 +1355,7 @@
                 label: 'Gross Profit ($)',
                 data: ymProfits,
                 borderColor: themeConfig.chartSecondary,
-                backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                backgroundColor: isDarkMode ? 'rgba(186, 154, 145, 0.15)' : 'rgba(186, 154, 145, 0.25)',
                 fill: true,
                 tension: 0.35,
                 borderWidth: 2,
@@ -1378,8 +1407,8 @@
             datasets: [{
               data: [wholesaleSales, retailSales],
               backgroundColor: [
-                filterState.channel === 'Retail' ? 'rgba(59, 130, 246, 0.25)' : '#3b82f6',
-                filterState.channel === 'Wholesale' ? 'rgba(16, 185, 129, 0.25)' : '#10b981'
+                filterState.channel === 'Retail' ? 'rgba(150, 160, 150, 0.25)' : themeConfig.chartPrimary,
+                filterState.channel === 'Wholesale' ? 'rgba(150, 160, 150, 0.25)' : themeConfig.chartSecondary
               ],
               borderWidth: 0
             }]
@@ -1544,6 +1573,11 @@
     }
 
     function renderStaticTabCharts(themeConfig, modeConfig, textColor, gridColor, font) {
+      if (chartTopProducts) { chartTopProducts.destroy(); chartTopProducts = null; }
+      if (chartPareto) { chartPareto.destroy(); chartPareto = null; }
+      if (chartDiscount) { chartDiscount.destroy(); chartDiscount = null; }
+      if (chartCustomerDeciles) { chartCustomerDeciles.destroy(); chartCustomerDeciles = null; }
+
       // Top Products Chart
       const ctxTop = document.getElementById('chart-top-products');
       if (ctxTop && !chartTopProducts) {

@@ -176,38 +176,6 @@ All metrics are dynamically recalculated in memory using arbitrary-precision acc
 
 ---
 
-### 📱 Responsive Layout: Mobile & Tablet Viewports
-*Reflowed 2-column KPI grid on mobile (390×844) with touch-friendly navigation pills, and 4-column balanced grid on tablet (768×1024).*
-
-| Mobile Viewport (390×844) | Tablet Viewport (768×1024) |
-| :---: | :---: |
-| ![Mobile Responsive View](screenshots/06_mobile_responsive_view.png) | ![Tablet Responsive View](screenshots/07_tablet_responsive_view.png) |
-
----
-
-### ☀️ Curated Color Themes & Light Mode
-*Sorbet palette rendered in Light Mode with high-contrast dropdown controls and clean visual hierarchy.*
-![Sorbet Light Mode Theme](screenshots/08_sorbet_light_mode.png)
-
----
-
-### 📈 Diagnostic Data Science Visualizations
-*In-depth econometric and data science analyses generated via Python, Pandas, and Seaborn.*
-
-| Monthly Revenue Velocity Trend | Channel Margin Leakage Divergence |
-| :---: | :---: |
-| ![Monthly Trend](screenshots/09_monthly_revenue_velocity_trend.png) | ![Margin Leakage](screenshots/10_channel_margin_leakage_divergence.png) |
-
-| Category Profitability Matrix | Territory Sales Distribution |
-| :---: | :---: |
-| ![Category Profitability](screenshots/11_category_profitability_breakdown.png) | ![Territory Revenue](screenshots/12_territory_sales_distribution.png) |
-
-| Commercial Channel Volume vs Profit Disparity |
-| :---: |
-| ![Channel Comparison](screenshots/13_channel_volume_vs_profit_comparison.png) |
-
----
-
 ## 8. Project Structure
 
 ```text

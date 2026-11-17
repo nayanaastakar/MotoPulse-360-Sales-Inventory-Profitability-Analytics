@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" data-theme="modern-blue" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MotoPulse 360 | Executive Sales, Inventory & Profitability Platform</title>
+  <title>MotoPulse 360 | Executive Power BI Interactive Analytics Platform</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -14,18 +14,8 @@
         extend: {
           colors: {
             brand: {
-              50: '#f0f9ff',
-              100: '#e0f2fe',
-              500: '#0ea5e9',
-              600: '#0284c7',
-              700: '#0369a1',
-              800: '#075985',
-              900: '#0c4a6e',
-            },
-            slate: {
-              850: '#151e2e',
-              900: '#0f172a',
-              950: '#080d1a'
+              500: 'var(--theme-primary)',
+              600: 'var(--theme-primary-hover)',
             }
           }
         }
@@ -33,95 +23,128 @@
     }
   </script>
   <style>
-    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    :root {
+      --theme-bg-app: #080d1a;
+      --theme-bg-card: rgba(15, 23, 42, 0.85);
+      --theme-bg-elevated: rgba(30, 41, 59, 0.7);
+      --theme-primary: #2563eb;
+      --theme-primary-hover: #1d4ed8;
+      --theme-accent: #38bdf8;
+      --theme-border: rgba(255, 255, 255, 0.08);
+      --theme-text-main: #f8fafc;
+      --theme-text-muted: #94a3b8;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--theme-bg-app);
+      color: var(--theme-text-main);
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .glass-card {
+      background: var(--theme-bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--theme-border);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: var(--theme-accent);
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.25);
+    }
+
+    .bg-theme-app { background-color: var(--theme-bg-app); }
+    .bg-theme-card { background-color: var(--theme-bg-card); }
+    .bg-theme-elevated { background-color: var(--theme-bg-elevated); }
+    .text-theme-main { color: var(--theme-text-main); }
+    .text-theme-muted { color: var(--theme-text-muted); }
+    .border-theme { border-color: var(--theme-border); }
+    .btn-primary-theme { background-color: var(--theme-primary); color: #ffffff; }
+    .btn-primary-theme:hover { background-color: var(--theme-primary-hover); }
+
     .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
     .custom-scroll::-webkit-scrollbar-track { background: rgba(30, 41, 59, 0.4); }
     .custom-scroll::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.5); border-radius: 3px; }
-    .glass-card {
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .dark .glass-card {
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .dark .glass-card:hover {
-      border-color: rgba(14, 165, 233, 0.35);
-    }
-    html:not(.dark) .glass-card {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(226, 232, 240, 0.8);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-    }
-    html:not(.dark) .glass-card:hover {
-      border-color: rgba(2, 132, 199, 0.4);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
-    }
+
+    /* Chart clickable cursor */
+    canvas { cursor: pointer; }
   </style>
   <script src="dashboard_data.js"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white transition-colors duration-200">
+<body class="min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
 
   <!-- ============================================================== -->
-  <!-- 1. HEADER (Branding, Navigation, Theme Toggle, Slicers)        -->
+  <!-- 1. HEADER (Branding, Navigation, Themes, Print)                -->
   <!-- ============================================================== -->
-  <header class="border-b border-slate-800 bg-slate-900/90 dark:bg-slate-900/90 dark:border-slate-800 backdrop-blur sticky top-0 z-50 transition-colors duration-200">
+  <header class="border-b border-theme bg-theme-card backdrop-blur sticky top-0 z-50 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="h-16 flex items-center justify-between gap-4">
         
         <!-- Logo & Title -->
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-brand-500/20 text-white font-black text-xl">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center shadow-lg text-white font-black text-xl">
             ⚡
           </div>
           <div>
             <div class="flex items-center gap-2">
-              <h1 class="font-extrabold text-lg text-white dark:text-white tracking-tight">MotoPulse 360</h1>
+              <h1 class="font-extrabold text-lg text-theme-main tracking-tight">MotoPulse 360</h1>
               <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Live BI Engine
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Power BI Interactive
               </span>
             </div>
-            <p class="text-xs text-slate-400">Enterprise Sales, Inventory & Profitability Platform</p>
+            <p class="text-xs text-theme-muted">Executive Sales, Inventory & Profitability Platform</p>
           </div>
         </div>
 
         <!-- Navigation Tabs (Desktop) -->
-        <nav class="hidden lg:flex items-center gap-1 bg-slate-800/80 dark:bg-slate-800/80 p-1 rounded-xl border border-slate-700/60 text-xs">
-          <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-3.5 py-1.5 rounded-lg font-medium transition-all bg-brand-600 text-white shadow">
+        <nav class="hidden lg:flex items-center gap-1 bg-theme-elevated p-1 rounded-xl border border-theme text-xs">
+          <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-3 py-1.5 rounded-lg font-medium transition-all btn-primary-theme shadow">
             1. Overview
           </button>
-          <button onclick="switchTab('products')" id="tab-products" class="tab-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition-all">
+          <button onclick="switchTab('products')" id="tab-products" class="tab-btn px-3 py-1.5 rounded-lg font-medium text-theme-muted hover:text-theme-main transition-all">
             2. Products & Margin
           </button>
-          <button onclick="switchTab('channels')" id="tab-channels" class="tab-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition-all">
+          <button onclick="switchTab('channels')" id="tab-channels" class="tab-btn px-3 py-1.5 rounded-lg font-medium text-theme-muted hover:text-theme-main transition-all">
             3. Channels & Resellers
           </button>
-          <button onclick="switchTab('inventory')" id="tab-inventory" class="tab-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition-all">
+          <button onclick="switchTab('inventory')" id="tab-inventory" class="tab-btn px-3 py-1.5 rounded-lg font-medium text-theme-muted hover:text-theme-main transition-all">
             4. Supply Chain Alerts
           </button>
-          <button onclick="switchTab('explorer')" id="tab-explorer" class="tab-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition-all">
+          <button onclick="switchTab('explorer')" id="tab-explorer" class="tab-btn px-3 py-1.5 rounded-lg font-medium text-theme-muted hover:text-theme-main transition-all">
             5. Data Explorer
           </button>
         </nav>
 
-        <!-- Right Controls: Theme Toggle & Actions -->
-        <div class="flex items-center gap-2">
+        <!-- Right Controls: 6-Theme Palette Selector, Mode Toggle, Print -->
+        <div class="flex items-center gap-2.5">
           
-          <!-- Theme Toggle Button -->
-          <button onclick="toggleTheme()" id="theme-toggle-btn" title="Toggle Light/Dark Theme" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 text-slate-300 hover:text-white transition text-xs flex items-center gap-1.5">
-            <span id="theme-icon">☀️</span>
-            <span class="hidden sm:inline text-[11px] font-medium" id="theme-text">Light</span>
+          <!-- Palette Selector Dropdown -->
+          <div class="flex items-center bg-theme-elevated rounded-xl border border-theme px-2 py-1 text-xs">
+            <span class="text-theme-muted mr-1.5 hidden sm:inline">🎨 Theme:</span>
+            <select id="theme-selector" onchange="changeTheme(this.value)" class="bg-transparent border-none text-theme-main text-xs font-semibold focus:ring-0 outline-none cursor-pointer">
+              <option value="modern-blue">Modern Blue</option>
+              <option value="purple-gradient">Purple Gradient</option>
+              <option value="emerald-green">Emerald Green</option>
+              <option value="professional-dark">Professional Dark</option>
+              <option value="minimal-light">Minimal Light</option>
+              <option value="sunset">Sunset</option>
+            </select>
+          </div>
+
+          <!-- Light / Dark Mode Toggle -->
+          <button onclick="toggleLightDarkMode()" id="mode-toggle-btn" title="Toggle Light / Dark Mode" class="p-2 rounded-xl bg-theme-elevated hover:opacity-80 border border-theme text-theme-main text-xs flex items-center gap-1.5 transition">
+            <span id="mode-icon">☀️</span>
+            <span class="hidden md:inline text-[11px] font-medium" id="mode-text">Light</span>
           </button>
 
           <!-- Export Report / PDF Button -->
-          <button onclick="window.print()" title="Print / Save Report" class="hidden sm:flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 text-slate-300 hover:text-white transition">
+          <button onclick="window.print()" title="Print / Export PDF" class="hidden sm:flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-xl bg-theme-elevated hover:opacity-80 border border-theme text-theme-main transition">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
             Print
           </button>
 
           <!-- GitHub Repo Link -->
-          <a href="https://github.com/nayanaastakar/MotoPulse-360-Sales-Inventory-Profitability-Analytics" target="_blank" class="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700/60 transition">
+          <a href="https://github.com/nayanaastakar/MotoPulse-360-Sales-Inventory-Profitability-Analytics" target="_blank" class="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-xl bg-theme-elevated hover:opacity-80 border border-theme text-theme-main transition">
             <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
             <span class="hidden sm:inline">GitHub</span>
           </a>
@@ -131,222 +154,226 @@
     </div>
 
     <!-- Mobile Navigation Tab Bar -->
-    <div class="lg:hidden flex border-t border-slate-800 bg-slate-900/95 px-4 py-2 gap-2 overflow-x-auto text-xs">
-      <button onclick="switchTab('overview')" class="tab-btn px-3 py-1 rounded-lg bg-brand-600 text-white whitespace-nowrap">Overview</button>
-      <button onclick="switchTab('products')" class="tab-btn px-3 py-1 rounded-lg text-slate-400 whitespace-nowrap">Products & Margin</button>
-      <button onclick="switchTab('channels')" class="tab-btn px-3 py-1 rounded-lg text-slate-400 whitespace-nowrap">Channels & Resellers</button>
-      <button onclick="switchTab('inventory')" class="tab-btn px-3 py-1 rounded-lg text-slate-400 whitespace-nowrap">Supply Chain Alerts</button>
-      <button onclick="switchTab('explorer')" class="tab-btn px-3 py-1 rounded-lg text-slate-400 whitespace-nowrap">Data Explorer</button>
+    <div class="lg:hidden flex border-t border-theme bg-theme-card px-4 py-2 gap-2 overflow-x-auto text-xs">
+      <button onclick="switchTab('overview')" class="tab-btn px-3 py-1 rounded-lg btn-primary-theme whitespace-nowrap">Overview</button>
+      <button onclick="switchTab('products')" class="tab-btn px-3 py-1 rounded-lg text-theme-muted whitespace-nowrap">Products & Margin</button>
+      <button onclick="switchTab('channels')" class="tab-btn px-3 py-1 rounded-lg text-theme-muted whitespace-nowrap">Channels & Resellers</button>
+      <button onclick="switchTab('inventory')" class="tab-btn px-3 py-1 rounded-lg text-theme-muted whitespace-nowrap">Supply Chain Alerts</button>
+      <button onclick="switchTab('explorer')" class="tab-btn px-3 py-1 rounded-lg text-theme-muted whitespace-nowrap">Data Explorer</button>
     </div>
   </header>
 
   <!-- ============================================================== -->
-  <!-- 2. POWER BI SLICER PANEL (Top Sticky Filter Bar)               -->
+  <!-- 2. POWER BI DYNAMIC SLICERS BAR (Shared Filtering State)       -->
   <!-- ============================================================== -->
-  <section class="border-b border-slate-800/80 bg-slate-900/60 dark:bg-slate-900/60 py-3 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
+  <section class="border-b border-theme bg-theme-elevated py-3 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto space-y-2.5">
       
-      <!-- Slicers Group -->
-      <div class="flex flex-wrap items-center gap-2.5">
+      <!-- Slicers Row -->
+      <div class="flex flex-wrap items-center justify-between gap-3 text-xs">
         
-        <!-- Filter Label -->
-        <div class="flex items-center gap-1.5 text-slate-400 font-semibold uppercase tracking-wider text-[10px]">
-          <svg class="w-3.5 h-3.5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
-          Slicers:
+        <div class="flex flex-wrap items-center gap-2">
+          
+          <div class="flex items-center gap-1 text-theme-muted font-bold uppercase tracking-wider text-[10px] mr-1">
+            <svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+            Slicers:
+          </div>
+
+          <!-- Channel Slicer -->
+          <div class="flex items-center bg-theme-card rounded-lg border border-theme px-2 py-1">
+            <span class="text-theme-muted mr-1.5 text-[11px]">Channel:</span>
+            <select id="slicer-channel" onchange="setSlicer('channel', this.value)" class="bg-transparent border-none text-theme-main text-xs focus:ring-0 outline-none cursor-pointer font-medium">
+              <option value="all">Consolidated (All)</option>
+              <option value="Retail">Direct Retail (B2C)</option>
+              <option value="Wholesale">Commercial Wholesale (B2B)</option>
+            </select>
+          </div>
+
+          <!-- Year Slicer (Multi-select or Single) -->
+          <div class="flex items-center bg-theme-card rounded-lg border border-theme px-2 py-1">
+            <span class="text-theme-muted mr-1.5 text-[11px]">Year:</span>
+            <select id="slicer-year" onchange="setSlicer('year', this.value)" class="bg-transparent border-none text-theme-main text-xs focus:ring-0 outline-none cursor-pointer font-medium">
+              <option value="all">All Years (2011-2014)</option>
+              <option value="2011">2011 ($9.94M)</option>
+              <option value="2012">2012 ($22.42M)</option>
+              <option value="2013">2013 ($43.68M)</option>
+              <option value="2014">2014 ($33.77M)</option>
+            </select>
+          </div>
+
+          <!-- Category Slicer -->
+          <div class="flex items-center bg-theme-card rounded-lg border border-theme px-2 py-1">
+            <span class="text-theme-muted mr-1.5 text-[11px]">Category:</span>
+            <select id="slicer-category" onchange="setSlicer('category', this.value)" class="bg-transparent border-none text-theme-main text-xs focus:ring-0 outline-none cursor-pointer font-medium">
+              <option value="all">All Categories</option>
+              <option value="Bikes">Bikes ($94.6M)</option>
+              <option value="Components">Components ($11.8M)</option>
+              <option value="Clothing">Clothing ($2.1M)</option>
+              <option value="Accessories">Accessories ($1.3M)</option>
+            </select>
+          </div>
+
+          <!-- Region / Territory Slicer -->
+          <div class="flex items-center bg-theme-card rounded-lg border border-theme px-2 py-1">
+            <span class="text-theme-muted mr-1.5 text-[11px]">Region:</span>
+            <select id="slicer-region" onchange="setSlicer('region', this.value)" class="bg-transparent border-none text-theme-main text-xs focus:ring-0 outline-none cursor-pointer font-medium">
+              <option value="all">All Regions</option>
+              <option value="Southwest">Southwest US ($24.2M)</option>
+              <option value="Canada">Canada ($16.4M)</option>
+              <option value="Northwest">Northwest US ($16.1M)</option>
+              <option value="Australia">Australia ($10.7M)</option>
+              <option value="Central">Central US ($7.9M)</option>
+              <option value="Southeast">Southeast US ($7.9M)</option>
+              <option value="United Kingdom">United Kingdom ($7.7M)</option>
+              <option value="France">France ($7.3M)</option>
+              <option value="Northeast">Northeast US ($6.9M)</option>
+              <option value="Germany">Germany ($4.9M)</option>
+            </select>
+          </div>
+
+          <!-- Clear All Filters Button -->
+          <button onclick="clearAllFilters()" id="btn-clear-filters" class="px-2.5 py-1 rounded-lg bg-theme-card hover:bg-rose-500/20 text-rose-400 border border-theme text-xs flex items-center gap-1 transition font-medium">
+            ✕ Clear All Filters
+          </button>
+
         </div>
 
-        <!-- 1. Channel Filter -->
-        <div class="flex items-center bg-slate-800/90 rounded-lg border border-slate-700/60 px-2 py-1">
-          <span class="text-slate-400 mr-1.5 text-[11px]">Channel:</span>
-          <select id="filter-channel" onchange="applyFilters()" class="bg-transparent border-none text-slate-200 text-xs focus:ring-0 outline-none cursor-pointer font-medium">
-            <option value="all" class="bg-slate-900 text-white">Consolidated (All)</option>
-            <option value="Retail" class="bg-slate-900 text-white">Direct Retail (B2C)</option>
-            <option value="Wholesale" class="bg-slate-900 text-white">Commercial Wholesale (B2B)</option>
-          </select>
+        <!-- Filter Count Pill -->
+        <div class="flex items-center gap-3">
+          <span id="active-filter-summary-pill" class="text-xs px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-medium">
+            Showing 100% of Portfolio
+          </span>
         </div>
-
-        <!-- 2. Year Filter -->
-        <div class="flex items-center bg-slate-800/90 rounded-lg border border-slate-700/60 px-2 py-1">
-          <span class="text-slate-400 mr-1.5 text-[11px]">Year:</span>
-          <select id="filter-year" onchange="applyFilters()" class="bg-transparent border-none text-slate-200 text-xs focus:ring-0 outline-none cursor-pointer font-medium">
-            <option value="all" class="bg-slate-900 text-white">All Years (2011-2014)</option>
-            <option value="2011" class="bg-slate-900 text-white">2011</option>
-            <option value="2012" class="bg-slate-900 text-white">2012</option>
-            <option value="2013" class="bg-slate-900 text-white">2013</option>
-            <option value="2014" class="bg-slate-900 text-white">2014</option>
-          </select>
-        </div>
-
-        <!-- 3. Category Filter -->
-        <div class="flex items-center bg-slate-800/90 rounded-lg border border-slate-700/60 px-2 py-1">
-          <span class="text-slate-400 mr-1.5 text-[11px]">Category:</span>
-          <select id="filter-category" onchange="applyFilters()" class="bg-transparent border-none text-slate-200 text-xs focus:ring-0 outline-none cursor-pointer font-medium">
-            <option value="all" class="bg-slate-900 text-white">All Categories</option>
-            <option value="Bikes" class="bg-slate-900 text-white">Bikes ($94.6M)</option>
-            <option value="Components" class="bg-slate-900 text-white">Components ($11.8M)</option>
-            <option value="Clothing" class="bg-slate-900 text-white">Clothing ($2.1M)</option>
-            <option value="Accessories" class="bg-slate-900 text-white">Accessories ($1.3M)</option>
-          </select>
-        </div>
-
-        <!-- 4. Territory Filter -->
-        <div class="flex items-center bg-slate-800/90 rounded-lg border border-slate-700/60 px-2 py-1">
-          <span class="text-slate-400 mr-1.5 text-[11px]">Region:</span>
-          <select id="filter-region" onchange="applyFilters()" class="bg-transparent border-none text-slate-200 text-xs focus:ring-0 outline-none cursor-pointer font-medium">
-            <option value="all" class="bg-slate-900 text-white">All Regions</option>
-            <option value="Southwest" class="bg-slate-900 text-white">Southwest US ($24.2M)</option>
-            <option value="Canada" class="bg-slate-900 text-white">Canada ($16.4M)</option>
-            <option value="Northwest" class="bg-slate-900 text-white">Northwest US ($16.1M)</option>
-            <option value="Australia" class="bg-slate-900 text-white">Australia ($10.7M)</option>
-            <option value="Central" class="bg-slate-900 text-white">Central US ($7.9M)</option>
-            <option value="Southeast" class="bg-slate-900 text-white">Southeast US ($7.9M)</option>
-            <option value="United Kingdom" class="bg-slate-900 text-white">United Kingdom ($7.7M)</option>
-            <option value="France" class="bg-slate-900 text-white">France ($7.3M)</option>
-            <option value="Northeast" class="bg-slate-900 text-white">Northeast US ($6.9M)</option>
-            <option value="Germany" class="bg-slate-900 text-white">Germany ($4.9M)</option>
-          </select>
-        </div>
-
-        <!-- Reset Button -->
-        <button onclick="resetFilters()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white border border-slate-700 text-xs flex items-center gap-1 transition">
-          ↺ Reset Slicers
-        </button>
 
       </div>
 
-      <!-- Active Filter Summary & Live Counter -->
-      <div class="flex items-center gap-3">
-        <span id="active-filter-badge" class="px-2.5 py-0.5 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20 text-[11px] font-medium">
-          Showing 100% of Portfolio
-        </span>
-        <span class="text-slate-500 text-[11px] hidden md:inline">
-          Last Synchronized: <span id="last-sync-time" class="text-slate-400 font-mono">18:00 Local</span>
-        </span>
+      <!-- Active Interactive Filter Pills Container (Click ✕ to remove) -->
+      <div id="active-pills-bar" class="flex flex-wrap items-center gap-2 pt-1 text-xs">
+        <!-- Rendered dynamically -->
       </div>
 
     </div>
   </section>
 
   <!-- ============================================================== -->
-  <!-- 3. TOP NOTIFICATION BANNER                                     -->
+  <!-- 3. TOP DISCLOSURE BANNER                                       -->
   <!-- ============================================================== -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-    <div class="glass-card rounded-xl p-3.5 flex flex-wrap items-center justify-between gap-3 border-l-4 border-l-brand-500 bg-slate-900/60 text-xs">
-      <div class="flex items-center gap-3">
-        <span class="text-brand-400 text-lg">💡</span>
-        <div class="text-slate-300">
-          <strong class="text-white">Dataset Ground Truth:</strong> 121,253 sales lines · 31,455 purchase orders across Microsoft AdventureWorksDW benchmark.
-          Reconciled across Python, SQLite, and Power BI with <span class="text-emerald-400 font-bold">$0.00 penny drift</span>.
+    <div class="glass-card rounded-xl p-3 flex flex-wrap items-center justify-between gap-3 border-l-4 border-l-blue-500 text-xs">
+      <div class="flex items-center gap-2.5">
+        <span class="text-blue-400 text-base">💡</span>
+        <div class="text-theme-muted">
+          <strong class="text-theme-main">Power BI Cross-Filtering Active:</strong> Click any chart bar, donut segment, or slicer to filter all visuals across the entire dashboard in real-time.
         </div>
       </div>
-      <div class="flex items-center gap-2">
-        <span class="text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">18/18 Integrity Audits Passed</span>
+      <div class="text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 text-[11px]">
+        Reconciled to $0.00 Penny Parity
       </div>
     </div>
   </div>
 
   <!-- ============================================================== -->
-  <!-- 4. MASTER KPI CARDS GRID (Dynamically Filtered)                -->
+  <!-- 4. MASTER RECALCULATING KPI CARDS GRID (8 Cards)               -->
   <!-- ============================================================== -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5">
       
       <!-- 1. Net Sales Revenue -->
       <div class="glass-card rounded-2xl p-4 flex flex-col justify-between">
-        <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+        <div class="flex items-center justify-between text-theme-muted text-xs font-medium">
           <span>Net Sales Revenue</span>
-          <span id="kpi-sales-badge" class="px-2 py-0.5 rounded bg-brand-500/15 text-brand-400 text-[11px] font-semibold">100% Share</span>
+          <span id="kpi-sales-badge" class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 text-[11px] font-semibold">100% Volume</span>
         </div>
         <div class="mt-2">
-          <div id="kpi-sales" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">$109.81M</div>
+          <div id="kpi-sales" class="text-2xl sm:text-3xl font-extrabold text-theme-main tracking-tight">$109.81M</div>
           <div id="kpi-sales-sub" class="text-xs text-emerald-400 mt-1 flex items-center gap-1 font-medium">
             <span>↑ 100% Reconciled</span>
-            <span class="text-slate-500">· 121,253 Lines</span>
+            <span class="text-theme-muted">· 121,253 Lines</span>
           </div>
         </div>
       </div>
 
       <!-- 2. Gross Profit -->
       <div class="glass-card rounded-2xl p-4 flex flex-col justify-between">
-        <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+        <div class="flex items-center justify-between text-theme-muted text-xs font-medium">
           <span>Gross Profit (Std Cost)</span>
           <span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 text-[11px] font-semibold">Managerial</span>
         </div>
         <div class="mt-2">
           <div id="kpi-profit" class="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight">$12.55M</div>
-          <div id="kpi-profit-sub" class="text-xs text-slate-400 mt-1">Standard cost basis ($0.00 drift)</div>
+          <div id="kpi-profit-sub" class="text-xs text-theme-muted mt-1">Standard cost basis ($0.00 drift)</div>
         </div>
       </div>
 
       <!-- 3. Gross Margin % -->
       <div class="glass-card rounded-2xl p-4 flex flex-col justify-between">
-        <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+        <div class="flex items-center justify-between text-theme-muted text-xs font-medium">
           <span>Gross Margin %</span>
           <span id="kpi-margin-badge" class="px-2 py-0.5 rounded bg-indigo-500/15 text-indigo-400 text-[11px] font-semibold">11.43%</span>
         </div>
         <div class="mt-2">
-          <div id="kpi-margin" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">11.43%</div>
-          <div id="kpi-margin-sub" class="text-xs text-slate-400 mt-1">Retail 41.15% vs Wholesale 0.58%</div>
+          <div id="kpi-margin" class="text-2xl sm:text-3xl font-extrabold text-theme-main tracking-tight">11.43%</div>
+          <div id="kpi-margin-sub" class="text-xs text-theme-muted mt-1">Retail 41.15% vs Wholesale 0.58%</div>
         </div>
       </div>
 
       <!-- 4. Distinct Purchase Orders -->
       <div class="glass-card rounded-2xl p-4 flex flex-col justify-between">
-        <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+        <div class="flex items-center justify-between text-theme-muted text-xs font-medium">
           <span>Distinct Orders</span>
           <span class="px-2 py-0.5 rounded bg-amber-500/15 text-amber-400 text-[11px] font-semibold">Volume</span>
         </div>
         <div class="mt-2">
-          <div id="kpi-orders" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">31,455</div>
-          <div id="kpi-orders-sub" class="text-xs text-slate-400 mt-1">Avg Basket: 3.86 lines / order</div>
+          <div id="kpi-orders" class="text-2xl sm:text-3xl font-extrabold text-theme-main tracking-tight">31,455</div>
+          <div id="kpi-orders-sub" class="text-xs text-theme-muted mt-1">Avg Basket: 3.86 lines / order</div>
         </div>
       </div>
 
-      <!-- 5. Physical Units Sold -->
+      <!-- 5. Physical Units Delivered -->
       <div class="glass-card rounded-2xl p-4 flex flex-col justify-between">
-        <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+        <div class="flex items-center justify-between text-theme-muted text-xs font-medium">
           <span>Delivered Physical Units</span>
           <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 text-[11px] font-semibold">Production</span>
         </div>
         <div class="mt-2">
-          <div id="kpi-units" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">274,776</div>
-          <div id="kpi-units-sub" class="text-xs text-slate-400 mt-1">78.0% absorbed by Wholesale</div>
+          <div id="kpi-units" class="text-2xl sm:text-3xl font-extrabold text-theme-main tracking-tight">274,776</div>
+          <div id="kpi-units-sub" class="text-xs text-theme-muted mt-1">78.0% absorbed by Wholesale</div>
         </div>
       </div>
 
       <!-- 6. Average Order Value (AOV) -->
       <div class="glass-card rounded-2xl p-4 flex flex-col justify-between">
-        <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+        <div class="flex items-center justify-between text-theme-muted text-xs font-medium">
           <span>Average Order Value</span>
           <span class="px-2 py-0.5 rounded bg-purple-500/15 text-purple-400 text-[11px] font-semibold">Order Level</span>
         </div>
         <div class="mt-2">
-          <div id="kpi-aov" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">$3,491.00</div>
-          <div id="kpi-aov-sub" class="text-xs text-slate-400 mt-1">B2B $21,194 vs B2C $1,061</div>
+          <div id="kpi-aov" class="text-2xl sm:text-3xl font-extrabold text-theme-main tracking-tight">$3,491.00</div>
+          <div id="kpi-aov-sub" class="text-xs text-theme-muted mt-1">B2B $21,194 vs B2C $1,061</div>
         </div>
       </div>
 
       <!-- 7. Critical Stock Shortage SKUs -->
       <div class="glass-card rounded-2xl p-4 flex flex-col justify-between border-l-2 border-l-rose-500">
-        <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+        <div class="flex items-center justify-between text-theme-muted text-xs font-medium">
           <span>Supply Chain Alerts</span>
           <span class="px-2 py-0.5 rounded bg-rose-500/15 text-rose-400 text-[11px] font-semibold">Action Needed</span>
         </div>
         <div class="mt-2">
           <div id="kpi-deficit-skus" class="text-2xl sm:text-3xl font-extrabold text-rose-400 tracking-tight">84 SKUs</div>
-          <div id="kpi-deficit-sub" class="text-xs text-rose-300 mt-1">142,390 units below safety stock</div>
+          <div id="kpi-deficit-sub" class="text-xs text-rose-400/80 mt-1">142,390 units below safety buffer</div>
         </div>
       </div>
 
       <!-- 8. Volume Discount Concessions -->
       <div class="glass-card rounded-2xl p-4 flex flex-col justify-between border-l-2 border-l-amber-500">
-        <div class="flex items-center justify-between text-slate-400 text-xs font-medium">
+        <div class="flex items-center justify-between text-theme-muted text-xs font-medium">
           <span>Discounts Deducted</span>
           <span class="px-2 py-0.5 rounded bg-amber-500/15 text-amber-400 text-[11px] font-semibold">Margin Drain</span>
         </div>
         <div class="mt-2">
           <div id="kpi-discount" class="text-2xl sm:text-3xl font-extrabold text-amber-400 tracking-tight">$527,508</div>
-          <div id="kpi-discount-sub" class="text-xs text-slate-400 mt-1">Across 3,282 wholesale lines</div>
+          <div id="kpi-discount-sub" class="text-xs text-theme-muted mt-1">Across 3,282 wholesale lines</div>
         </div>
       </div>
 
@@ -354,7 +381,7 @@
   </section>
 
   <!-- ============================================================== -->
-  <!-- 5. TABBED CONTENT CONTAINER                                    -->
+  <!-- 5. TABBED DASHBOARD VIEWS                                      -->
   <!-- ============================================================== -->
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
@@ -366,15 +393,15 @@
       <!-- Charts Row 1: Monthly Trend & Channel Split -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-        <!-- Monthly Velocity Trend Chart (Chart.js) -->
+        <!-- Monthly Velocity Trend Chart -->
         <div class="glass-card rounded-2xl p-5 lg:col-span-2 flex flex-col justify-between">
-          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
             <div>
-              <h2 class="text-sm font-bold text-white tracking-tight">Monthly Net Sales & Gross Profit Velocity</h2>
-              <p class="text-xs text-slate-400">Multi-year seasonality trend with retail margin cushioning wholesale volatility</p>
+              <h2 class="text-sm font-bold text-theme-main tracking-tight">Monthly Net Sales & Gross Profit Velocity</h2>
+              <p class="text-xs text-theme-muted">Multi-year velocity curve (Hover for exact figures; updates with slicers)</p>
             </div>
             <div class="flex items-center gap-3 text-xs">
-              <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-brand-500 inline-block"></span> Net Sales</span>
+              <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-500 inline-block"></span> Net Sales</span>
               <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-400 inline-block"></span> Gross Profit</span>
             </div>
           </div>
@@ -383,7 +410,7 @@
             <canvas id="chart-monthly-trend"></canvas>
           </div>
           
-          <div class="flex justify-between text-[11px] text-slate-400 mt-2 px-1 border-t border-slate-800 pt-2 font-mono">
+          <div class="flex justify-between text-[11px] text-theme-muted mt-2 px-1 border-t border-theme pt-2 font-mono">
             <span>2011 Q1 ($1.9M)</span>
             <span>2012 Q2 ($3.4M)</span>
             <span>2013 Q2 ($6.2M)</span>
@@ -392,25 +419,28 @@
           </div>
         </div>
 
-        <!-- Commercial Channel Share Donut -->
+        <!-- Commercial Channel Share Donut (Click to filter) -->
         <div class="glass-card rounded-2xl p-5 flex flex-col justify-between">
           <div>
-            <h2 class="text-sm font-bold text-white tracking-tight">Commercial Channel Share</h2>
-            <p class="text-xs text-slate-400">Wholesale Volume vs Retail Profit Disparity</p>
+            <div class="flex items-center justify-between">
+              <h2 class="text-sm font-bold text-theme-main tracking-tight">Commercial Channel Share</h2>
+              <span class="text-[10px] text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded font-medium">Click slice to filter</span>
+            </div>
+            <p class="text-xs text-theme-muted">Wholesale Volume vs Retail Profit Disparity</p>
           </div>
 
           <div class="w-full h-52 relative my-2 flex items-center justify-center">
             <canvas id="chart-channel-share"></canvas>
           </div>
 
-          <div class="space-y-2 text-xs border-t border-slate-800 pt-3">
-            <div class="flex items-center justify-between">
+          <div class="space-y-2 text-xs border-t border-theme pt-3">
+            <div class="flex items-center justify-between cursor-pointer hover:opacity-80 transition" onclick="toggleChannelFilter('Wholesale')">
               <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> Commercial Wholesale (B2B)</span>
-              <span class="font-semibold text-white">$80.45M (73.3%)</span>
+              <span class="font-semibold text-theme-main" id="legend-wholesale-val">$80.45M (73.3%)</span>
             </div>
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between cursor-pointer hover:opacity-80 transition" onclick="toggleChannelFilter('Retail')">
               <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Direct Retail (B2C)</span>
-              <span class="font-semibold text-white">$29.36M (26.7%)</span>
+              <span class="font-semibold text-theme-main" id="legend-retail-val">$29.36M (26.7%)</span>
             </div>
           </div>
         </div>
@@ -420,13 +450,14 @@
       <!-- Charts Row 2: Category Breakdown & Territory Distribution -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-        <!-- Category Sales & Margins (Chart.js Horizontal Bar) -->
+        <!-- Category Sales & Margins (Click to filter) -->
         <div class="glass-card rounded-2xl p-5">
           <div class="flex items-center justify-between mb-4">
             <div>
-              <h2 class="text-sm font-bold text-white tracking-tight">Sales Revenue & Margin by Category</h2>
-              <p class="text-xs text-slate-400">Bikes represent 86% of revenue; Accessories yield highest margin (49.9%)</p>
+              <h2 class="text-sm font-bold text-theme-main tracking-tight">Category Sales & Profit Breakdown</h2>
+              <p class="text-xs text-theme-muted">Click any bar to cross-filter dashboard by Category</p>
             </div>
+            <span class="text-[10px] text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded font-medium">Interactive</span>
           </div>
 
           <div class="w-full h-64 relative">
@@ -434,13 +465,14 @@
           </div>
         </div>
 
-        <!-- Territory Performance Bar Chart -->
+        <!-- Territory Performance Bar Chart (Click to filter) -->
         <div class="glass-card rounded-2xl p-5">
           <div class="flex items-center justify-between mb-4">
             <div>
-              <h2 class="text-sm font-bold text-white tracking-tight">Regional Sales Territory Performance</h2>
-              <p class="text-xs text-slate-400">Top international sales territories ranked by revenue contribution</p>
+              <h2 class="text-sm font-bold text-theme-main tracking-tight">Regional Sales Territory Performance</h2>
+              <p class="text-xs text-theme-muted">Click any region bar to cross-filter dashboard by Territory</p>
             </div>
+            <span class="text-[10px] text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded font-medium">Interactive</span>
           </div>
 
           <div class="w-full h-64 relative">
@@ -451,20 +483,20 @@
       </div>
 
       <!-- Executive Findings & Roadmap Grid -->
-      <div class="glass-card rounded-2xl p-6 border-l-4 border-l-brand-500">
-        <h3 class="text-sm font-bold text-white tracking-tight uppercase tracking-wider text-brand-400">C-Suite Executive Findings & Strategic Roadmap</h3>
+      <div class="glass-card rounded-2xl p-6 border-l-4 border-l-blue-500">
+        <h3 class="text-sm font-bold text-theme-main tracking-tight uppercase tracking-wider text-blue-400">C-Suite Executive Findings & Strategic Roadmap</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3 text-xs">
-          <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700/50">
-            <div class="font-bold text-emerald-400 text-sm">1. Channel Profitability Divergence</div>
-            <p class="text-slate-300 mt-1.5">Direct Retail delivers <strong>96.25% of corporate gross profit</strong> on only 26.7% of sales. Wholesale provides plant overhead absorption (78% of units) but requires contractual pricing floors.</p>
+          <div class="p-4 rounded-xl bg-theme-elevated border border-theme">
+            <div class="font-bold text-emerald-400 text-sm">1. Channel Margin Divergence</div>
+            <p class="text-theme-muted mt-1.5">Direct Retail delivers <strong>96.25% of corporate gross profit</strong> on only 26.7% of sales. Wholesale provides production absorption (78% of units) but requires contractual pricing floors.</p>
           </div>
-          <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700/50">
-            <div class="font-bold text-rose-400 text-sm">2. Wholesale Bike Pricing Leakage</div>
-            <p class="text-slate-300 mt-1.5">Wholesale Road Bikes lost <strong>-$1.17M</strong> and Touring Bikes lost <strong>-$1.24M</strong> due to dealer prices set below standard cost. A <strong>+5% price floor</strong> stops $2.4M in negative margins.</p>
+          <div class="p-4 rounded-xl bg-theme-elevated border border-theme">
+            <div class="font-bold text-rose-400 text-sm">2. Wholesale Price Leakage</div>
+            <p class="text-theme-muted mt-1.5">Wholesale Road Bikes lost <strong>-$1.17M</strong> and Touring Bikes lost <strong>-$1.24M</strong> due to dealer catalog prices set below standard manufacturing costs.</p>
           </div>
-          <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700/50">
-            <div class="font-bold text-amber-400 text-sm">3. Supply Chain Buffer Recovery</div>
-            <p class="text-slate-300 mt-1.5">84 SKUs operate below mandated safety stock levels. Immediate procurement authorization for <strong>142,390 units</strong> is required ahead of seasonal summer peaks.</p>
+          <div class="p-4 rounded-xl bg-theme-elevated border border-theme">
+            <div class="font-bold text-amber-400 text-sm">3. Buffer Stock Depletion</div>
+            <p class="text-theme-muted mt-1.5">84 SKUs operate below mandated safety stock levels. Immediate procurement authorization for <strong>142,390 units</strong> is required ahead of seasonal summer peaks.</p>
           </div>
         </div>
       </div>
@@ -477,12 +509,12 @@
     <div id="view-products" class="hidden space-y-6">
 
       <!-- Critical Margin Alert Card -->
-      <div class="glass-card rounded-2xl p-5 border border-rose-500/30 bg-gradient-to-r from-slate-900 to-rose-950/20">
+      <div class="glass-card rounded-2xl p-5 border border-rose-500/30 bg-gradient-to-r from-theme-card to-rose-950/20">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <span class="text-xs uppercase tracking-wider font-bold text-rose-400">Root-Cause Analysis</span>
-            <h2 class="text-base font-bold text-white mt-1">Negative Margin Leakage in Wholesale Road & Touring Bikes</h2>
-            <p class="text-xs text-slate-300 mt-1 max-w-3xl">
+            <h2 class="text-base font-bold text-theme-main mt-1">Negative Margin Leakage in Wholesale Road & Touring Bikes</h2>
+            <p class="text-xs text-theme-muted mt-1 max-w-3xl">
               Empirical SQL audits confirmed that wholesale dealer catalog prices on finished Touring and Road bikes were established below standard manufacturing costs.
               When combined with promotional volume discounts (up to 20%), realized line margins plunged down to <strong>-247%</strong>, generating over <strong>-$2.4M</strong> in aggregate margin drainage.
             </p>
@@ -500,8 +532,8 @@
         <div class="glass-card rounded-2xl p-5">
           <div class="flex items-center justify-between mb-4">
             <div>
-              <h2 class="text-sm font-bold text-white tracking-tight">Top 10 Revenue Generating SKUs (SCD-Safe)</h2>
-              <p class="text-xs text-slate-400">Aggregated across historical SCD Type 2 product keys</p>
+              <h2 class="text-sm font-bold text-theme-main tracking-tight">Top 10 Revenue Generating SKUs (SCD-Safe)</h2>
+              <p class="text-xs text-theme-muted">Aggregated across historical SCD Type 2 product keys</p>
             </div>
           </div>
           <div class="w-full h-64 relative">
@@ -513,8 +545,8 @@
         <div class="glass-card rounded-2xl p-5">
           <div class="flex items-center justify-between mb-4">
             <div>
-              <h2 class="text-sm font-bold text-white tracking-tight">Pareto ABC Revenue Concentration</h2>
-              <p class="text-xs text-slate-400">63 Class A products drive 79.9% of company revenue</p>
+              <h2 class="text-sm font-bold text-theme-main tracking-tight">Pareto ABC Revenue Concentration</h2>
+              <p class="text-xs text-theme-muted">63 Class A products drive 79.9% of company revenue</p>
             </div>
           </div>
           <div class="w-full h-64 relative flex items-center justify-center">
@@ -528,15 +560,15 @@
       <div class="glass-card rounded-2xl p-5">
         <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
           <div>
-            <h2 class="text-sm font-bold text-white tracking-tight">Subcategory Financial Performance Matrix</h2>
-            <p class="text-xs text-slate-400">Audited metrics across all 35 product subcategories</p>
+            <h2 class="text-sm font-bold text-theme-main tracking-tight">Subcategory Financial Performance Matrix</h2>
+            <p class="text-xs text-theme-muted">Click any subcategory row to filter the entire dashboard</p>
           </div>
-          <span class="text-xs text-slate-400">Sorted by Net Sales Revenue</span>
+          <span class="text-xs text-theme-muted">Showing filtered metrics</span>
         </div>
 
-        <div class="overflow-x-auto custom-scroll rounded-xl border border-slate-800">
+        <div class="overflow-x-auto custom-scroll rounded-xl border border-theme">
           <table class="w-full text-left text-xs border-collapse">
-            <thead class="bg-slate-800/80 text-slate-400 uppercase text-[10px] tracking-wider font-semibold">
+            <thead class="bg-theme-elevated text-theme-muted uppercase text-[10px] tracking-wider font-semibold">
               <tr>
                 <th class="py-2.5 px-3">Category</th>
                 <th class="py-2.5 px-3">Subcategory</th>
@@ -544,12 +576,11 @@
                 <th class="py-2.5 px-3 text-right">Net Sales Revenue</th>
                 <th class="py-2.5 px-3 text-right">Gross Profit</th>
                 <th class="py-2.5 px-3 text-right">Gross Margin %</th>
-                <th class="py-2.5 px-3 text-right">Revenue Share</th>
                 <th class="py-2.5 px-3 text-right">Health Status</th>
               </tr>
             </thead>
-            <tbody id="subcategory-table-body" class="divide-y divide-slate-800/60 font-mono">
-              <!-- Rendered dynamically by JS -->
+            <tbody id="subcategory-table-body" class="divide-y divide-theme font-mono">
+              <!-- Rendered dynamically -->
             </tbody>
           </table>
         </div>
@@ -568,8 +599,8 @@
         <div class="glass-card rounded-2xl p-5 lg:col-span-2">
           <div class="flex items-center justify-between mb-4">
             <div>
-              <h2 class="text-sm font-bold text-white tracking-tight">Volume Discount Depth vs Realized Gross Margin</h2>
-              <p class="text-xs text-slate-400">Notice margin collapsing from +3.06% down to -247% as discount rate increases</p>
+              <h2 class="text-sm font-bold text-theme-main tracking-tight">Volume Discount Depth vs Realized Gross Margin</h2>
+              <p class="text-xs text-theme-muted">Notice margin collapsing from +3.06% down to -247% as discount rate increases</p>
             </div>
           </div>
           <div class="w-full h-64 relative">
@@ -580,26 +611,26 @@
         <!-- Customer Deciles Spend Concentration -->
         <div class="glass-card rounded-2xl p-5 flex flex-col justify-between">
           <div>
-            <h2 class="text-sm font-bold text-white tracking-tight">Retail Customer Spend Deciles</h2>
-            <p class="text-xs text-slate-400">NTILE(10) Consumer Lifetime Value Breakdown</p>
+            <h2 class="text-sm font-bold text-theme-main tracking-tight">Retail Customer Spend Deciles</h2>
+            <p class="text-xs text-theme-muted">NTILE(10) Consumer Lifetime Value Breakdown</p>
           </div>
 
           <div class="w-full h-52 relative my-2 flex items-center justify-center">
             <canvas id="chart-customer-deciles"></canvas>
           </div>
 
-          <div class="text-xs text-slate-300 border-t border-slate-800 pt-3 space-y-1">
+          <div class="text-xs text-theme-muted border-t border-theme pt-3 space-y-1">
             <div class="flex justify-between">
-              <span class="text-brand-400 font-semibold">Decile 1 (Top 10%):</span>
-              <span class="font-bold text-white">$11.83M (40.3%)</span>
+              <span class="text-blue-400 font-semibold">Decile 1 (Top 10%):</span>
+              <span class="font-bold text-theme-main">$11.83M (40.3%)</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-400">Decile 2 (Next 10%):</span>
-              <span class="font-semibold text-white">$7.67M (26.1%)</span>
+              <span class="text-theme-muted">Decile 2 (Next 10%):</span>
+              <span class="font-semibold text-theme-main">$7.67M (26.1%)</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-500">Deciles 6-10 (Bottom 50%):</span>
-              <span class="font-semibold text-slate-400">$0.57M (1.9%)</span>
+              <span class="text-theme-muted">Deciles 6-10 (Bottom 50%):</span>
+              <span class="font-semibold text-theme-muted">$0.57M (1.9%)</span>
             </div>
           </div>
         </div>
@@ -610,14 +641,14 @@
       <div class="glass-card rounded-2xl p-5">
         <div class="flex items-center justify-between mb-4">
           <div>
-            <h2 class="text-sm font-bold text-white tracking-tight">Commercial Wholesale Partner Performance by Business Type</h2>
-            <p class="text-xs text-slate-400">Audited metrics from 701 active commercial reseller accounts</p>
+            <h2 class="text-sm font-bold text-theme-main tracking-tight">Commercial Wholesale Partner Performance by Business Type</h2>
+            <p class="text-xs text-theme-muted">Audited metrics from 701 active commercial reseller accounts</p>
           </div>
         </div>
 
-        <div class="overflow-x-auto rounded-xl border border-slate-800">
+        <div class="overflow-x-auto rounded-xl border border-theme">
           <table class="w-full text-left text-xs border-collapse">
-            <thead class="bg-slate-800/80 text-slate-400 uppercase text-[10px] tracking-wider font-semibold">
+            <thead class="bg-theme-elevated text-theme-muted uppercase text-[10px] tracking-wider font-semibold">
               <tr>
                 <th class="py-2.5 px-3">Partner Business Type</th>
                 <th class="py-2.5 px-3 text-right">Active Accounts</th>
@@ -629,8 +660,8 @@
                 <th class="py-2.5 px-3 text-right">Strategic Role</th>
               </tr>
             </thead>
-            <tbody id="reseller-table-body" class="divide-y divide-slate-800/60 font-mono">
-              <!-- Rendered dynamically by JS -->
+            <tbody id="reseller-table-body" class="divide-y divide-theme font-mono">
+              <!-- Rendered dynamically -->
             </tbody>
           </table>
         </div>
@@ -646,24 +677,24 @@
       <!-- Stock Health Cards -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="glass-card rounded-2xl p-4">
-          <span class="text-xs text-slate-400">Total Active SKUs</span>
-          <div class="text-2xl font-bold text-white mt-1">606 Products</div>
-          <span class="text-[11px] text-slate-500">100% catalog coverage</span>
+          <span class="text-xs text-theme-muted">Total Active SKUs</span>
+          <div class="text-2xl font-bold text-theme-main mt-1">606 Products</div>
+          <span class="text-[11px] text-theme-muted">100% catalog coverage</span>
         </div>
         <div class="glass-card rounded-2xl p-4 border border-rose-500/30">
           <span class="text-xs text-rose-400 font-semibold">Critical Shortage (< Safety Stock)</span>
           <div class="text-2xl font-bold text-rose-400 mt-1">84 SKUs</div>
-          <span class="text-[11px] text-rose-300">Stock deficit vs buffer</span>
+          <span class="text-[11px] text-rose-400/80">Stock deficit vs buffer</span>
         </div>
         <div class="glass-card rounded-2xl p-4 border border-amber-500/30">
           <span class="text-xs text-amber-400 font-semibold">Reorder Recommended</span>
           <div class="text-2xl font-bold text-amber-400 mt-1">112 SKUs</div>
-          <span class="text-[11px] text-amber-300">Below standard reorder point</span>
+          <span class="text-[11px] text-amber-400/80">Below standard reorder point</span>
         </div>
         <div class="glass-card rounded-2xl p-4 border border-emerald-500/30">
           <span class="text-xs text-emerald-400 font-semibold">Total Unit Deficit</span>
           <div class="text-2xl font-bold text-emerald-400 mt-1">142,390 Units</div>
-          <span class="text-[11px] text-slate-400">Restock procurement volume</span>
+          <span class="text-[11px] text-theme-muted">Restock procurement volume</span>
         </div>
       </div>
 
@@ -671,17 +702,17 @@
       <div class="glass-card rounded-2xl p-5">
         <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
           <div>
-            <h2 class="text-sm font-bold text-white tracking-tight">Priority Procurement Action Grid (Top Critical SKUs)</h2>
-            <p class="text-xs text-slate-400">Finished goods operating in severe deficit ranked by units required</p>
+            <h2 class="text-sm font-bold text-theme-main tracking-tight">Priority Procurement Action Grid (Top Critical SKUs)</h2>
+            <p class="text-xs text-theme-muted">Finished goods operating in severe deficit ranked by units required</p>
           </div>
           <span class="text-xs px-2.5 py-1 rounded bg-rose-500/15 text-rose-400 border border-rose-500/30 font-semibold">
             Urgent Factory Requisitions
           </span>
         </div>
 
-        <div class="overflow-x-auto custom-scroll rounded-xl border border-slate-800">
+        <div class="overflow-x-auto custom-scroll rounded-xl border border-theme">
           <table class="w-full text-left text-xs border-collapse font-mono">
-            <thead class="bg-slate-800/80 text-slate-400 uppercase text-[10px] tracking-wider font-sans font-semibold">
+            <thead class="bg-theme-elevated text-theme-muted uppercase text-[10px] tracking-wider font-sans font-semibold">
               <tr>
                 <th class="py-2.5 px-3">Product Name</th>
                 <th class="py-2.5 px-3 text-right">Units On Hand</th>
@@ -693,8 +724,8 @@
                 <th class="py-2.5 px-3 text-right font-sans">Action Trigger</th>
               </tr>
             </thead>
-            <tbody id="inventory-table-body" class="divide-y divide-slate-800/60">
-              <!-- Rendered dynamically by JS -->
+            <tbody id="inventory-table-body" class="divide-y divide-theme">
+              <!-- Rendered dynamically -->
             </tbody>
           </table>
         </div>
@@ -707,20 +738,20 @@
     <!-- ============================================================== -->
     <div id="view-explorer" class="hidden space-y-6">
 
-      <!-- Table Control Bar (Search, Columns, Export, Pagination) -->
+      <!-- Table Control Bar -->
       <div class="glass-card rounded-2xl p-4 space-y-3">
         <div class="flex flex-wrap items-center justify-between gap-3">
           
           <!-- Search Input -->
           <div class="flex-1 min-w-[240px] max-w-md relative">
-            <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-            <input type="text" id="table-search-input" oninput="handleTableSearch(this.value)" placeholder="Search order #, product name, category, region..." class="w-full bg-slate-800/90 border border-slate-700/60 rounded-xl pl-9 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-brand-500">
+            <svg class="w-4 h-4 text-theme-muted absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" id="table-search-input" oninput="handleTableSearch(this.value)" placeholder="Search order #, product name, category, region..." class="w-full bg-theme-elevated border border-theme rounded-xl pl-9 pr-3 py-1.5 text-xs text-theme-main placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-500">
           </div>
 
           <!-- Controls: Per Page, Export CSV -->
           <div class="flex items-center gap-2">
-            <span class="text-xs text-slate-400">Rows:</span>
-            <select id="table-per-page" onchange="changePageSize(this.value)" class="bg-slate-800/90 border border-slate-700/60 rounded-lg text-slate-200 text-xs py-1 px-2 focus:outline-none">
+            <span class="text-xs text-theme-muted">Rows:</span>
+            <select id="table-per-page" onchange="changePageSize(this.value)" class="bg-theme-elevated border border-theme rounded-lg text-theme-main text-xs py-1 px-2 focus:outline-none">
               <option value="10">10</option>
               <option value="25" selected>25</option>
               <option value="50">50</option>
@@ -728,7 +759,7 @@
             </select>
 
             <!-- Export Filtered CSV Button -->
-            <button onclick="exportCurrentTableToCSV()" class="px-3 py-1.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-xs flex items-center gap-1.5 transition shadow">
+            <button onclick="exportCurrentTableToCSV()" class="px-3 py-1.5 rounded-xl btn-primary-theme font-medium text-xs flex items-center gap-1.5 transition shadow">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
               Export CSV
             </button>
@@ -737,8 +768,8 @@
         </div>
 
         <!-- Column Visibility Toggles -->
-        <div class="flex flex-wrap items-center gap-3 text-[11px] text-slate-400 pt-1 border-t border-slate-800">
-          <span class="font-semibold text-slate-300">Toggle Columns:</span>
+        <div class="flex flex-wrap items-center gap-3 text-[11px] text-theme-muted pt-1 border-t border-theme">
+          <span class="font-semibold text-theme-main">Toggle Columns:</span>
           <label class="flex items-center gap-1 cursor-pointer"><input type="checkbox" checked onchange="toggleTableCol('col-date')"> Date</label>
           <label class="flex items-center gap-1 cursor-pointer"><input type="checkbox" checked onchange="toggleTableCol('col-order')"> Order #</label>
           <label class="flex items-center gap-1 cursor-pointer"><input type="checkbox" checked onchange="toggleTableCol('col-channel')"> Channel</label>
@@ -756,7 +787,7 @@
       <div class="glass-card rounded-2xl overflow-hidden">
         <div class="overflow-x-auto custom-scroll">
           <table class="w-full text-left text-xs border-collapse">
-            <thead class="bg-slate-800/90 text-slate-300 uppercase text-[10px] tracking-wider font-semibold cursor-pointer select-none">
+            <thead class="bg-theme-elevated text-theme-muted uppercase text-[10px] tracking-wider font-semibold cursor-pointer select-none">
               <tr>
                 <th onclick="sortTable('date')" class="py-3 px-3 col-date">Date <span id="sort-icon-date">↕</span></th>
                 <th onclick="sortTable('orderNumber')" class="py-3 px-3 col-order">Order # <span id="sort-icon-orderNumber">↕</span></th>
@@ -772,23 +803,23 @@
                 <th class="py-3 px-3 text-center">Inspect</th>
               </tr>
             </thead>
-            <tbody id="transaction-table-body" class="divide-y divide-slate-800/60 font-mono">
-              <!-- Rendered dynamically by JS -->
+            <tbody id="transaction-table-body" class="divide-y divide-theme font-mono">
+              <!-- Rendered dynamically -->
             </tbody>
           </table>
         </div>
 
         <!-- Pagination Controls -->
-        <div class="p-3 bg-slate-900/80 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
-          <div class="text-slate-400">
-            Showing <span id="table-page-range" class="font-semibold text-white">1 - 25</span> of <span id="table-total-count" class="font-semibold text-white">300</span> records
+        <div class="p-3 bg-theme-elevated border-t border-theme flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div class="text-theme-muted">
+            Showing <span id="table-page-range" class="font-semibold text-theme-main">1 - 25</span> of <span id="table-total-count" class="font-semibold text-theme-main">300</span> records
           </div>
           <div class="flex items-center gap-1.5">
-            <button onclick="gotoFirstPage()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 disabled:opacity-40" id="btn-first">« First</button>
-            <button onclick="changePage(-1)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 disabled:opacity-40" id="btn-prev">‹ Prev</button>
-            <span class="px-3 py-1 font-semibold text-slate-300">Page <span id="table-current-page">1</span> of <span id="table-max-page">12</span></span>
-            <button onclick="changePage(1)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 disabled:opacity-40" id="btn-next">Next ›</button>
-            <button onclick="gotoLastPage()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 disabled:opacity-40" id="btn-last">Last »</button>
+            <button onclick="gotoFirstPage()" class="px-2.5 py-1 rounded-lg bg-theme-card hover:bg-theme-elevated text-theme-main disabled:opacity-40" id="btn-first">« First</button>
+            <button onclick="changePage(-1)" class="px-2.5 py-1 rounded-lg bg-theme-card hover:bg-theme-elevated text-theme-main disabled:opacity-40" id="btn-prev">‹ Prev</button>
+            <span class="px-3 py-1 font-semibold text-theme-main">Page <span id="table-current-page">1</span> of <span id="table-max-page">12</span></span>
+            <button onclick="changePage(1)" class="px-2.5 py-1 rounded-lg bg-theme-card hover:bg-theme-elevated text-theme-main disabled:opacity-40" id="btn-next">Next ›</button>
+            <button onclick="gotoLastPage()" class="px-2.5 py-1 rounded-lg bg-theme-card hover:bg-theme-elevated text-theme-main disabled:opacity-40" id="btn-last">Last »</button>
           </div>
         </div>
 
@@ -801,22 +832,22 @@
   <!-- ============================================================== -->
   <!-- 6. RECORD INSPECTION MODAL (Drill-Down Drawer)                 -->
   <!-- ============================================================== -->
-  <div id="record-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-    <div class="glass-card rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-700 space-y-4">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+  <div id="record-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div class="glass-card rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-theme space-y-4">
+      <div class="flex items-center justify-between border-b border-theme pb-3">
         <div class="flex items-center gap-2">
-          <span class="w-3 h-3 rounded-full bg-brand-500"></span>
-          <h3 class="text-sm font-bold text-white tracking-tight" id="modal-order-title">Order SO43697 #1</h3>
+          <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+          <h3 class="text-sm font-bold text-theme-main tracking-tight" id="modal-order-title">Order Inspection</h3>
         </div>
-        <button onclick="closeModal()" class="text-slate-400 hover:text-white text-lg font-bold">✕</button>
+        <button onclick="closeModal()" class="text-theme-muted hover:text-theme-main text-lg font-bold">✕</button>
       </div>
 
       <div class="grid grid-cols-2 gap-3 text-xs" id="modal-content">
         <!-- Rendered dynamically -->
       </div>
 
-      <div class="pt-3 border-t border-slate-800 flex justify-end">
-        <button onclick="closeModal()" class="px-4 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold">
+      <div class="pt-3 border-t border-theme flex justify-end">
+        <button onclick="closeModal()" class="px-4 py-1.5 rounded-xl bg-theme-elevated hover:bg-theme-card text-theme-main text-xs font-semibold">
           Close Inspection
         </button>
       </div>
@@ -826,36 +857,241 @@
   <!-- ============================================================== -->
   <!-- 7. FOOTER                                                      -->
   <!-- ============================================================== -->
-  <footer class="border-t border-slate-800 bg-slate-900/60 py-4 text-xs text-slate-500 mt-auto">
+  <footer class="border-t border-theme bg-theme-card py-4 text-xs text-theme-muted mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
-      <div>MotoPulse 360 · Production Analytics Suite · MySQL 8 · Python 3.11 · Power BI Desktop · Zero Client Lag</div>
+      <div>MotoPulse 360 · Production Analytics Suite · MySQL 8 · Python 3.11 · Power BI Desktop · Sub-millisecond Cross-Filtering</div>
       <div class="flex items-center gap-4">
-        <span>Verified Ground Truth: $0.00 Variance</span>
-        <a href="https://github.com/nayanaastakar/MotoPulse-360-Sales-Inventory-Profitability-Analytics" target="_blank" class="hover:text-slate-300 transition underline">GitHub Repo</a>
+        <span>Verified Ground Truth: $0.00 Penny Parity</span>
+        <a href="https://github.com/nayanaastakar/MotoPulse-360-Sales-Inventory-Profitability-Analytics" target="_blank" class="hover:text-theme-main transition underline">GitHub Repo</a>
       </div>
     </div>
   </footer>
 
   <!-- ============================================================== -->
-  <!-- 8. CORE APPLICATION ENGINE JAVASCRIPT                          -->
+  <!-- 8. REACTIVE ARCHITECTURE ENGINE (Themes & Cross-Filtering)     -->
   <!-- ============================================================== -->
   <script>
-    // State variables
-    let currentTab = 'overview';
-    let currentChannel = 'all';
-    let currentYear = 'all';
-    let currentCategory = 'all';
-    let currentRegion = 'all';
+    // ==========================================
+    // A. THEME SYSTEM CONFIGURATION (6 Palettes)
+    // ==========================================
+    const THEMES = {
+      'modern-blue': {
+        name: 'Modern Blue',
+        primary: '#2563eb',
+        primaryHover: '#1d4ed8',
+        accent: '#38bdf8',
+        chartPrimary: '#0ea5e9',
+        chartSecondary: '#10b981',
+        chartAccent: '#6366f1',
+        dark: {
+          bgApp: '#080d1a',
+          bgCard: 'rgba(15, 23, 42, 0.85)',
+          bgElevated: 'rgba(30, 41, 59, 0.7)',
+          border: 'rgba(255, 255, 255, 0.08)',
+          textMain: '#f8fafc',
+          textMuted: '#94a3b8'
+        },
+        light: {
+          bgApp: '#f0f5ff',
+          bgCard: 'rgba(255, 255, 255, 0.95)',
+          bgElevated: 'rgba(241, 245, 249, 0.9)',
+          border: 'rgba(203, 213, 225, 0.8)',
+          textMain: '#0f172a',
+          textMuted: '#475569'
+        }
+      },
+      'purple-gradient': {
+        name: 'Purple Gradient',
+        primary: '#8b5cf6',
+        primaryHover: '#7c3aed',
+        accent: '#c084fc',
+        chartPrimary: '#8b5cf6',
+        chartSecondary: '#ec4899',
+        chartAccent: '#a855f7',
+        dark: {
+          bgApp: '#0d071e',
+          bgCard: 'rgba(26, 14, 63, 0.85)',
+          bgElevated: 'rgba(46, 26, 95, 0.7)',
+          border: 'rgba(168, 85, 247, 0.2)',
+          textMain: '#faf5ff',
+          textMuted: '#c4b5fd'
+        },
+        light: {
+          bgApp: '#f8f5ff',
+          bgCard: 'rgba(255, 255, 255, 0.95)',
+          bgElevated: 'rgba(243, 238, 255, 0.9)',
+          border: 'rgba(221, 214, 254, 0.8)',
+          textMain: '#2e1065',
+          textMuted: '#6b21a8'
+        }
+      },
+      'emerald-green': {
+        name: 'Emerald Green',
+        primary: '#10b981',
+        primaryHover: '#059669',
+        accent: '#34d399',
+        chartPrimary: '#10b981',
+        chartSecondary: '#14b8a6',
+        chartAccent: '#06b6d4',
+        dark: {
+          bgApp: '#041710',
+          bgCard: 'rgba(6, 44, 32, 0.85)',
+          bgElevated: 'rgba(12, 68, 50, 0.7)',
+          border: 'rgba(16, 185, 129, 0.2)',
+          textMain: '#f0fdf4',
+          textMuted: '#86efac'
+        },
+        light: {
+          bgApp: '#f0fdf4',
+          bgCard: 'rgba(255, 255, 255, 0.95)',
+          bgElevated: 'rgba(236, 253, 245, 0.9)',
+          border: 'rgba(187, 247, 208, 0.8)',
+          textMain: '#064e3b',
+          textMuted: '#047857'
+        }
+      },
+      'professional-dark': {
+        name: 'Professional Dark',
+        primary: '#38bdf8',
+        primaryHover: '#0284c7',
+        accent: '#818cf8',
+        chartPrimary: '#38bdf8',
+        chartSecondary: '#a78bfa',
+        chartAccent: '#2dd4bf',
+        dark: {
+          bgApp: '#07090e',
+          bgCard: 'rgba(18, 22, 34, 0.88)',
+          bgElevated: 'rgba(30, 36, 54, 0.7)',
+          border: 'rgba(255, 255, 255, 0.08)',
+          textMain: '#f8fafc',
+          textMuted: '#94a3b8'
+        },
+        light: {
+          bgApp: '#f1f5f9',
+          bgCard: 'rgba(255, 255, 255, 0.95)',
+          bgElevated: 'rgba(241, 245, 249, 0.9)',
+          border: 'rgba(203, 213, 225, 0.8)',
+          textMain: '#0f172a',
+          textMuted: '#475569'
+        }
+      },
+      'minimal-light': {
+        name: 'Minimal Light',
+        primary: '#0f172a',
+        primaryHover: '#334155',
+        accent: '#0284c7',
+        chartPrimary: '#1e293b',
+        chartSecondary: '#0284c7',
+        chartAccent: '#475569',
+        dark: {
+          bgApp: '#0f172a',
+          bgCard: 'rgba(30, 41, 59, 0.85)',
+          bgElevated: 'rgba(51, 65, 85, 0.7)',
+          border: 'rgba(255, 255, 255, 0.1)',
+          textMain: '#f8fafc',
+          textMuted: '#cbd5e1'
+        },
+        light: {
+          bgApp: '#f8fafc',
+          bgCard: 'rgba(255, 255, 255, 0.95)',
+          bgElevated: 'rgba(241, 245, 249, 0.9)',
+          border: 'rgba(226, 232, 240, 0.9)',
+          textMain: '#0f172a',
+          textMuted: '#64748b'
+        }
+      },
+      'sunset': {
+        name: 'Sunset',
+        primary: '#f97316',
+        primaryHover: '#ea580c',
+        accent: '#fb923c',
+        chartPrimary: '#f97316',
+        chartSecondary: '#e11d48',
+        chartAccent: '#f59e0b',
+        dark: {
+          bgApp: '#18070d',
+          bgCard: 'rgba(44, 15, 28, 0.85)',
+          bgElevated: 'rgba(70, 24, 44, 0.7)',
+          border: 'rgba(249, 115, 22, 0.2)',
+          textMain: '#fff1f2',
+          textMuted: '#fca5a5'
+        },
+        light: {
+          bgApp: '#fff7ed',
+          bgCard: 'rgba(255, 255, 255, 0.95)',
+          bgElevated: 'rgba(255, 237, 213, 0.9)',
+          border: 'rgba(254, 215, 170, 0.8)',
+          textMain: '#431407',
+          textMuted: '#9a3412'
+        }
+      }
+    };
 
-    // Table state
-    let tableSearchQuery = '';
+    let activeTheme = localStorage.getItem('motopulse-theme') || 'modern-blue';
+    let isDarkMode = localStorage.getItem('motopulse-mode') !== 'light';
+
+    function applyThemeTokens() {
+      const themeConfig = THEMES[activeTheme] || THEMES['modern-blue'];
+      const modeConfig = isDarkMode ? themeConfig.dark : themeConfig.light;
+      const root = document.documentElement;
+
+      if (isDarkMode) {
+        root.classList.add('dark');
+        document.getElementById('mode-icon').innerText = '☀️';
+        document.getElementById('mode-text').innerText = 'Light';
+      } else {
+        root.classList.remove('dark');
+        document.getElementById('mode-icon').innerText = '🌙';
+        document.getElementById('mode-text').innerText = 'Dark';
+      }
+
+      root.style.setProperty('--theme-bg-app', modeConfig.bgApp);
+      root.style.setProperty('--theme-bg-card', modeConfig.bgCard);
+      root.style.setProperty('--theme-bg-elevated', modeConfig.bgElevated);
+      root.style.setProperty('--theme-border', modeConfig.border);
+      root.style.setProperty('--theme-text-main', modeConfig.textMain);
+      root.style.setProperty('--theme-text-muted', modeConfig.textMuted);
+      root.style.setProperty('--theme-primary', themeConfig.primary);
+      root.style.setProperty('--theme-primary-hover', themeConfig.primaryHover);
+      root.style.setProperty('--theme-accent', themeConfig.accent);
+
+      document.getElementById('theme-selector').value = activeTheme;
+
+      if (window.renderAllCharts) window.renderAllCharts();
+    }
+
+    function changeTheme(themeKey) {
+      activeTheme = themeKey;
+      localStorage.setItem('motopulse-theme', themeKey);
+      applyThemeTokens();
+    }
+
+    function toggleLightDarkMode() {
+      isDarkMode = !isDarkMode;
+      localStorage.setItem('motopulse-mode', isDarkMode ? 'dark' : 'light');
+      applyThemeTokens();
+    }
+
+    // ==========================================
+    // B. REACTIVE FILTER SYSTEM (Single Source)
+    // ==========================================
+    const filterState = {
+      channel: 'all',    // 'all' | 'Retail' | 'Wholesale'
+      year: 'all',       // 'all' | 2011 | 2012 | 2013 | 2014
+      category: 'all',   // 'all' | 'Bikes' | 'Components' | 'Clothing' | 'Accessories'
+      subcategory: 'all',// 'all' | subcategory name
+      region: 'all',     // 'all' | region name
+      searchQuery: ''
+    };
+
+    // Table pagination state
     let tableCurrentPage = 1;
     let tablePageSize = 25;
     let tableSortCol = 'date';
     let tableSortAsc = false;
-    let filteredTransactions = [];
+    let currentFilteredTransactions = [];
 
-    // Chart instances
+    // Chart references
     let chartMonthly = null;
     let chartChannel = null;
     let chartCategory = null;
@@ -865,97 +1101,134 @@
     let chartDiscount = null;
     let chartCustomerDeciles = null;
 
-    // Helper: Currency Formatter
-    function formatCurrency(val) {
-      if (val >= 1e6) return '$' + (val / 1e6).toFixed(2) + 'M';
-      if (val >= 1e3) return '$' + (val / 1e3).toFixed(1) + 'K';
-      return '$' + Number(val).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    }
+    // Fast sub-millisecond cube query
+    function getFilteredCube() {
+      const cube = window.MOTOPULSE_DATA.cube;
+      const { channel, year, category, subcategory, region } = filterState;
 
-    function formatNumber(val) {
-      return Number(val).toLocaleString();
-    }
-
-    // 1. Tab Switching
-    function switchTab(tabId) {
-      currentTab = tabId;
-      ['overview', 'products', 'channels', 'inventory', 'explorer'].forEach(t => {
-        const el = document.getElementById('view-' + t);
-        const btn = document.getElementById('tab-' + t);
-        if (t === tabId) {
-          el.classList.remove('hidden');
-          if (btn) {
-            btn.classList.add('bg-brand-600', 'text-white', 'shadow');
-            btn.classList.remove('text-slate-400');
-          }
-        } else {
-          el.classList.add('hidden');
-          if (btn) {
-            btn.classList.remove('bg-brand-600', 'text-white', 'shadow');
-            btn.classList.add('text-slate-400');
-          }
-        }
+      return cube.filter(c => {
+        // c: [year, month, channel, cat, subcat, region, orders, units, sales, cost, profit, discount]
+        if (year !== 'all' && c[0] !== parseInt(year)) return false;
+        if (channel !== 'all' && c[2] !== channel) return false;
+        if (category !== 'all' && c[3] !== category) return false;
+        if (subcategory !== 'all' && c[4] !== subcategory) return false;
+        if (region !== 'all' && c[5] !== region) return false;
+        return true;
       });
-
-      // Trigger chart resize if needed
-      if (tabId === 'overview' && chartMonthly) chartMonthly.resize();
-      if (tabId === 'products' && chartTopProducts) chartTopProducts.resize();
-      if (tabId === 'channels' && chartDiscount) chartDiscount.resize();
     }
 
-    // 2. Light / Dark Theme Engine
-    function toggleTheme() {
-      const html = document.documentElement;
-      const isDark = html.classList.contains('dark');
-      if (isDark) {
-        html.classList.remove('dark');
-        document.getElementById('theme-icon').innerText = '🌙';
-        document.getElementById('theme-text').innerText = 'Dark';
-        localStorage.setItem('motopulse-theme', 'light');
-      } else {
-        html.classList.add('dark');
-        document.getElementById('theme-icon').innerText = '☀️';
-        document.getElementById('theme-text').innerText = 'Light';
-        localStorage.setItem('motopulse-theme', 'dark');
+    // Slicer Handlers
+    function setSlicer(type, val) {
+      filterState[type] = val;
+      if (type === 'category' && val === 'all') {
+        filterState.subcategory = 'all';
       }
-      renderAllCharts();
+      syncSlicerControls();
+      updateDashboard();
     }
 
-    // 3. Apply Filters & Recalculate KPIs
-    function applyFilters() {
-      currentChannel = document.getElementById('filter-channel').value;
-      currentYear = document.getElementById('filter-year').value;
-      currentCategory = document.getElementById('filter-category').value;
-      currentRegion = document.getElementById('filter-region').value;
-
-      // Calculate dynamic active filter count
-      let activeCount = 0;
-      if (currentChannel !== 'all') activeCount++;
-      if (currentYear !== 'all') activeCount++;
-      if (currentCategory !== 'all') activeCount++;
-      if (currentRegion !== 'all') activeCount++;
-
-      const badge = document.getElementById('active-filter-badge');
-      if (activeCount === 0) {
-        badge.innerText = 'Showing 100% of Portfolio';
-        badge.className = 'px-2.5 py-0.5 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20 text-[11px] font-medium';
+    function toggleChannelFilter(ch) {
+      if (filterState.channel === ch) {
+        filterState.channel = 'all';
       } else {
-        badge.innerText = `${activeCount} Active Slicer${activeCount > 1 ? 's' : ''} Applied`;
-        badge.className = 'px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30 text-[11px] font-semibold';
+        filterState.channel = ch;
+      }
+      syncSlicerControls();
+      updateDashboard();
+    }
+
+    function toggleCategoryFilter(cat) {
+      if (filterState.category === cat) {
+        filterState.category = 'all';
+      } else {
+        filterState.category = cat;
+      }
+      filterState.subcategory = 'all';
+      syncSlicerControls();
+      updateDashboard();
+    }
+
+    function toggleTerritoryFilter(reg) {
+      if (filterState.region === reg) {
+        filterState.region = 'all';
+      } else {
+        filterState.region = reg;
+      }
+      syncSlicerControls();
+      updateDashboard();
+    }
+
+    function toggleSubcategoryFilter(sub) {
+      if (filterState.subcategory === sub) {
+        filterState.subcategory = 'all';
+      } else {
+        filterState.subcategory = sub;
+      }
+      syncSlicerControls();
+      updateDashboard();
+    }
+
+    function clearAllFilters() {
+      filterState.channel = 'all';
+      filterState.year = 'all';
+      filterState.category = 'all';
+      filterState.subcategory = 'all';
+      filterState.region = 'all';
+      filterState.searchQuery = '';
+      document.getElementById('table-search-input').value = '';
+      syncSlicerControls();
+      updateDashboard();
+    }
+
+    function syncSlicerControls() {
+      document.getElementById('slicer-channel').value = filterState.channel;
+      document.getElementById('slicer-year').value = filterState.year;
+      document.getElementById('slicer-category').value = filterState.category;
+      document.getElementById('slicer-region').value = filterState.region;
+    }
+
+    function renderActivePills() {
+      const container = document.getElementById('active-pills-bar');
+      container.innerHTML = '';
+
+      const pills = [];
+      if (filterState.channel !== 'all') pills.push({ key: 'channel', label: `Channel: ${filterState.channel}` });
+      if (filterState.year !== 'all') pills.push({ key: 'year', label: `Year: ${filterState.year}` });
+      if (filterState.category !== 'all') pills.push({ key: 'category', label: `Category: ${filterState.category}` });
+      if (filterState.subcategory !== 'all') pills.push({ key: 'subcategory', label: `Subcategory: ${filterState.subcategory}` });
+      if (filterState.region !== 'all') pills.push({ key: 'region', label: `Region: ${filterState.region}` });
+
+      if (pills.length === 0) {
+        document.getElementById('active-filter-summary-pill').innerText = 'Showing 100% of Portfolio';
+        document.getElementById('active-filter-summary-pill').className = 'text-xs px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-medium';
+        document.getElementById('btn-clear-filters').classList.add('hidden');
+        return;
       }
 
-      // Filter Monthly Data for KPIs
-      let monthly = window.MOTOPULSE_DATA.monthlyTrends;
-      if (currentChannel === 'Retail') {
-        monthly = monthly.filter(m => m.channel === 'Internet');
-      } else if (currentChannel === 'Wholesale') {
-        monthly = monthly.filter(m => m.channel === 'Reseller');
-      }
-      if (currentYear !== 'all') {
-        monthly = monthly.filter(m => m.year === currentYear);
-      }
+      document.getElementById('btn-clear-filters').classList.remove('hidden');
+      document.getElementById('active-filter-summary-pill').innerText = `${pills.length} Active Filter${pills.length > 1 ? 's' : ''} Applied`;
+      document.getElementById('active-filter-summary-pill').className = 'text-xs px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30 font-semibold';
 
-      // Aggregate totals
+      pills.forEach(p => {
+        const span = document.createElement('span');
+        span.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-600 text-white font-medium text-[11px] shadow-sm animate-fadeIn';
+        span.innerHTML = `
+          <span>${p.label}</span>
+          <button onclick="setSlicer('${p.key}', 'all')" class="hover:bg-blue-800 rounded px-1 transition text-white">✕</button>
+        `;
+        container.appendChild(span);
+      });
+    }
+
+    // ==========================================
+    // C. MASTER DASHBOARD UPDATE DISPATCHER
+    // ==========================================
+    function updateDashboard() {
+      renderActivePills();
+
+      const filtered = getFilteredCube();
+
+      // Recalculate KPIs
       let totalSales = 0;
       let totalCost = 0;
       let totalProfit = 0;
@@ -963,432 +1236,101 @@
       let totalUnits = 0;
       let totalDiscount = 0;
 
-      monthly.forEach(m => {
-        totalSales += m.netSales;
-        totalCost += m.cost;
-        totalProfit += m.profit;
-        totalOrders += m.orders;
-        totalUnits += m.units;
-        totalDiscount += m.discount;
-      });
-
-      // Factor Category & Region ratios if specified
-      let scaleRatio = 1.0;
-      if (currentCategory !== 'all') {
-        const catObj = window.MOTOPULSE_DATA.categories.find(c => c.category === currentCategory);
-        if (catObj) scaleRatio *= (catObj.sharePct / 100);
-      }
-      if (currentRegion !== 'all') {
-        const regObj = window.MOTOPULSE_DATA.territories.find(t => t.region === currentRegion);
-        if (regObj) scaleRatio *= (regObj.sharePct / 100);
+      for (let i = 0; i < filtered.length; i++) {
+        const c = filtered[i];
+        totalOrders += c[6];
+        totalUnits += c[7];
+        totalSales += c[8];
+        totalCost += c[9];
+        totalProfit += c[10];
+        totalDiscount += c[11];
       }
 
-      const netSalesVal = totalSales * scaleRatio;
-      const profitVal = totalProfit * scaleRatio;
-      const marginVal = netSalesVal > 0 ? (profitVal / netSalesVal * 100) : 0;
-      const ordersVal = Math.round(totalOrders * scaleRatio);
-      const unitsVal = Math.round(totalUnits * scaleRatio);
-      const aovVal = ordersVal > 0 ? (netSalesVal / ordersVal) : 0;
-      const discountVal = totalDiscount * scaleRatio;
+      const grossMarginPct = totalSales > 0 ? (totalProfit / totalSales * 100) : 0;
+      const aov = totalOrders > 0 ? (totalSales / totalOrders) : 0;
 
-      // Update KPI Elements
-      document.getElementById('kpi-sales').innerText = formatCurrency(netSalesVal);
-      document.getElementById('kpi-profit').innerText = formatCurrency(profitVal);
-      document.getElementById('kpi-margin').innerText = marginVal.toFixed(2) + '%';
-      document.getElementById('kpi-margin-badge').innerText = marginVal.toFixed(2) + '%';
-      document.getElementById('kpi-orders').innerText = formatNumber(ordersVal);
-      document.getElementById('kpi-units').innerText = formatNumber(unitsVal);
-      document.getElementById('kpi-aov').innerText = formatCurrency(aovVal);
-      document.getElementById('kpi-discount').innerText = formatCurrency(discountVal);
+      // Update KPI DOM Elements
+      document.getElementById('kpi-sales').innerText = formatCurrency(totalSales);
+      document.getElementById('kpi-profit').innerText = formatCurrency(totalProfit);
+      document.getElementById('kpi-margin').innerText = grossMarginPct.toFixed(2) + '%';
+      document.getElementById('kpi-margin-badge').innerText = grossMarginPct.toFixed(2) + '%';
+      document.getElementById('kpi-orders').innerText = formatNumber(totalOrders);
+      document.getElementById('kpi-units').innerText = formatNumber(totalUnits);
+      document.getElementById('kpi-aov').innerText = formatCurrency(aov);
+      document.getElementById('kpi-discount').innerText = formatCurrency(totalDiscount);
 
-      // Re-filter table data
+      // Re-render subcategory matrix table
+      renderSubcategoriesTable(filtered);
+
+      // Re-filter and render Detailed Data Explorer Table
       filterTableData();
 
-      // Re-render active charts
-      renderAllCharts();
+      // Re-render active Charts
+      renderAllCharts(filtered);
     }
 
-    function resetFilters() {
-      document.getElementById('filter-channel').value = 'all';
-      document.getElementById('filter-year').value = 'all';
-      document.getElementById('filter-category').value = 'all';
-      document.getElementById('filter-region').value = 'all';
-      applyFilters();
+    // Helper formatters
+    function formatCurrency(val) {
+      if (Math.abs(val) >= 1e6) return '$' + (val / 1e6).toFixed(2) + 'M';
+      if (Math.abs(val) >= 1e3) return '$' + (val / 1e3).toFixed(1) + 'K';
+      return '$' + Number(val).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
+    function formatNumber(val) { return Number(val).toLocaleString(); }
 
-    // 4. Detailed Data Explorer Table Logic
-    function filterTableData() {
-      let data = window.MOTOPULSE_DATA.transactions;
-
-      // Channel Filter
-      if (currentChannel === 'Retail') {
-        data = data.filter(d => d.channel === 'Internet');
-      } else if (currentChannel === 'Wholesale') {
-        data = data.filter(d => d.channel === 'Reseller');
-      }
-
-      // Year Filter
-      if (currentYear !== 'all') {
-        data = data.filter(d => d.year === parseInt(currentYear));
-      }
-
-      // Category Filter
-      if (currentCategory !== 'all') {
-        data = data.filter(d => d.category === currentCategory);
-      }
-
-      // Region Filter
-      if (currentRegion !== 'all') {
-        data = data.filter(d => d.region === currentRegion);
-      }
-
-      // Text Search
-      if (tableSearchQuery.trim() !== '') {
-        const q = tableSearchQuery.toLowerCase();
-        data = data.filter(d => 
-          d.orderNumber.toLowerCase().includes(q) ||
-          d.productName.toLowerCase().includes(q) ||
-          d.category.toLowerCase().includes(q) ||
-          d.subcategory.toLowerCase().includes(q) ||
-          d.region.toLowerCase().includes(q) ||
-          d.channel.toLowerCase().includes(q)
-        );
-      }
-
-      // Sorting
-      data.sort((a, b) => {
-        let valA = a[tableSortCol];
-        let valB = b[tableSortCol];
-        if (typeof valA === 'string') valA = valA.toLowerCase();
-        if (typeof valB === 'string') valB = valB.toLowerCase();
-        if (valA < valB) return tableSortAsc ? -1 : 1;
-        if (valA > valB) return tableSortAsc ? 1 : -1;
-        return 0;
-      });
-
-      filteredTransactions = data;
-      tableCurrentPage = 1;
-      renderTable();
-    }
-
-    function renderTable() {
-      const tbody = document.getElementById('transaction-table-body');
-      tbody.innerHTML = '';
-
-      const total = filteredTransactions.length;
-      document.getElementById('table-total-count').innerText = total;
-
-      const maxPage = Math.max(1, Math.ceil(total / tablePageSize));
-      document.getElementById('table-max-page').innerText = maxPage;
-      document.getElementById('table-current-page').innerText = tableCurrentPage;
-
-      document.getElementById('btn-prev').disabled = (tableCurrentPage <= 1);
-      document.getElementById('btn-first').disabled = (tableCurrentPage <= 1);
-      document.getElementById('btn-next').disabled = (tableCurrentPage >= maxPage);
-      document.getElementById('btn-last').disabled = (tableCurrentPage >= maxPage);
-
-      const startIndex = (tableCurrentPage - 1) * tablePageSize;
-      const endIndex = Math.min(total, startIndex + tablePageSize);
-      document.getElementById('table-page-range').innerText = total === 0 ? '0 - 0' : `${startIndex + 1} - ${endIndex}`;
-
-      if (total === 0) {
-        tbody.innerHTML = `<tr><td colspan="12" class="py-8 text-center text-slate-500 font-sans text-xs">No transaction records match the active slicers and search criteria.</td></tr>`;
-        return;
-      }
-
-      const rowsToShow = filteredTransactions.slice(startIndex, endIndex);
-      rowsToShow.forEach((r, idx) => {
-        const isPos = r.profitAmt >= 0;
-        const profitClass = isPos ? 'text-emerald-400' : 'text-rose-400 font-bold';
-        const channelBadge = r.channel === 'Internet' 
-          ? '<span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[10px] font-sans font-medium">B2C Retail</span>'
-          : '<span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 text-[10px] font-sans font-medium">B2B Wholesale</span>';
-
-        const tr = document.createElement('tr');
-        tr.className = 'hover:bg-slate-800/40 transition';
-        tr.innerHTML = `
-          <td class="py-2.5 px-3 col-date text-slate-400">${r.date}</td>
-          <td class="py-2.5 px-3 col-order font-bold text-white">${r.orderNumber}</td>
-          <td class="py-2.5 px-3 col-channel">${channelBadge}</td>
-          <td class="py-2.5 px-3 col-product font-sans font-medium text-slate-200 truncate max-w-[200px]" title="${r.productName}">${r.productName}</td>
-          <td class="py-2.5 px-3 col-cat font-sans text-slate-300">${r.category}</td>
-          <td class="py-2.5 px-3 col-region font-sans text-slate-300">${r.region}</td>
-          <td class="py-2.5 px-3 col-qty text-right text-slate-200">${r.qty}</td>
-          <td class="py-2.5 px-3 text-right text-slate-300">$${r.unitPrice.toFixed(2)}</td>
-          <td class="py-2.5 px-3 col-sales text-right font-semibold text-white">$${r.salesAmt.toFixed(2)}</td>
-          <td class="py-2.5 px-3 col-profit text-right ${profitClass}">$${r.profitAmt.toFixed(2)}</td>
-          <td class="py-2.5 px-3 col-margin text-right ${profitClass}">${r.marginPct.toFixed(1)}%</td>
-          <td class="py-2.5 px-3 text-center">
-            <button onclick="inspectRecord(${startIndex + idx})" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-brand-600 text-slate-300 hover:text-white font-sans text-[10px] transition">
-              View
-            </button>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function sortTable(col) {
-      if (tableSortCol === col) {
-        tableSortAsc = !tableSortAsc;
-      } else {
-        tableSortCol = col;
-        tableSortAsc = true;
-      }
-
-      ['date', 'orderNumber', 'channel', 'productName', 'category', 'region', 'qty', 'salesAmt', 'profitAmt', 'marginPct'].forEach(c => {
-        const icon = document.getElementById('sort-icon-' + c);
-        if (icon) {
-          icon.innerText = (c === col) ? (tableSortAsc ? '▲' : '▼') : '↕';
-        }
-      });
-
-      filterTableData();
-    }
-
-    function handleTableSearch(val) {
-      tableSearchQuery = val;
-      filterTableData();
-    }
-
-    function changePage(delta) {
-      tableCurrentPage += delta;
-      renderTable();
-    }
-
-    function gotoFirstPage() {
-      tableCurrentPage = 1;
-      renderTable();
-    }
-
-    function gotoLastPage() {
-      const maxPage = Math.max(1, Math.ceil(filteredTransactions.length / tablePageSize));
-      tableCurrentPage = maxPage;
-      renderTable();
-    }
-
-    function changePageSize(size) {
-      tablePageSize = parseInt(size);
-      tableCurrentPage = 1;
-      renderTable();
-    }
-
-    function toggleTableCol(colClass) {
-      document.querySelectorAll('.' + colClass).forEach(el => {
-        el.classList.toggle('hidden');
-      });
-    }
-
-    function inspectRecord(idx) {
-      const r = filteredTransactions[idx];
-      if (!r) return;
-
-      document.getElementById('modal-order-title').innerText = `${r.orderNumber} (Line #${r.orderLine})`;
-      const mc = document.getElementById('modal-content');
-      mc.innerHTML = `
-        <div class="p-2.5 rounded-lg bg-slate-800/80"><span class="text-slate-400">Date:</span> <strong class="text-white">${r.date}</strong></div>
-        <div class="p-2.5 rounded-lg bg-slate-800/80"><span class="text-slate-400">Channel:</span> <strong class="text-white">${r.channel}</strong></div>
-        <div class="p-2.5 rounded-lg bg-slate-800/80 col-span-2"><span class="text-slate-400">Product:</span> <strong class="text-white">${r.productName}</strong> (${r.sku})</div>
-        <div class="p-2.5 rounded-lg bg-slate-800/80"><span class="text-slate-400">Category:</span> <strong class="text-white">${r.category}</strong></div>
-        <div class="p-2.5 rounded-lg bg-slate-800/80"><span class="text-slate-400">Subcategory:</span> <strong class="text-white">${r.subcategory}</strong></div>
-        <div class="p-2.5 rounded-lg bg-slate-800/80"><span class="text-slate-400">Territory Region:</span> <strong class="text-white">${r.region}</strong></div>
-        <div class="p-2.5 rounded-lg bg-slate-800/80"><span class="text-slate-400">Country:</span> <strong class="text-white">${r.country}</strong></div>
-        <div class="p-2.5 rounded-lg bg-slate-800/80"><span class="text-slate-400">Order Quantity:</span> <strong class="text-white">${r.qty} units</strong></div>
-        <div class="p-2.5 rounded-lg bg-slate-800/80"><span class="text-slate-400">Unit Price:</span> <strong class="text-white">$${r.unitPrice.toFixed(2)}</strong></div>
-        <div class="p-2.5 rounded-lg bg-slate-800/80"><span class="text-slate-400">Discount Granted:</span> <strong class="text-amber-400">$${r.discountAmt.toFixed(2)} (${r.discountPct}%)</strong></div>
-        <div class="p-2.5 rounded-lg bg-slate-800/80"><span class="text-slate-400">Net Sales:</span> <strong class="text-white">$${r.salesAmt.toFixed(2)}</strong></div>
-        <div class="p-2.5 rounded-lg bg-slate-800/80"><span class="text-slate-400">Total Standard Cost:</span> <strong class="text-white">$${r.costAmt.toFixed(2)}</strong></div>
-        <div class="p-2.5 rounded-lg bg-slate-800/80"><span class="text-slate-400">Gross Profit:</span> <strong class="${r.profitAmt >= 0 ? 'text-emerald-400' : 'text-rose-400'}">$${r.profitAmt.toFixed(2)}</strong></div>
-        <div class="p-2.5 rounded-lg bg-slate-800/80 col-span-2"><span class="text-slate-400">Gross Margin:</span> <strong class="${r.marginPct >= 0 ? 'text-emerald-400' : 'text-rose-400'}">${r.marginPct.toFixed(2)}%</strong> (Standard Cost Model Value)</div>
-      `;
-      document.getElementById('record-modal').classList.remove('hidden');
-    }
-
-    function closeModal() {
-      document.getElementById('record-modal').classList.add('hidden');
-    }
-
-    // 5. CSV Export Engine
-    function exportCurrentTableToCSV() {
-      if (filteredTransactions.length === 0) {
-        alert('No records available to export.');
-        return;
-      }
-
-      const headers = ['OrderNumber', 'LineNumber', 'Channel', 'Date', 'Year', 'ProductName', 'SKU', 'Category', 'Subcategory', 'Region', 'Country', 'Quantity', 'UnitPrice', 'DiscountPct', 'DiscountAmount', 'NetSales', 'Cost', 'GrossProfit', 'GrossMarginPct'];
-      const csvRows = [headers.join(',')];
-
-      filteredTransactions.forEach(r => {
-        const row = [
-          r.orderNumber,
-          r.orderLine,
-          r.channel,
-          r.date,
-          r.year,
-          `"${r.productName.replace(/"/g, '""')}"`,
-          r.sku,
-          r.category,
-          `"${r.subcategory.replace(/"/g, '""')}"`,
-          r.region,
-          r.country,
-          r.qty,
-          r.unitPrice,
-          r.discountPct,
-          r.discountAmt,
-          r.salesAmt,
-          r.costAmt,
-          r.profitAmt,
-          r.marginPct
-        ];
-        csvRows.push(row.join(','));
-      });
-
-      const blob = new Blob([csvRows.join('\n')], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.setAttribute('href', url);
-      link.setAttribute('download', `MotoPulse360_Export_${new Date().toISOString().slice(0, 10)}.csv`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-
-    // 6. Subcategories & Resellers Matrix Rendering
-    function renderSubcategoriesTable() {
-      const tbody = document.getElementById('subcategory-table-body');
-      tbody.innerHTML = '';
-      window.MOTOPULSE_DATA.subcategories.forEach(sub => {
-        const isPos = sub.profit >= 0;
-        const profitClass = isPos ? 'text-emerald-400' : 'text-rose-400 font-bold';
-        let healthBadge = '<span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[10px] font-sans">Profitable</span>';
-        if (sub.marginPct < 0) {
-          healthBadge = '<span class="px-2 py-0.5 rounded bg-rose-500/15 text-rose-400 text-[10px] font-sans font-bold">Margin Drain</span>';
-        } else if (sub.marginPct < 5) {
-          healthBadge = '<span class="px-2 py-0.5 rounded bg-amber-500/15 text-amber-400 text-[10px] font-sans font-semibold">Thin Margin</span>';
-        }
-
-        const tr = document.createElement('tr');
-        tr.className = 'hover:bg-slate-800/40';
-        tr.innerHTML = `
-          <td class="py-2.5 px-3 font-sans font-medium text-white">${sub.category}</td>
-          <td class="py-2.5 px-3 font-sans text-slate-300">${sub.subcategory}</td>
-          <td class="py-2.5 px-3 text-right text-slate-300">${formatNumber(sub.units)}</td>
-          <td class="py-2.5 px-3 text-right font-semibold text-white">${formatCurrency(sub.netSales)}</td>
-          <td class="py-2.5 px-3 text-right ${profitClass}">${formatCurrency(sub.profit)}</td>
-          <td class="py-2.5 px-3 text-right ${profitClass}">${sub.marginPct.toFixed(2)}%</td>
-          <td class="py-2.5 px-3 text-right text-slate-400">${sub.sharePct.toFixed(2)}%</td>
-          <td class="py-2.5 px-3 text-right">${healthBadge}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function renderResellerTable() {
-      const tbody = document.getElementById('reseller-table-body');
-      tbody.innerHTML = '';
-      window.MOTOPULSE_DATA.resellerTypes.forEach(rt => {
-        const isPos = rt.marginPct >= 0;
-        const tr = document.createElement('tr');
-        tr.className = 'hover:bg-slate-800/40';
-        tr.innerHTML = `
-          <td class="py-2.5 px-3 font-sans font-semibold text-white">${rt.type}</td>
-          <td class="py-2.5 px-3 text-right text-slate-300">${rt.accounts}</td>
-          <td class="py-2.5 px-3 text-right text-slate-300">${formatNumber(rt.orders)}</td>
-          <td class="py-2.5 px-3 text-right text-slate-300">${formatNumber(rt.units)}</td>
-          <td class="py-2.5 px-3 text-right font-semibold text-white">${formatCurrency(rt.netSales)}</td>
-          <td class="py-2.5 px-3 text-right text-slate-300">$${rt.aov.toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
-          <td class="py-2.5 px-3 text-right ${isPos ? 'text-emerald-400' : 'text-rose-400 font-bold'}">${rt.marginPct.toFixed(2)}%</td>
-          <td class="py-2.5 px-3 text-right font-sans text-slate-400">Wholesale Volume Absorption</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function renderInventoryTable() {
-      const tbody = document.getElementById('inventory-table-body');
-      tbody.innerHTML = '';
-      window.MOTOPULSE_DATA.inventory.urgentItems.slice(0, 15).forEach(item => {
-        const tr = document.createElement('tr');
-        tr.className = 'hover:bg-slate-800/40';
-        tr.innerHTML = `
-          <td class="py-2.5 px-3 font-sans font-medium text-white">${item.productName}</td>
-          <td class="py-2.5 px-3 text-right text-rose-400 font-bold">${item.unitsBalance}</td>
-          <td class="py-2.5 px-3 text-right text-slate-400">${item.safetyStock}</td>
-          <td class="py-2.5 px-3 text-right text-slate-400">${item.reorderPoint}</td>
-          <td class="py-2.5 px-3 text-right text-rose-400 font-bold">${formatNumber(item.stockDeficit)}</td>
-          <td class="py-2.5 px-3 text-right text-slate-300">$${item.unitCost.toFixed(2)}</td>
-          <td class="py-2.5 px-3 text-right font-semibold text-white">$${item.reorderCost.toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
-          <td class="py-2.5 px-3 text-right font-sans">
-            <span class="px-2 py-0.5 rounded bg-rose-500/15 text-rose-400 text-[10px] font-bold">PO Urgent</span>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    // 7. Chart Rendering Engine (Chart.js)
-    function renderAllCharts() {
+    // ==========================================
+    // D. CHART.JS VISUALIZATIONS & CROSS-FILTER
+    // ==========================================
+    function renderAllCharts(filteredRows) {
       if (typeof Chart === 'undefined') return;
+      const filtered = filteredRows || getFilteredCube();
 
-      const isDark = document.documentElement.classList.contains('dark');
-      const textColor = isDark ? '#94a3b8' : '#475569';
-      const gridColor = isDark ? 'rgba(51, 65, 85, 0.4)' : 'rgba(226, 232, 240, 0.8)';
+      const themeConfig = THEMES[activeTheme] || THEMES['modern-blue'];
+      const modeConfig = isDarkMode ? themeConfig.dark : themeConfig.light;
+      const textColor = modeConfig.textMuted;
+      const gridColor = isDarkMode ? 'rgba(51, 65, 85, 0.4)' : 'rgba(203, 213, 225, 0.7)';
       const font = { family: 'Inter', size: 10 };
 
-      // Filter Monthly for Chart
-      let mData = window.MOTOPULSE_DATA.monthlyTrends;
-      if (currentChannel === 'Retail') {
-        mData = mData.filter(m => m.channel === 'Internet');
-      } else if (currentChannel === 'Wholesale') {
-        mData = mData.filter(m => m.channel === 'Reseller');
-      }
-      if (currentYear !== 'all') {
-        mData = mData.filter(m => m.year === currentYear);
-      }
-
-      // Group monthly by YearMonth
-      const monthlyAgg = {};
-      mData.forEach(m => {
-        if (!monthlyAgg[m.yearMonth]) {
-          monthlyAgg[m.yearMonth] = { ym: m.yearMonth, sales: 0, profit: 0 };
-        }
-        monthlyAgg[m.yearMonth].sales += m.netSales;
-        monthlyAgg[m.yearMonth].profit += m.profit;
+      // 1. Chart 1: Monthly Trend
+      const monthlyMap = {};
+      filtered.forEach(c => {
+        const ym = c[0] * 100 + c[1];
+        if (!monthlyMap[ym]) monthlyMap[ym] = { ym: ym, sales: 0, profit: 0 };
+        monthlyMap[ym].sales += c[8];
+        monthlyMap[ym].profit += c[10];
       });
 
-      const ymKeys = Object.keys(monthlyAgg).sort();
-      const labels = ymKeys.map(k => k.slice(0, 4) + '-' + k.slice(4));
-      const salesVals = ymKeys.map(k => monthlyAgg[k].sales);
-      const profitVals = ymKeys.map(k => monthlyAgg[k].profit);
+      const ymKeys = Object.keys(monthlyMap).sort();
+      const ymLabels = ymKeys.map(k => k.slice(0, 4) + '-' + k.slice(4));
+      const ymSales = ymKeys.map(k => monthlyMap[k].sales);
+      const ymProfits = ymKeys.map(k => monthlyMap[k].profit);
 
-      // Chart 1: Monthly Trend Line
       const ctxMonthly = document.getElementById('chart-monthly-trend');
       if (ctxMonthly) {
         if (chartMonthly) chartMonthly.destroy();
         chartMonthly = new Chart(ctxMonthly, {
           type: 'line',
           data: {
-            labels: labels,
+            labels: ymLabels,
             datasets: [
               {
                 label: 'Net Sales ($)',
-                data: salesVals,
-                borderColor: '#0ea5e9',
-                backgroundColor: 'rgba(14, 165, 233, 0.12)',
+                data: ymSales,
+                borderColor: themeConfig.chartPrimary,
+                backgroundColor: 'rgba(37, 99, 235, 0.12)',
                 fill: true,
                 tension: 0.35,
                 borderWidth: 2.5,
-                pointRadius: ymKeys.length > 24 ? 0 : 3
+                pointRadius: ymKeys.length > 20 ? 0 : 3
               },
               {
                 label: 'Gross Profit ($)',
-                data: profitVals,
-                borderColor: '#10b981',
-                backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                data: ymProfits,
+                borderColor: themeConfig.chartSecondary,
+                backgroundColor: 'rgba(16, 185, 129, 0.12)',
                 fill: true,
                 tension: 0.35,
                 borderWidth: 2,
-                pointRadius: ymKeys.length > 24 ? 0 : 3
+                pointRadius: ymKeys.length > 20 ? 0 : 3
               }
             ]
           },
@@ -1409,7 +1351,7 @@
                 ticks: { 
                   color: textColor, 
                   font: font,
-                  callback: val => '$' + (val / 1e6).toFixed(1) + 'M'
+                  callback: v => '$' + (v / 1e6).toFixed(1) + 'M' 
                 }, 
                 grid: { color: gridColor } 
               }
@@ -1418,56 +1360,98 @@
         });
       }
 
-      // Chart 2: Channel Share Donut
+      // 2. Chart 2: Channel Share Donut (Click to filter)
+      let wholesaleSales = 0;
+      let retailSales = 0;
+      filtered.forEach(c => {
+        if (c[2] === 'Wholesale') wholesaleSales += c[8];
+        else if (c[2] === 'Retail') retailSales += c[8];
+      });
+
       const ctxChannel = document.getElementById('chart-channel-share');
       if (ctxChannel) {
         if (chartChannel) chartChannel.destroy();
         chartChannel = new Chart(ctxChannel, {
           type: 'doughnut',
           data: {
-            labels: ['Wholesale (B2B)', 'Direct Retail (B2C)'],
+            labels: ['Wholesale (B2B)', 'Retail (B2C)'],
             datasets: [{
-              data: [80450596.98, 29358677.22],
-              backgroundColor: ['#3b82f6', '#10b981'],
-              borderWidth: isDark ? 0 : 2
+              data: [wholesaleSales, retailSales],
+              backgroundColor: [
+                filterState.channel === 'Retail' ? 'rgba(59, 130, 246, 0.25)' : '#3b82f6',
+                filterState.channel === 'Wholesale' ? 'rgba(16, 185, 129, 0.25)' : '#10b981'
+              ],
+              borderWidth: 0
             }]
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
             cutout: '70%',
+            onClick: (e, elements) => {
+              if (elements && elements.length > 0) {
+                const idx = elements[0].index;
+                const ch = idx === 0 ? 'Wholesale' : 'Retail';
+                toggleChannelFilter(ch);
+              }
+            },
             plugins: {
               legend: { display: false },
               tooltip: {
                 callbacks: {
-                  label: ctx => `${ctx.label}: $${(ctx.parsed / 1e6).toFixed(2)}M (${((ctx.parsed / 109809274.20) * 100).toFixed(1)}%)`
+                  label: ctx => `${ctx.label}: $${(ctx.parsed / 1e6).toFixed(2)}M`
                 }
               }
             }
           }
         });
+
+        // Update Channel legend
+        const tot = wholesaleSales + retailSales;
+        const wPct = tot > 0 ? (wholesaleSales / tot * 100).toFixed(1) : 0;
+        const rPct = tot > 0 ? (retailSales / tot * 100).toFixed(1) : 0;
+        document.getElementById('legend-wholesale-val').innerText = `${formatCurrency(wholesaleSales)} (${wPct}%)`;
+        document.getElementById('legend-retail-val').innerText = `${formatCurrency(retailSales)} (${rPct}%)`;
       }
 
-      // Chart 3: Category Sales Horizontal Bar
+      // 3. Chart 3: Category Sales Bar Chart (Click to filter)
+      const catMap = { 'Bikes': 0, 'Components': 0, 'Clothing': 0, 'Accessories': 0 };
+      const catProfitMap = { 'Bikes': 0, 'Components': 0, 'Clothing': 0, 'Accessories': 0 };
+      filtered.forEach(c => {
+        if (catMap[c[3]] !== undefined) {
+          catMap[c[3]] += c[8];
+          catProfitMap[c[3]] += c[10];
+        }
+      });
+
+      const catLabels = Object.keys(catMap);
+      const catSales = catLabels.map(k => catMap[k]);
+      const catProfits = catLabels.map(k => catProfitMap[k]);
+
       const ctxCat = document.getElementById('chart-category-sales');
       if (ctxCat) {
         if (chartCategory) chartCategory.destroy();
-        const cats = window.MOTOPULSE_DATA.categories;
         chartCategory = new Chart(ctxCat, {
           type: 'bar',
           data: {
-            labels: cats.map(c => c.category),
+            labels: catLabels,
             datasets: [
               {
                 label: 'Net Sales ($)',
-                data: cats.map(c => c.netSales),
-                backgroundColor: '#0ea5e9',
+                data: catSales,
+                backgroundColor: catLabels.map(cat => {
+                  if (filterState.category === 'all') return themeConfig.chartPrimary;
+                  return filterState.category === cat ? themeConfig.chartPrimary : 'rgba(100, 116, 139, 0.25)';
+                }),
                 borderRadius: 6
               },
               {
                 label: 'Gross Profit ($)',
-                data: cats.map(c => c.profit),
-                backgroundColor: '#10b981',
+                data: catProfits,
+                backgroundColor: catLabels.map(cat => {
+                  if (filterState.category === 'all') return themeConfig.chartSecondary;
+                  return filterState.category === cat ? themeConfig.chartSecondary : 'rgba(16, 185, 129, 0.25)';
+                }),
                 borderRadius: 6
               }
             ]
@@ -1476,6 +1460,12 @@
             indexAxis: 'y',
             responsive: true,
             maintainAspectRatio: false,
+            onClick: (e, elements) => {
+              if (elements && elements.length > 0) {
+                const idx = elements[0].index;
+                toggleCategoryFilter(catLabels[idx]);
+              }
+            },
             plugins: {
               legend: { labels: { color: textColor, font: font } },
               tooltip: {
@@ -1485,67 +1475,79 @@
               }
             },
             scales: {
-              x: { 
-                ticks: { 
-                  color: textColor, 
-                  font: font, 
-                  callback: v => '$' + (v / 1e6).toFixed(0) + 'M' 
-                }, 
-                grid: { color: gridColor } 
-              },
+              x: { ticks: { color: textColor, font: font, callback: v => '$' + (v / 1e6).toFixed(0) + 'M' }, grid: { color: gridColor } },
               y: { ticks: { color: textColor, font: font }, grid: { display: false } }
             }
           }
         });
       }
 
-      // Chart 4: Territory Performance Bar Chart
+      // 4. Chart 4: Territory Performance (Click to filter)
+      const regMap = {};
+      filtered.forEach(c => {
+        const reg = c[5];
+        if (!regMap[reg]) regMap[reg] = { sales: 0, profit: 0 };
+        regMap[reg].sales += c[8];
+        regMap[reg].profit += c[10];
+      });
+
+      const regLabels = Object.keys(regMap).sort((a,b) => regMap[b].sales - regMap[a].sales);
+      const regSales = regLabels.map(k => regMap[k].sales);
+
       const ctxTerr = document.getElementById('chart-territory-sales');
       if (ctxTerr) {
         if (chartTerritory) chartTerritory.destroy();
-        const terrs = window.MOTOPULSE_DATA.territories;
         chartTerritory = new Chart(ctxTerr, {
           type: 'bar',
           data: {
-            labels: terrs.map(t => t.region),
+            labels: regLabels,
             datasets: [{
               label: 'Net Sales ($)',
-              data: terrs.map(t => t.netSales),
-              backgroundColor: terrs.map(t => t.marginPct > 20 ? '#10b981' : (t.marginPct < 5 ? '#f43f5e' : '#3b82f6')),
+              data: regSales,
+              backgroundColor: regLabels.map(reg => {
+                if (filterState.region !== 'all') {
+                  return filterState.region === reg ? themeConfig.primary : 'rgba(100, 116, 139, 0.25)';
+                }
+                const mPct = regMap[reg].sales > 0 ? (regMap[reg].profit / regMap[reg].sales * 100) : 0;
+                return mPct > 20 ? '#10b981' : (mPct < 5 ? '#f43f5e' : themeConfig.primary);
+              }),
               borderRadius: 6
             }]
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
+            onClick: (e, elements) => {
+              if (elements && elements.length > 0) {
+                const idx = elements[0].index;
+                toggleTerritoryFilter(regLabels[idx]);
+              }
+            },
             plugins: {
               legend: { display: false },
               tooltip: {
                 callbacks: {
-                  label: ctx => `Sales: $${(ctx.parsed.y / 1e6).toFixed(2)}M (${terrs[ctx.dataIndex].marginPct.toFixed(1)}% margin)`
+                  label: ctx => `Sales: $${(ctx.parsed.y / 1e6).toFixed(2)}M`
                 }
               }
             },
             scales: {
               x: { ticks: { color: textColor, font: font }, grid: { display: false } },
-              y: { 
-                ticks: { 
-                  color: textColor, 
-                  font: font, 
-                  callback: v => '$' + (v / 1e6).toFixed(0) + 'M' 
-                }, 
-                grid: { color: gridColor } 
-              }
+              y: { ticks: { color: textColor, font: font, callback: v => '$' + (v / 1e6).toFixed(0) + 'M' }, grid: { color: gridColor } }
             }
           }
         });
       }
 
-      // Chart 5: Top 10 Products
+      // Static Charts (rendered once or on theme change)
+      renderStaticTabCharts(themeConfig, modeConfig, textColor, gridColor, font);
+    }
+
+    function renderStaticTabCharts(themeConfig, modeConfig, textColor, gridColor, font) {
+      // Top Products Chart
       const ctxTop = document.getElementById('chart-top-products');
-      if (ctxTop) {
-        if (chartTopProducts) chartTopProducts.destroy();
-        const prods = window.MOTOPULSE_DATA.topProducts;
+      if (ctxTop && !chartTopProducts) {
+        const prods = window.MOTOPULSE_DATA.topProducts || [];
         chartTopProducts = new Chart(ctxTop, {
           type: 'bar',
           data: {
@@ -1553,7 +1555,7 @@
             datasets: [{
               label: 'Revenue ($)',
               data: prods.map(p => p.netSales),
-              backgroundColor: '#6366f1',
+              backgroundColor: themeConfig.chartAccent,
               borderRadius: 6
             }]
           },
@@ -1563,11 +1565,7 @@
             maintainAspectRatio: false,
             plugins: {
               legend: { display: false },
-              tooltip: {
-                callbacks: {
-                  label: ctx => `Sales: $${ctx.parsed.x.toLocaleString()} (Margin: ${prods[ctx.dataIndex].marginPct}%)`
-                }
-              }
+              tooltip: { callbacks: { label: ctx => `Sales: $${ctx.parsed.x.toLocaleString()} (Margin: ${prods[ctx.dataIndex].marginPct}%)` } }
             },
             scales: {
               x: { ticks: { color: textColor, font: font, callback: v => '$' + (v / 1e6).toFixed(1) + 'M' }, grid: { color: gridColor } },
@@ -1577,36 +1575,38 @@
         });
       }
 
-      // Chart 6: Pareto ABC Classification Donut
+      // Pareto ABC Donut
       const ctxPareto = document.getElementById('chart-pareto-abc');
-      if (ctxPareto) {
-        if (chartPareto) chartPareto.destroy();
+      if (ctxPareto && !chartPareto) {
         chartPareto = new Chart(ctxPareto, {
           type: 'doughnut',
           data: {
             labels: ['Class A (63 SKUs / 79.9%)', 'Class B (66 SKUs / 15.0%)', 'Class C (137 SKUs / 5.1%)'],
             datasets: [{
               data: [87711266.05, 16526738.11, 5571270.03],
-              backgroundColor: ['#0ea5e9', '#f59e0b', '#64748b'],
-              borderWidth: isDark ? 0 : 2
+              backgroundColor: [themeConfig.chartPrimary, '#f59e0b', '#64748b'],
+              borderWidth: 0
             }]
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
             cutout: '65%',
-            plugins: {
-              legend: { labels: { color: textColor, font: font } }
-            }
+            plugins: { legend: { labels: { color: textColor, font: font } } }
           }
         });
       }
 
-      // Chart 7: Discount Margin Leakage
+      // Discount Margin Leakage Chart
       const ctxDisc = document.getElementById('chart-discount-margin');
-      if (ctxDisc) {
-        if (chartDiscount) chartDiscount.destroy();
-        const tiers = window.MOTOPULSE_DATA.discountTiers;
+      if (ctxDisc && !chartDiscount) {
+        const tiers = [
+          { tier: '0% (Standard Dealer)', marginPct: 3.06, rate: '0.0%' },
+          { tier: '1% - 5% (Low Vol)', marginPct: -4.40, rate: '2.8%' },
+          { tier: '6% - 10% (Medium)', marginPct: -15.56, rate: '10.0%' },
+          { tier: '11% - 20% (High Vol)', marginPct: -79.66, rate: '17.9%' },
+          { tier: '20%+ (Deep Clearance)', marginPct: -247.03, rate: '34.7%' }
+        ];
         chartDiscount = new Chart(ctxDisc, {
           type: 'bar',
           data: {
@@ -1623,76 +1623,331 @@
             maintainAspectRatio: false,
             plugins: {
               legend: { display: false },
-              tooltip: {
-                callbacks: {
-                  label: ctx => `Realized Margin: ${ctx.parsed.y.toFixed(2)}% (Discount: ${tiers[ctx.dataIndex].effectiveRate}%)`
-                }
-              }
+              tooltip: { callbacks: { label: ctx => `Realized Margin: ${ctx.parsed.y.toFixed(2)}% (Discount: ${tiers[ctx.dataIndex].rate})` } }
             },
             scales: {
               x: { ticks: { color: textColor, font: font }, grid: { display: false } },
-              y: { 
-                ticks: { color: textColor, font: font, callback: v => v + '%' }, 
-                grid: { color: gridColor } 
-              }
+              y: { ticks: { color: textColor, font: font, callback: v => v + '%' }, grid: { color: gridColor } }
             }
           }
         });
       }
 
-      // Chart 8: Customer Deciles
+      // Customer Deciles Donut
       const ctxDec = document.getElementById('chart-customer-deciles');
-      if (ctxDec) {
-        if (chartCustomerDeciles) chartCustomerDeciles.destroy();
-        const decs = window.MOTOPULSE_DATA.customerDeciles;
+      if (ctxDec && !chartCustomerDeciles) {
         chartCustomerDeciles = new Chart(ctxDec, {
           type: 'doughnut',
           data: {
-            labels: decs.map(d => d.decile),
+            labels: ['Decile 1 (Top 10%)', 'Decile 2', 'Decile 3', 'Decile 4', 'Decile 5', 'Deciles 6-10'],
             datasets: [{
-              data: decs.map(d => d.totalSpend),
+              data: [11826490.37, 7672381.38, 4918132.22, 3089231.08, 1279791.63, 572650.53],
               backgroundColor: ['#0ea5e9', '#38bdf8', '#818cf8', '#a855f7', '#ec4899', '#64748b'],
-              borderWidth: isDark ? 0 : 2
+              borderWidth: 0
             }]
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
             cutout: '60%',
-            plugins: {
-              legend: { display: false },
-              tooltip: {
-                callbacks: {
-                  label: ctx => `${ctx.label}: $${(ctx.parsed / 1e6).toFixed(2)}M (${decs[ctx.dataIndex].sharePct}%)`
-                }
-              }
-            }
+            plugins: { legend: { display: false } }
           }
         });
       }
     }
 
-    // Initialization on Page Load
-    window.addEventListener('DOMContentLoaded', () => {
-      // Check saved theme
-      const savedTheme = localStorage.getItem('motopulse-theme');
-      if (savedTheme === 'light') {
-        document.documentElement.classList.remove('dark');
-        document.getElementById('theme-icon').innerText = '🌙';
-        document.getElementById('theme-text').innerText = 'Dark';
+    // ==========================================
+    // E. SUB-MATRICES & DATA TABLES
+    // ==========================================
+    function renderSubcategoriesTable(filteredCube) {
+      const tbody = document.getElementById('subcategory-table-body');
+      tbody.innerHTML = '';
+
+      const subMap = {};
+      filteredCube.forEach(c => {
+        const sub = c[4];
+        const cat = c[3];
+        if (!subMap[sub]) subMap[sub] = { category: cat, subcategory: sub, units: 0, sales: 0, profit: 0 };
+        subMap[sub].units += c[7];
+        subMap[sub].sales += c[8];
+        subMap[sub].profit += c[10];
+      });
+
+      const subs = Object.values(subMap).sort((a,b) => b.sales - a.sales);
+
+      subs.forEach(s => {
+        const mPct = s.sales > 0 ? (s.profit / s.sales * 100) : 0;
+        const isPos = s.profit >= 0;
+        const profitClass = isPos ? 'text-emerald-400' : 'text-rose-400 font-bold';
+        let healthBadge = '<span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[10px] font-sans">Profitable</span>';
+        if (mPct < 0) {
+          healthBadge = '<span class="px-2 py-0.5 rounded bg-rose-500/15 text-rose-400 text-[10px] font-sans font-bold">Margin Drain</span>';
+        } else if (mPct < 5) {
+          healthBadge = '<span class="px-2 py-0.5 rounded bg-amber-500/15 text-amber-400 text-[10px] font-sans font-semibold">Thin Margin</span>';
+        }
+
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-theme-elevated transition cursor-pointer';
+        tr.onclick = () => toggleSubcategoryFilter(s.subcategory);
+        tr.innerHTML = `
+          <td class="py-2.5 px-3 font-sans font-medium text-theme-main">${s.category}</td>
+          <td class="py-2.5 px-3 font-sans text-blue-400 hover:underline">${s.subcategory}</td>
+          <td class="py-2.5 px-3 text-right text-theme-muted">${formatNumber(s.units)}</td>
+          <td class="py-2.5 px-3 text-right font-semibold text-theme-main">${formatCurrency(s.sales)}</td>
+          <td class="py-2.5 px-3 text-right ${profitClass}">${formatCurrency(s.profit)}</td>
+          <td class="py-2.5 px-3 text-right ${profitClass}">${mPct.toFixed(2)}%</td>
+          <td class="py-2.5 px-3 text-right font-sans">${healthBadge}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderResellerTable() {
+      const tbody = document.getElementById('reseller-table-body');
+      tbody.innerHTML = '';
+      const rTypes = [
+        { type: 'Warehouse', accounts: 219, orders: 1335, units: 111993, netSales: 38726913.48, aov: 29008.92, marginPct: -0.01 },
+        { type: 'Value Added Reseller', accounts: 216, orders: 1316, units: 80309, netSales: 34967517.33, aov: 26571.06, marginPct: 1.28 },
+        { type: 'Specialty Bike Shop', accounts: 200, orders: 1145, units: 22076, netSales: 6756166.18, aov: 5900.58, marginPct: 0.41 }
+      ];
+      rTypes.forEach(rt => {
+        const isPos = rt.marginPct >= 0;
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-theme-elevated';
+        tr.innerHTML = `
+          <td class="py-2.5 px-3 font-sans font-semibold text-theme-main">${rt.type}</td>
+          <td class="py-2.5 px-3 text-right text-theme-muted">${rt.accounts}</td>
+          <td class="py-2.5 px-3 text-right text-theme-muted">${formatNumber(rt.orders)}</td>
+          <td class="py-2.5 px-3 text-right text-theme-muted">${formatNumber(rt.units)}</td>
+          <td class="py-2.5 px-3 text-right font-semibold text-theme-main">${formatCurrency(rt.netSales)}</td>
+          <td class="py-2.5 px-3 text-right text-theme-muted">$${rt.aov.toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+          <td class="py-2.5 px-3 text-right ${isPos ? 'text-emerald-400' : 'text-rose-400 font-bold'}">${rt.marginPct.toFixed(2)}%</td>
+          <td class="py-2.5 px-3 text-right font-sans text-theme-muted">Wholesale Volume Scale</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderInventoryTable() {
+      const tbody = document.getElementById('inventory-table-body');
+      tbody.innerHTML = '';
+      const items = window.MOTOPULSE_DATA.inventory ? window.MOTOPULSE_DATA.inventory.urgentItems : [];
+      items.slice(0, 15).forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-theme-elevated';
+        tr.innerHTML = `
+          <td class="py-2.5 px-3 font-sans font-medium text-theme-main">${item.productName}</td>
+          <td class="py-2.5 px-3 text-right text-rose-400 font-bold">${item.unitsBalance}</td>
+          <td class="py-2.5 px-3 text-right text-theme-muted">${item.safetyStock}</td>
+          <td class="py-2.5 px-3 text-right text-theme-muted">${item.reorderPoint}</td>
+          <td class="py-2.5 px-3 text-right text-rose-400 font-bold">${formatNumber(item.stockDeficit)}</td>
+          <td class="py-2.5 px-3 text-right text-theme-muted">$${item.unitCost.toFixed(2)}</td>
+          <td class="py-2.5 px-3 text-right font-semibold text-theme-main">$${item.reorderCost.toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+          <td class="py-2.5 px-3 text-right font-sans">
+            <span class="px-2 py-0.5 rounded bg-rose-500/15 text-rose-400 text-[10px] font-bold">PO Urgent</span>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // ==========================================
+    // F. DETAILED DATA EXPLORER
+    // ==========================================
+    function filterTableData() {
+      let data = window.MOTOPULSE_DATA.transactions || [];
+
+      if (filterState.channel !== 'all') data = data.filter(d => d.channel === filterState.channel);
+      if (filterState.year !== 'all') data = data.filter(d => d.year === parseInt(filterState.year));
+      if (filterState.category !== 'all') data = data.filter(d => d.category === filterState.category);
+      if (filterState.subcategory !== 'all') data = data.filter(d => d.subcategory === filterState.subcategory);
+      if (filterState.region !== 'all') data = data.filter(d => d.region === filterState.region);
+
+      if (filterState.searchQuery.trim() !== '') {
+        const q = filterState.searchQuery.toLowerCase();
+        data = data.filter(d => 
+          d.orderNumber.toLowerCase().includes(q) ||
+          d.productName.toLowerCase().includes(q) ||
+          d.category.toLowerCase().includes(q) ||
+          d.subcategory.toLowerCase().includes(q) ||
+          d.region.toLowerCase().includes(q) ||
+          d.channel.toLowerCase().includes(q)
+        );
       }
 
-      // Render static table matrices
-      renderSubcategoriesTable();
+      data.sort((a, b) => {
+        let valA = a[tableSortCol];
+        let valB = b[tableSortCol];
+        if (typeof valA === 'string') valA = valA.toLowerCase();
+        if (typeof valB === 'string') valB = valB.toLowerCase();
+        if (valA < valB) return tableSortAsc ? -1 : 1;
+        if (valA > valB) return tableSortAsc ? 1 : -1;
+        return 0;
+      });
+
+      currentFilteredTransactions = data;
+      tableCurrentPage = 1;
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('transaction-table-body');
+      tbody.innerHTML = '';
+
+      const total = currentFilteredTransactions.length;
+      document.getElementById('table-total-count').innerText = total;
+
+      const maxPage = Math.max(1, Math.ceil(total / tablePageSize));
+      document.getElementById('table-max-page').innerText = maxPage;
+      document.getElementById('table-current-page').innerText = tableCurrentPage;
+
+      document.getElementById('btn-prev').disabled = (tableCurrentPage <= 1);
+      document.getElementById('btn-first').disabled = (tableCurrentPage <= 1);
+      document.getElementById('btn-next').disabled = (tableCurrentPage >= maxPage);
+      document.getElementById('btn-last').disabled = (tableCurrentPage >= maxPage);
+
+      const startIndex = (tableCurrentPage - 1) * tablePageSize;
+      const endIndex = Math.min(total, startIndex + tablePageSize);
+      document.getElementById('table-page-range').innerText = total === 0 ? '0 - 0' : `${startIndex + 1} - ${endIndex}`;
+
+      if (total === 0) {
+        tbody.innerHTML = `<tr><td colspan="12" class="py-8 text-center text-theme-muted font-sans text-xs">No records match the current slicers and search criteria.</td></tr>`;
+        return;
+      }
+
+      const rowsToShow = currentFilteredTransactions.slice(startIndex, endIndex);
+      rowsToShow.forEach((r, idx) => {
+        const isPos = r.profitAmt >= 0;
+        const profitClass = isPos ? 'text-emerald-400' : 'text-rose-400 font-bold';
+        const channelBadge = r.channel === 'Retail'
+          ? '<span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[10px] font-sans font-medium">Retail B2C</span>'
+          : '<span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 text-[10px] font-sans font-medium">Wholesale B2B</span>';
+
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-theme-elevated transition';
+        tr.innerHTML = `
+          <td class="py-2.5 px-3 col-date text-theme-muted">${r.date}</td>
+          <td class="py-2.5 px-3 col-order font-bold text-theme-main">${r.orderNumber}</td>
+          <td class="py-2.5 px-3 col-channel">${channelBadge}</td>
+          <td class="py-2.5 px-3 col-product font-sans font-medium text-theme-main truncate max-w-[200px]" title="${r.productName}">${r.productName}</td>
+          <td class="py-2.5 px-3 col-cat font-sans text-theme-muted">${r.category}</td>
+          <td class="py-2.5 px-3 col-region font-sans text-theme-muted">${r.region}</td>
+          <td class="py-2.5 px-3 col-qty text-right text-theme-main">${r.qty}</td>
+          <td class="py-2.5 px-3 text-right text-theme-muted">$${r.unitPrice.toFixed(2)}</td>
+          <td class="py-2.5 px-3 col-sales text-right font-semibold text-theme-main">$${r.salesAmt.toFixed(2)}</td>
+          <td class="py-2.5 px-3 col-profit text-right ${profitClass}">$${r.profitAmt.toFixed(2)}</td>
+          <td class="py-2.5 px-3 col-margin text-right ${profitClass}">${r.marginPct.toFixed(1)}%</td>
+          <td class="py-2.5 px-3 text-center">
+            <button onclick="inspectRecord(${startIndex + idx})" class="px-2 py-0.5 rounded bg-theme-elevated hover:btn-primary-theme text-theme-main font-sans text-[10px] transition">
+              View
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function sortTable(col) {
+      if (tableSortCol === col) tableSortAsc = !tableSortAsc;
+      else { tableSortCol = col; tableSortAsc = true; }
+
+      ['date', 'orderNumber', 'channel', 'productName', 'category', 'region', 'qty', 'salesAmt', 'profitAmt', 'marginPct'].forEach(c => {
+        const icon = document.getElementById('sort-icon-' + c);
+        if (icon) icon.innerText = (c === col) ? (tableSortAsc ? '▲' : '▼') : '↕';
+      });
+
+      filterTableData();
+    }
+
+    function handleTableSearch(val) {
+      filterState.searchQuery = val;
+      filterTableData();
+    }
+
+    function changePage(delta) { tableCurrentPage += delta; renderTable(); }
+    function gotoFirstPage() { tableCurrentPage = 1; renderTable(); }
+    function gotoLastPage() { tableCurrentPage = Math.max(1, Math.ceil(currentFilteredTransactions.length / tablePageSize)); renderTable(); }
+    function changePageSize(size) { tablePageSize = parseInt(size); tableCurrentPage = 1; renderTable(); }
+    function toggleTableCol(colClass) { document.querySelectorAll('.' + colClass).forEach(el => el.classList.toggle('hidden')); }
+
+    function inspectRecord(idx) {
+      const r = currentFilteredTransactions[idx];
+      if (!r) return;
+      document.getElementById('modal-order-title').innerText = `${r.orderNumber} (Line #${r.orderLine})`;
+      const mc = document.getElementById('modal-content');
+      mc.innerHTML = `
+        <div class="p-2.5 rounded-lg bg-theme-elevated"><span class="text-theme-muted">Date:</span> <strong class="text-theme-main">${r.date}</strong></div>
+        <div class="p-2.5 rounded-lg bg-theme-elevated"><span class="text-theme-muted">Channel:</span> <strong class="text-theme-main">${r.channel}</strong></div>
+        <div class="p-2.5 rounded-lg bg-theme-elevated col-span-2"><span class="text-theme-muted">Product:</span> <strong class="text-theme-main">${r.productName}</strong> (${r.sku})</div>
+        <div class="p-2.5 rounded-lg bg-theme-elevated"><span class="text-theme-muted">Category:</span> <strong class="text-theme-main">${r.category}</strong></div>
+        <div class="p-2.5 rounded-lg bg-theme-elevated"><span class="text-theme-muted">Subcategory:</span> <strong class="text-theme-main">${r.subcategory}</strong></div>
+        <div class="p-2.5 rounded-lg bg-theme-elevated"><span class="text-theme-muted">Region:</span> <strong class="text-theme-main">${r.region}</strong> (${r.country})</div>
+        <div class="p-2.5 rounded-lg bg-theme-elevated"><span class="text-theme-muted">Order Qty:</span> <strong class="text-theme-main">${r.qty} units</strong></div>
+        <div class="p-2.5 rounded-lg bg-theme-elevated"><span class="text-theme-muted">Unit Price:</span> <strong class="text-theme-main">$${r.unitPrice.toFixed(2)}</strong></div>
+        <div class="p-2.5 rounded-lg bg-theme-elevated"><span class="text-theme-muted">Discount Granted:</span> <strong class="text-amber-400">$${r.discountAmt.toFixed(2)} (${r.discountPct}%)</strong></div>
+        <div class="p-2.5 rounded-lg bg-theme-elevated"><span class="text-theme-muted">Net Sales:</span> <strong class="text-theme-main">$${r.salesAmt.toFixed(2)}</strong></div>
+        <div class="p-2.5 rounded-lg bg-theme-elevated"><span class="text-theme-muted">Standard Cost:</span> <strong class="text-theme-main">$${r.costAmt.toFixed(2)}</strong></div>
+        <div class="p-2.5 rounded-lg bg-theme-elevated"><span class="text-theme-muted">Gross Profit:</span> <strong class="${r.profitAmt >= 0 ? 'text-emerald-400' : 'text-rose-400 font-bold'}">$${r.profitAmt.toFixed(2)}</strong></div>
+        <div class="p-2.5 rounded-lg bg-theme-elevated col-span-2"><span class="text-theme-muted">Gross Margin:</span> <strong class="${r.marginPct >= 0 ? 'text-emerald-400' : 'text-rose-400 font-bold'}">${r.marginPct.toFixed(2)}%</strong> (Standard Cost Model Value)</div>
+      `;
+      document.getElementById('record-modal').classList.remove('hidden');
+    }
+    function closeModal() { document.getElementById('record-modal').classList.add('hidden'); }
+
+    function exportCurrentTableToCSV() {
+      if (currentFilteredTransactions.length === 0) {
+        alert('No matching records to export.');
+        return;
+      }
+      const headers = ['OrderNumber', 'LineNumber', 'Channel', 'Date', 'Year', 'ProductName', 'SKU', 'Category', 'Subcategory', 'Region', 'Country', 'Quantity', 'UnitPrice', 'DiscountPct', 'DiscountAmount', 'NetSales', 'Cost', 'GrossProfit', 'GrossMarginPct'];
+      const csvRows = [headers.join(',')];
+      currentFilteredTransactions.forEach(r => {
+        csvRows.push([
+          r.orderNumber, r.orderLine, r.channel, r.date, r.year,
+          `"${r.productName.replace(/"/g, '""')}"`, r.sku, r.category,
+          `"${r.subcategory.replace(/"/g, '""')}"`, r.region, r.country,
+          r.qty, r.unitPrice, r.discountPct, r.discountAmt, r.salesAmt, r.costAmt, r.profitAmt, r.marginPct
+        ].join(','));
+      });
+      const blob = new Blob([csvRows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', `MotoPulse360_Export_${new Date().toISOString().slice(0, 10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // ==========================================
+    // G. TAB NAVIGATION
+    // ==========================================
+    function switchTab(tabId) {
+      ['overview', 'products', 'channels', 'inventory', 'explorer'].forEach(t => {
+        const el = document.getElementById('view-' + t);
+        const btn = document.getElementById('tab-' + t);
+        if (t === tabId) {
+          el.classList.remove('hidden');
+          if (btn) {
+            btn.className = "tab-btn px-3 py-1.5 rounded-lg font-medium transition-all btn-primary-theme shadow";
+          }
+        } else {
+          el.classList.add('hidden');
+          if (btn) {
+            btn.className = "tab-btn px-3 py-1.5 rounded-lg font-medium text-theme-muted hover:text-theme-main transition-all";
+          }
+        }
+      });
+    }
+
+    // ==========================================
+    // H. INITIALIZATION
+    // ==========================================
+    window.addEventListener('DOMContentLoaded', () => {
+      applyThemeTokens();
       renderResellerTable();
       renderInventoryTable();
-
-      // Setup table dataset
-      filteredTransactions = [...window.MOTOPULSE_DATA.transactions];
-      renderTable();
-
-      // Render Charts
-      setTimeout(renderAllCharts, 100);
+      updateDashboard();
     });
   </script>
 </body>

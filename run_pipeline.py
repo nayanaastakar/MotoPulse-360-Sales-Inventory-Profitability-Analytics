@@ -75,9 +75,9 @@ STAGES = [
         "Packaged portable Power BI Template archive."
     ),
     (
-        "Stage 9: Web Analytics Dashboard Asset Compilation",
-        [sys.executable, os.path.join("python", "prepare_dashboard_data.py")],
-        "Compiled verified Star Schema datasets and transaction records into frontend/dashboard_data.js."
+        "Stage 9: Web Analytics Dashboard Multidimensional Cube Compilation",
+        [sys.executable, os.path.join("python", "build_full_cube.py")],
+        "Compiled verified 6,618-cell Star Schema cube and transactions into frontend/dashboard_data.js."
     )
 ]
 

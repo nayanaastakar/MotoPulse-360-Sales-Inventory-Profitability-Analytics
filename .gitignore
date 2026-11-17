@@ -1,13 +1,26 @@
-# Created by Claude during handover packaging.
+# Python
 .venv/
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
 .ipynb_checkpoints/
+
+# Environment & Secrets
 .env
-*.pbix.bak
-# Raw source data is not committed
-data/raw/*
-!data/raw/.gitkeep
-# Credentials
 *.pem
 secrets*
+
+# Power BI
+*.pbix.bak
+
+# Raw source data
+data/raw/*
+!data/raw/.gitkeep
+
+# Operating System & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.tmp
+*.log

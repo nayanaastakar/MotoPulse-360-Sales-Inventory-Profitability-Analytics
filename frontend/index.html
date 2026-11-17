@@ -1971,10 +1971,21 @@
     // H. INITIALIZATION
     // ==========================================
     window.addEventListener('DOMContentLoaded', () => {
+      // URL parameter or hash support for direct deep-linking
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('mode') === 'light') isDarkMode = false;
+      if (urlParams.get('mode') === 'dark') isDarkMode = true;
+      if (urlParams.get('theme') && THEMES[urlParams.get('theme')]) activeTheme = urlParams.get('theme');
+
       applyThemeTokens();
       renderResellerTable();
       renderInventoryTable();
       updateDashboard();
+
+      const targetTab = urlParams.get('tab') || window.location.hash.replace('#', '');
+      if (targetTab && ['overview', 'products', 'channels', 'inventory', 'explorer'].includes(targetTab)) {
+        switchTab(targetTab);
+      }
     });
   </script>
 </body>

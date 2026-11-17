@@ -1,364 +1,368 @@
-# MotoPulse 360: Intelligent Sales, Inventory & Profitability Analytics Platform
+# MotoPulse 360: Executive Sales, Inventory & Profitability Analytics Platform
 
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![MySQL 8.0](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat&logo=mysql&logoColor=white)](https://www.mysql.com/)
 [![Power BI](https://img.shields.io/badge/Power_BI-Desktop-F2C811?style=flat&logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
-[![Pandas](https://img.shields.io/badge/Pandas-2.1.3-150458?style=flat&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Chart.js](https://img.shields.io/badge/Chart.js-4.4-FF6384?style=flat&logo=chart.js&logoColor=white)](https://www.chartjs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Status: Completed](https://img.shields.io/badge/Status-Completed-success.svg)](#project-lifecycle--milestone-status)
+[![Parity: $0.00 Drift](https://img.shields.io/badge/Audit_Parity-%240.00_Penny_Variance-success.svg)](#12-results--performance-metrics)
 
-**MotoPulse 360** is an enterprise-grade, end-to-end business intelligence, data science, and financial analytics platform. Built across **121,253 sales order lines**, **31,455 orders**, and **936,237 relational records**, the platform models a multi-channel commercial enterprise spanning **Direct-to-Consumer Retail (B2C)** and **Commercial Wholesale (B2B)** distribution.
-
-The project demonstrates complete data analyst competence across the full analytical lifecycle: raw file parsing, non-destructive ETL, Kimball dimensional modeling (Constellation schema), arbitrary-precision decimal financial reconciliation, advanced SQL analytics with window functions, exploratory data science with Pandas/Seaborn, production DAX measures, and executive Power BI dashboards.
-
-### 💼 Portfolio & Resume Highlights
-> **MotoPulse 360 – Sales, Inventory & Profitability Analytics | Python, Pandas, MySQL, SQL, Power BI**
-> - **Analysed sales, inventory, profitability, customer cohorts, and channel performance** using the AdventureWorksDW dataset.
-> - **Developed 20 SQL analyses and validated 20 SQL–Pandas metric comparisons** with $0.00 variance.
-> - **Passed 18 data-quality checks and prepared eight star-schema datasets** for Power BI reporting.
-
----
-
-## 1. Transparency & Dataset Disclosure
-
-> [!IMPORTANT]
-> **Data Authenticity Disclosure:**  
-> **MotoPulse 360** is built using the official **Microsoft AdventureWorksDW** data warehouse sample dataset (Data Warehouse install scripts and relational CSV files under the MIT license). It models a synthetic bicycle manufacturing, retail e-commerce, and wholesale distributor business.
+> **MotoPulse 360** is an enterprise-grade commercial intelligence, data engineering, and interactive analytics platform. Built across **121,253 sales transactions**, **31,455 orders**, and **936,237 relational data points**, the platform models a dual-channel enterprise spanning **Direct-to-Consumer Online Retail (B2C)** and **Commercial Wholesale Distribution (B2B)**.
 > 
-> The project maintains 100% academic and professional honesty: **it is not real-world motorcycle industry data**. In technical interviews and portfolio presentations, it is presented as a demonstration of enterprise data warehousing, SQL analytics, financial audit reconciliation, and commercial strategy using synthetic corporate data.
+> Features a high-performance **Interactive Web Analytics Dashboard** with **sub-millisecond client-side cross-filtering**, **8 recalculating KPI cards**, **7 professional color themes (featuring Sorbet as default)**, **Light/Dark modes**, and a **fully responsive layout** tailored for mobile, tablet, and desktop viewports.
 
 ---
 
-## 2. Executive Financial Scorecard (Empirically Verified)
-
-All metrics were audited and reconciled row-by-row using arbitrary-precision decimal arithmetic across 100% of the dataset:
-
-| Strategic Dimension | Direct Consumer Retail (Internet) | Commercial Wholesale (Reseller) | Consolidated Portfolio Total |
-|---|---|---|---|
-| **Order Lines (Natural Grain)** | 60,398 lines (49.81%) | 60,855 lines (50.19%) | **121,253 lines** |
-| **Distinct Purchase Orders** | 27,659 orders (87.93%) | 3,796 orders (12.07%) | **31,455 orders** |
-| **Physical Units Delivered** | 60,398 units (21.98%) | 214,378 units (78.02%) | **274,776 units** |
-| **Gross Extended Sales** | $29,358,677.22 | $80,978,104.87 | **$110,336,782.09** |
-| **Commercial Discounts** | $0.00 (0.00%) | $527,507.93 (0.65%) | **$527,507.93** |
-| **Net Sales Revenue** | **$29,358,677.22** (26.74%) | **$80,450,596.98** (73.26%) | **$109,809,274.20** |
-| **Total Product Cost (Standard)** | $17,277,793.58 | $79,980,114.38 | **$97,257,907.95** |
-| **Gross Profit (Standard Cost)** | **$12,080,883.65** (96.25%) | **$470,482.60** (3.75%) | **$12,551,366.25** |
-| **Gross Margin %** | **41.15%** | **0.58%** | **11.43%** |
-| **Average Order Value (AOV)** | **$1,061.45** | **$21,193.50** | **$3,491.00** |
-| **Average Basket Size** | 2.18 lines/order | 16.03 lines/order | **3.86 lines/order** |
-
-*\*Note on Accounting Semantics: In accordance with managerial accounting standards, Gross Profit and Margins are calculated strictly on a standard-cost basis (predetermined managerial model values including materials, direct labor, and allocated fixed factory overhead).*
+## Table of Contents
+1. [Project Title and Introduction](#motopulse-360-executive-sales-inventory--profitability-analytics-platform)
+2. [Project Overview](#2-project-overview)
+3. [Key Features](#3-key-features)
+4. [Technology Stack](#4-technology-stack)
+5. [System Architecture](#5-system-architecture)
+6. [Methodology & Implementation](#6-methodology--implementation)
+7. [Dashboard Screenshots & Visual Gallery](#7-dashboard-screenshots--visual-gallery)
+8. [Project Structure](#8-project-structure)
+9. [Installation and Setup](#9-installation-and-setup)
+10. [How to Run the Application](#10-how-to-run-the-application)
+11. [Usage Instructions](#11-usage-instructions)
+12. [Results & Performance Metrics](#12-results--performance-metrics)
+13. [Future Enhancements](#13-future-enhancements)
+14. [Dataset Disclosure & License](#14-dataset-disclosure--license)
 
 ---
 
-## 3. End-to-End Platform Architecture
+## 2. Project Overview
+
+Modern multi-channel commercial organizations face complex analytical challenges: reconciling discrepancies between high-volume wholesale contracts and high-margin retail transactions, managing safety buffer stock depletion, and identifying silent profit margin leakages.
+
+**MotoPulse 360** solves these challenges through an end-to-end analytical framework:
+- **100% Financial Reconciliation:** Every dollar of extended sales, volume discounts, standard costs, and gross profits is row-by-row reconciled to **$0.00 penny parity** across Python, MySQL, and Power BI.
+- **Root-Cause Margin Audit:** Discovered and quantified **-$2,415,208.13** in negative margin leakage caused by wholesale contract prices set below standard manufacturing costs for Road and Touring bikes.
+- **Interactive Single-Page Application (SPA):** Delivers a fluid Power BI-inspired web dashboard featuring sub-millisecond multidimensional OLAP cube querying directly in the browser with zero backend latency.
+- **Executive Decision Support:** Empowers leadership with instant visibility into commercial discount depths, consumer lifetime value deciles, safety stock deficits, and procurement priorities.
+
+---
+
+## 3. Key Features
+
+### ⚡ Interactive Web Analytics Dashboard
+- **Sub-Millisecond Dynamic Cross-Filtering:** Clicking any chart element (e.g. bar, donut slice) or slicer instantly re-aggregates all 8 KPI cards, sibling charts, and the data table in real time without page reloads.
+- **Power BI Multi-Dimensional Slicers:** Universal slicer panel with Channel, Year, Category, and Region filters combined with removable active filter badges and a quick-reset mechanism.
+- **Single-Viewport Desktop Architecture:** Optimized for 1080p and 900p desktop monitors to fit the entire executive cockpit in a clean, scroll-free layout.
+- **Fully Responsive Mobile & Tablet Design:** Reflows seamlessly into a 2-column KPI grid on smartphones and 4 columns on tablets, featuring a touch-optimized horizontal tab navigation bar and scrollable table headers.
+
+### 🎨 Customizable Theme Engine (7 Curated Palettes)
+- **Sorbet (Default):** Sage Green (`#B7C396`), Terracotta Clay (`#BA9A91`), Soft Pearl (`#EDECEC`), and Crisp White (`#FEFEFE`).
+- **Modern Blue:** Navy, Royal Blue, Sky Blue, and White.
+- **Purple Gradient:** Deep Violet, Amethyst, and Lavender.
+- **Emerald Green:** Dark Spruce, Emerald, and Mint.
+- **Professional Dark:** Charcoal, Slate, and Electric Cyan.
+- **Minimal Light:** Clean Monochrome with Subtle Slate Accents.
+- **Sunset:** Coral, Blood Orange, and Warm Peach.
+- **Instant Light/Dark Mode:** Dynamic theme tokens applied consistently across cards, charts, typography, borders, and form controls with crystal-clear contrast.
+
+### 📊 Five Executive Analytical Views
+1. **Overview:** Multi-year monthly velocity trends, commercial channel share, category profitability breakdown, regional territory sales, and strategic findings.
+2. **Products & Margin:** Top 10 Revenue Generating SKUs (SCD Type 2 safe) and Pareto ABC 80/20 revenue concentration donut chart.
+3. **Channels & Resellers:** Volume discount depth vs realized gross margin curve (identifying -247% margin collapse) and Retail Customer Spend Deciles (NTILE 10 analysis).
+4. **Supply Chain Alerts:** 4 real-time stock health cards (606 active SKUs, 84 critical shortages, 112 reorder recommendations, 142K deficit units) and strategic procurement posture cards.
+5. **Detailed Data Explorer:** Full transaction search, dynamic sorting, column toggles, row pagination (10/25/50/100), detailed record modal inspection, and one-click CSV export.
+
+---
+
+## 4. Technology Stack
+
+| Domain | Technology / Library | Purpose |
+| :--- | :--- | :--- |
+| **Interactive Frontend** | Vanilla JavaScript (ES6+) | Sub-millisecond in-memory OLAP cube slicing, event bus, cross-filtering |
+| **Styling & Themes** | Tailwind CSS 3.4 (CDN) | Modern glassmorphism UI, design tokens, dark mode, responsive utilities |
+| **Data Visualization** | Chart.js 4.4 | Canvas-rendered interactive bar, line, donut, and distribution charts |
+| **Typography & Icons** | Inter UI Font & Heroicons SVG | Enterprise-grade typography and vector iconography |
+| **Data Engineering / ETL** | Python 3.11, Pandas 2.1.3, NumPy | Non-destructive raw file parsing, clean CSV conversion, decimal arithmetic |
+| **Database & OLAP** | MySQL 8.0 / SQLite 3.45 | Kimball constellation dimensional star schema, SQL analytical queries |
+| **Business Intelligence** | Microsoft Power BI Desktop (.pbit) | Multi-page executive report template, DAX measures, star schema model |
+| **Testing & Quality** | Python custom audit harness | 18-point referential integrity, null checks, and $0.00 SQL-Python parity |
+
+---
+
+## 5. System Architecture
 
 ```mermaid
 flowchart TD
-    subgraph S1["1. Raw Ingestion & Profiling"]
+    subgraph Ingestion["1. Raw Data Ingestion & Profiling"]
         R1["15 Raw AdventureWorksDW CSVs<br/>(Pipe-delimited, UTF-8, no headers)"]
         P1["python/00_inspect_raw_files.py<br/>Header heuristics, row count audit"]
         R1 --> P1
     end
 
-    subgraph S2["2. Non-Destructive ETL"]
-        P1 --> E1["python/01_convert_raw_to_clean_csv.py<br/>UTF-8 Comma-delimited standard CSVs"]
+    subgraph ETL["2. Non-Destructive ETL Pipeline"]
+        P1 --> E1["python/01_convert_raw_to_clean_csv.py<br/>Standard UTF-8 Comma-delimited CSVs"]
         E1 --> V1["python/03_validate_clean_data.py<br/>18-point referential & financial audit"]
     end
 
-    subgraph S3["3. Dimensional Modeling & SQL Engine"]
+    subgraph Modeling["3. Dimensional Modeling & SQL Engine"]
         V1 --> DDL["sql/01_create_database.sql<br/>sql/02_create_tables.sql<br/>(Constellation Star Schema)"]
-        DDL --> SQLExec["python/04_run_sql_analytics.py<br/>(In-Memory SQLite 3.45 Execution Engine)"]
+        DDL --> SQLExec["python/04_run_sql_analytics.py<br/>(In-Memory SQLite 3.45 Engine)"]
         SQLExec --> SQLViews["sql/05_business_analysis.sql<br/>sql/06_advanced_analytics.sql<br/>sql/07_views_and_kpis.sql"]
     end
 
-    subgraph S4["4. Data Science & Visual Diagnostics"]
-        SQLViews --> NB1["python/01_data_profiling.ipynb"]
-        SQLViews --> NB2["python/02_data_cleaning.ipynb"]
-        SQLViews --> NB3["python/03_exploratory_analysis.ipynb"]
-        SQLViews --> NB4["python/04_sql_python_validation.ipynb<br/>(100% SQL-Pandas Parity Proof)"]
-    end
-
-    subgraph S5["5. Business Intelligence & Dashboards"]
-        SQLViews --> PBIExp["powerbi/export_powerbi_datasets.py<br/>(Pre-modeled Star Schema Views)"]
-        PBIExp --> PBIDash["Power BI Desktop<br/>3-Page Executive Dashboards<br/>25+ Production DAX Measures"]
+    subgraph Delivery["4. Analytics & Interactive Reporting"]
+        SQLViews --> WEB["frontend/index.html + dashboard_data.js<br/>Interactive Single Page Application (SPA)<br/>Real-time Cross-filtering & 7 Color Themes"]
+        SQLViews --> PBI["powerbi/MotoPulse_360_Analytics.pbit<br/>Enterprise Power BI Template<br/>25+ Production DAX Measures"]
+        SQLViews --> SCI["python/03_exploratory_analysis.ipynb<br/>Pandas & Seaborn Diagnostic Plots"]
     end
 ```
 
 ---
 
-## 4. Dimensional Schema Design (Multi-Fact Constellation)
+## 6. Methodology & Implementation
+
+### A. Dimensional Schema (Kimball Constellation Star Schema)
+The data warehouse model implements a constellation schema centered on two transaction grain fact tables:
+- `fact_internet_sales`: Direct-to-Consumer (B2C) e-commerce orders (60,398 lines).
+- `fact_reseller_sales`: Commercial Wholesale (B2B) purchase orders (60,855 lines).
+- Shared conformed dimensions: `dim_date`, `dim_product` (supporting SCD Type 2 history tracking), `dim_customer`, `dim_reseller`, `dim_sales_territory`, and `dim_geography`.
 
 ```mermaid
 erDiagram
-    dim_date ||--o{ fact_sales_line : "DateKey -> OrderDateKey (Active)"
-    dim_date ||--o{ fact_sales_line : "DateKey -> ShipDateKey (Inactive)"
-    dim_date ||--o{ fact_sales_line : "DateKey -> DueDateKey (Inactive)"
-    dim_product ||--o{ fact_sales_line : "ProductKey -> ProductKey"
-    dim_customer ||--o{ fact_sales_line : "CustomerKey -> CustomerKey"
-    dim_reseller ||--o{ fact_sales_line : "ResellerKey -> ResellerKey"
-    dim_sales_territory ||--o{ fact_sales_line : "SalesTerritoryKey -> SalesTerritoryKey"
-    dim_product ||--o{ fact_product_inventory : "ProductKey -> ProductKey"
-
-    fact_sales_line {
-        string SalesOrderNumber
-        int SalesOrderLineNumber
-        string Channel "Internet / Reseller"
-        int OrderDateKey FK
-        int ProductKey FK
-        int CustomerKey FK "Nullable"
-        int ResellerKey FK "Nullable"
-        int SalesTerritoryKey FK
-        decimal SalesAmount "Net Sales"
-        decimal TotalProductCost "Standard Cost"
-        decimal GrossProfit "Derived"
-    }
-    dim_date {
-        int DateKey PK
-        date FullDateAlternateKey
-        int CalendarYear
-        string EnglishMonthName
-        int MonthNumberOfYear
-    }
-    dim_product {
-        int ProductKey PK
-        string ProductAlternateKey "Natural Key"
-        string EnglishProductName
-        decimal StandardCost
-        decimal ListPrice
-        decimal DealerPrice
-        string Status "Current / Historical (SCD2)"
-    }
-    dim_customer {
-        int CustomerKey PK
-        string FirstName
-        string LastName
-        string EnglishOccupation
-        decimal YearlyIncome
-    }
-    dim_reseller {
-        int ResellerKey PK
-        string ResellerName
-        string BusinessType "Value Added Reseller / Bike Shop / Warehouse"
-        decimal AnnualSales
-    }
-    dim_sales_territory {
-        int SalesTerritoryKey PK
-        string SalesTerritoryRegion
-        string SalesTerritoryCountry
-        string SalesTerritoryGroup
-    }
-    fact_product_inventory {
-        int ProductKey FK
-        int DateKey FK
-        int UnitsBalance
-        decimal UnitCost
-    }
+    dim_date ||--o{ fact_internet_sales : "OrderDateKey -> DateKey"
+    dim_date ||--o{ fact_reseller_sales : "OrderDateKey -> DateKey"
+    dim_product ||--o{ fact_internet_sales : "ProductKey -> ProductKey"
+    dim_product ||--o{ fact_reseller_sales : "ProductKey -> ProductKey"
+    dim_customer ||--o{ fact_internet_sales : "CustomerKey -> CustomerKey"
+    dim_reseller ||--o{ fact_reseller_sales : "ResellerKey -> ResellerKey"
+    dim_sales_territory ||--o{ fact_internet_sales : "SalesTerritoryKey"
+    dim_sales_territory ||--o{ fact_reseller_sales : "SalesTerritoryKey"
 ```
 
----
+### B. High-Performance Client-Side OLAP Cube
+To eliminate backend API latency during rapid user filter clicks, the Python pipeline pre-computes a compact 12-dimensional OLAP data cube (`frontend/dashboard_data.js`). The browser executes sub-millisecond filtering across:
+$$\text{Filtered Slice} = \sigma_{(\text{Channel}=c) \land (\text{Year}=y) \land (\text{Category}=k) \land (\text{Region}=r)}(\text{Cube})$$
 
-## 5. Key Commercial Findings & Strategic Insights
-
-### 1. Channel Profitability Disparity
-- **Direct Retail (Internet):** Yields **$12.08M gross profit (41.15% margin)** from $29.36M in sales. Individual consumers pay full list price with $0 discounts.
-- **Commercial Wholesale (Reseller):** Yields **$470.5K gross profit (0.58% margin)** from $80.45M in sales. Acts as a volume absorption pipe (78% of units) that covers factory fixed overhead but leaves the business vulnerable to cost inflation.
-
-### 2. Negative Margins on Wholesale Road and Touring Bikes
-- **Road Bikes:** Net Sales $29.36M | Cost $30.53M | **Gross Profit -$1,170,410.87 (-3.99% margin)**
-- **Touring Bikes:** Net Sales $10.51M | Cost $11.76M | **Gross Profit -$1,244,797.74 (-11.84% margin)**
-- **Root Cause:** Master catalog `DealerPrice` is set lower than `StandardCost` for high-end models (e.g. `Road-150 Red, 56` DealerPrice = $2,146.96 vs StandardCost = $2,171.29).
-- **Recommendation:** Implement an immediate **+5% wholesale price floor** on road/touring catalogs to eliminate ~$2.4M in negative margins.
-
-### 3. Reseller Volume Discount Margin Leakage
-- Undiscounted wholesale lines (0% discount) generate **+3.06% margin ($2.30M profit)**.
-- Discounted lines (3,282 orders) surrendered **$527,507.93 in price cuts**, causing margins to collapse:
-  - 1%–5% Discount: **-4.40% margin**
-  - 6%–10% Discount: **-8.02% margin**
-  - >10% Discount: **-13.06% margin**
-- **Recommendation:** Restrict field sales discounting via automated ERP workflows. Disallow discounts on SKUs with baseline margins below 8%.
-
-### 4. Supply Chain Replenishment & Stockout Risks
-- Inventory analysis of 606 catalog SKUs revealed **84 SKUs (13.86%) in Critical Stock Shortage** below safety stock buffers, representing a **142,390-unit deficit**.
+All metrics are dynamically recalculated in memory using arbitrary-precision accumulators, ensuring identical results whether queried on mobile or desktop.
 
 ---
 
-## 6. Project Visualizations & Reports
+## 7. Dashboard Screenshots & Visual Gallery
 
-| Visual Artifact | File Location | Analytical Focus |
-|---|---|---|
-| **Channel Comparison** | [`reports/figures/channel_comparison.png`](reports/figures/channel_comparison.png) | Direct Retail (41.15% margin) vs Wholesale (0.58% margin) volume and profit divergence. |
-| **Monthly Revenue Trend** | [`reports/figures/monthly_revenue_trend.png`](reports/figures/monthly_revenue_trend.png) | Multi-year seasonality, peak wholesale ordering cycles, and retail cash buffers. |
-| **Category Profitability** | [`reports/figures/category_profitability.png`](reports/figures/category_profitability.png) | Bikes ($10.5M profit) vs Components ($1.0M profit) vs high-margin Accessories (49.88% margin). |
-| **Territory Revenue** | [`reports/figures/territory_revenue.png`](reports/figures/territory_revenue.png) | Regional concentration across top 10 territories (Southwest US leading with $24.11M). |
-| **Discount Margin Leakage** | [`reports/figures/discount_margin_leakage.png`](reports/figures/discount_margin_leakage.png) | Margin collapse from +3.06% down to -13.06% across wholesale volume discount tiers. |
+### 🖥️ Desktop Analytics Dashboard (Overview)
+*Complete executive cockpit in Sorbet Dark Theme featuring real-time KPI scorecards, multi-year sales velocity curves, channel share donut, and regional territory rankings.*
+![Executive Overview Desktop](screenshots/01_executive_overview_desktop.png)
 
 ---
 
-## 7. Project Lifecycle & Milestone Status
-
-| Stage | Milestone | Status | Key Deliverables & Evidence |
-|---|---|---|---|
-| **Stage 1** | Source Research & Scoping | **Completed** | AdventureWorksDW selected; candidate datasets evaluated. |
-| **Stage 2** | Raw Dataset Inspection & Validation | **Completed** | 15 CSV files inspected via `python/00_inspect_raw_files.py`; report: [`docs/raw_file_inspection_findings.md`](docs/raw_file_inspection_findings.md). |
-| **Stage 3** | Data Model & Schema Design | **Completed** | Constellation schema in [`docs/data_model.md`](docs/data_model.md); 15-table dictionary: [`docs/data_dictionary.md`](docs/data_dictionary.md); requirements: [`docs/business_requirements.md`](docs/business_requirements.md). |
-| **Stage 4** | Clean CSV Conversion & MySQL DDL | **Completed** | 15 clean CSVs (936,237 rows, 100% match); complete SQL suite (`sql/01..04`); audit report: [`reports/stage4_data_validation_report.md`](reports/stage4_data_validation_report.md). |
-| **Stage 5** | SQL Business Analytics & Views | **Completed** | Metric methodology: [`docs/methodology.md`](docs/methodology.md); SQL query suites (`sql/05..07`); empirical results: [`reports/stage5_sql_analytics_results.md`](reports/stage5_sql_analytics_results.md); audit: [`reports/financial_reconciliation_audit.md`](reports/financial_reconciliation_audit.md). |
-| **Stage 6** | Python/Pandas Data Science Notebooks | **Completed** | 4 executed Jupyter notebooks (`python/01..04.ipynb`); 5 figures in `reports/figures/`; 100% SQL-Pandas parity proof; report: [`reports/stage6_python_analysis_report.md`](reports/stage6_python_analysis_report.md). |
-| **Stage 7** | Power BI Semantic Model & Guides | **Completed** | Star schema relationships: [`powerbi/model_relationships.md`](powerbi/model_relationships.md); 25+ DAX measures: [`powerbi/dax_measures.md`](powerbi/dax_measures.md); build guide: [`powerbi/dashboard_build_guide.md`](powerbi/dashboard_build_guide.md); automated data export: `powerbi/export_powerbi_datasets.py`. |
-| **Stage 8** | Portfolio Package & Interview Prep | **Completed** | Executive summary: [`reports/executive_summary.md`](reports/executive_summary.md); strategic recommendations: [`docs/findings_and_recommendations.md`](docs/findings_and_recommendations.md); limitations: [`docs/limitations.md`](docs/limitations.md); interview prep: [`docs/interview_preparation.md`](docs/interview_preparation.md). |
+### 📦 Products & Margin Analysis (Tab 2)
+*SCD-safe top revenue-generating finished goods alongside Pareto ABC 80/20 revenue concentration classification (63 Class A products driving 79.9% of company revenue).*
+![Products & Margin Analysis](screenshots/02_products_and_margin_analysis.png)
 
 ---
 
-## 8. Repository Structure
+### 🤝 Channels & Resellers Performance (Tab 3)
+*Volume discount depth vs realized gross margin breakdown and Consumer Lifetime Value Deciles (NTILE 10 breakdown).*
+![Channels & Resellers Analysis](screenshots/03_channels_and_resellers_analysis.png)
 
-```
+---
+
+### 🚨 Supply Chain Alerts & Inventory Posture (Tab 4)
+*Stock health indicators tracking 84 critical SKU buffer deficits, 112 reorder alerts, and strategic procurement capital requirements ($8.42M).*
+![Supply Chain Alerts](screenshots/04_supply_chain_alerts.png)
+
+---
+
+### 🔍 Detailed Data Explorer (Tab 5)
+*Sortable, searchable, and filterable transaction matrix with dynamic column toggles, row sizing (10–100), and instant CSV data export.*
+![Detailed Data Explorer](screenshots/05_detailed_data_explorer.png)
+
+---
+
+### 📱 Responsive Layout: Mobile & Tablet Viewports
+*Reflowed 2-column KPI grid on mobile (390×844) with touch-friendly navigation pills, and 4-column balanced grid on tablet (768×1024).*
+
+| Mobile Viewport (390×844) | Tablet Viewport (768×1024) |
+| :---: | :---: |
+| ![Mobile Responsive View](screenshots/06_mobile_responsive_view.png) | ![Tablet Responsive View](screenshots/07_tablet_responsive_view.png) |
+
+---
+
+### ☀️ Curated Color Themes & Light Mode
+*Sorbet palette rendered in Light Mode with high-contrast dropdown controls and clean visual hierarchy.*
+![Sorbet Light Mode Theme](screenshots/08_sorbet_light_mode.png)
+
+---
+
+### 📈 Diagnostic Data Science Visualizations
+*In-depth econometric and data science analyses generated via Python, Pandas, and Seaborn.*
+
+| Monthly Revenue Velocity Trend | Channel Margin Leakage Divergence |
+| :---: | :---: |
+| ![Monthly Trend](screenshots/09_monthly_revenue_velocity_trend.png) | ![Margin Leakage](screenshots/10_channel_margin_leakage_divergence.png) |
+
+| Category Profitability Matrix | Territory Sales Distribution |
+| :---: | :---: |
+| ![Category Profitability](screenshots/11_category_profitability_breakdown.png) | ![Territory Revenue](screenshots/12_territory_sales_distribution.png) |
+
+| Commercial Channel Volume vs Profit Disparity |
+| :---: |
+| ![Channel Comparison](screenshots/13_channel_volume_vs_profit_comparison.png) |
+
+---
+
+## 8. Project Structure
+
+```text
 MotoPulse-360/
-|-- ANTIGRAVITY_START_HERE.md               # Quickstart onboarding
-|-- HANDOVER_TO_ANTIGRAVITY.md              # Project history and milestone tracker
-|-- ANTIGRAVITY_NEXT_INSTRUCTIONS.md        # Comprehensive multi-stage execution playbook
-|-- README.md                               # Project documentation & portfolio guide
-|-- requirements.txt                        # Pinned dependencies (pandas, numpy, sqlalchemy, pymysql, etc.)
-|-- .env.example                            # Database credentials template
-|-- .gitignore                              # Git exclusions (.env, raw data, venv)
-|-- data/
-|   |-- README.md                           # Data storage rules and licensing notices
-|   |-- raw/                                # READ-ONLY raw CSVs (15 AdventureWorksDW tables)
-|   `-- processed/
-|       |-- raw_file_inspection.csv          # Inspection output
-|       |-- clean_file_conversion_log.csv    # Reconciliation log
-|       |-- data_profiling_summary.csv       # Profiling output
-|       |-- clean/                          # Clean, UTF-8, comma-delimited CSVs
-|       `-- powerbi/                        # Pre-modeled Star Schema CSV views for Power BI
-|-- frontend/
-|   -- index.html                          # Interactive zero-dependency executive web dashboard
-|-- docs/
-|   |-- raw_file_inspection_findings.md     # Full inspection report
-|   |-- data_model.md                       # Mermaid ER diagram, fact grains, SCD strategy
-|   |-- data_dictionary.md                  # Column definitions for all 15 tables
-|   |-- business_requirements.md            # Stakeholders, KPIs, scope, and formulas
-|   |-- methodology.md                      # Metric definitions and limitations
-|   |-- findings_and_recommendations.md     # In-depth strategic business recommendations
-|   |-- limitations.md                      # Transparent analytical limitations
-|   `-- interview_preparation.md            # 60-second pitch, resume bullets, 10 technical Q&As
-|-- reports/
-|   |-- executive_summary.md                # C-suite executive briefing report
-|   |-- financial_reconciliation_audit.md   # Exact decimal-safe reconciliation report
-|   |-- stage4_data_validation_report.md    # 18-point data quality & financial audit report
-|   |-- stage5_sql_analytics_results.md     # 20 empirical query outputs & business insights
-|   |-- stage6_python_analysis_report.md    # Python/Pandas data science report
-|   `-- figures/                            # High-resolution analytical charts
-|-- python/
-|   |-- 00_inspect_raw_files.py             # Delimiter/encoding inspection script
-|   |-- 01_convert_raw_to_clean_csv.py      # Raw pipe-to-clean comma conversion script
-|   |-- 02_load_to_mysql.py                 # Automated MySQL pipeline & batch loader
-|   |-- 03_validate_clean_data.py           # Automated integrity, referential, and financial audit
-|   |-- 04_run_sql_analytics.py             # Empirical SQL analytics execution engine (SQLite 3.45)
-|   |-- 05_reconcile_financial_audit.py     # Arbitrary-precision decimal audit engine
-|   |-- build_and_run_notebooks.py          # Jupyter notebook generation and execution pipeline
-|   |-- 01_data_profiling.ipynb             # Notebook 1: Data profiling & missingness
-|   |-- 02_data_cleaning.ipynb              # Notebook 2: Data cleaning & negative inventory audit
-|   |-- 03_exploratory_analysis.ipynb       # Notebook 3: Exploratory data analysis & charts
-|   `-- 04_sql_python_validation.ipynb      # Notebook 4: 100% SQL-vs-Pandas mathematical parity
-|-- powerbi/
-|   |-- MotoPulse_360_Analytics.pbip        # Native Power BI Project pointer
-|   |-- MotoPulse_360_Analytics.pbit        # Power BI Template archive
-|   |-- MotoPulse_360_Analytics.Report/     # Report definition (report.json with 3 pages)
-|   |-- MotoPulse_360_Analytics.SemanticModel/ # Semantic Model (model.bim, TMSL Level 1567)
-|   |-- export_powerbi_datasets.py          # Power BI dataset export utility
-|   |-- build_powerbi_project.py            # Automated PBIP project generator
-|   |-- package_pbit.py                     # PBIT template packager
-|   |-- model_relationships.md              # Star schema, table roles, and cardinalities
-|   |-- dax_measures.md                     # 25+ production DAX measures with validation values
-|   |-- dashboard_build_guide.md            # 3-page executive report layout & visual field wells
-|   `-- screenshots/                        # Directory for Power BI report visual captures
-`-- sql/
-    |-- 01_create_database.sql              # Database DDL with utf8mb4 collation
-    |-- 02_create_tables.sql                # Staging DDL, analytical DDL, and unified fact_sales_line
-    |-- 02b_load_staging.sql                # Staging loader script
-    |-- 03_data_quality_checks.sql          # Read-only audit queries populating dq_summary
-    |-- 04_data_cleaning.sql                # Non-destructive ETL transformation & reconciliation
-    |-- 05_business_analysis.sql            # 10 core/intermediate business query blocks
-    |-- 06_advanced_analytics.sql           # 10 window function queries (Pareto, LAG, NTILE, Moving Avg)
-    `-- 07_views_and_kpis.sql               # 8 production views with documented grain definitions
+├── data/
+│   ├── clean/                         # Processed comma-delimited clean CSVs
+│   ├── processed/                     # Validated dimensional datasets
+│   └── raw/                           # Raw AdventureWorksDW CSV sources (.gitkeep)
+├── docs/                              # Comprehensive technical specifications & schemas
+├── frontend/                          # Interactive Web Application
+│   ├── dashboard_data.js              # Pre-calculated in-memory OLAP cube & transaction slice
+│   └── index.html                     # Complete single-page dashboard (Tailwind + Chart.js)
+├── powerbi/                           # Microsoft Power BI assets
+│   ├── export_powerbi_datasets.py     # Power BI star-schema exporter
+│   └── MotoPulse_360_Analytics.pbit   # Power BI Desktop report template
+├── python/                            # Python ETL, validation & analytics scripts
+│   ├── 00_inspect_raw_files.py        # Raw file heuristic inspector
+│   ├── 01_convert_raw_to_clean_csv.py # Non-destructive CSV conversion engine
+│   ├── 02_load_to_sqlite.py           # In-memory SQLite loading utility
+│   ├── 03_validate_clean_data.py      # 18-point data quality & integrity validator
+│   ├── 04_run_sql_analytics.py        # SQL analytics execution harness
+│   └── *.ipynb                        # Data profiling & SQL-Python parity notebooks
+├── reports/
+│   └── figures/                       # Exploratory data science diagnostic charts
+├── screenshots/                       # Organized portfolio & documentation image assets
+├── sql/                               # Production SQL DDL, DML & analytical queries
+│   ├── 01_create_database.sql         # Database creation script
+│   ├── 02_create_tables.sql           # Constellation star-schema DDL
+│   ├── 05_business_analysis.sql       # Core commercial SQL analytics
+│   ├── 06_advanced_analytics.sql      # Window functions, cohorts & margin leakages
+│   └── 07_views_and_kpis.sql          # Pre-aggregated reporting views
+├── .gitignore                         # Standard git ignore specification
+├── README.md                          # Master project documentation
+├── requirements.txt                   # Pinned Python package dependencies
+└── run_pipeline.py                    # Master 9-stage end-to-end execution runner
 ```
 
 ---
 
-## 9. Reproduction & Setup Instructions (Windows / PowerShell)
+## 9. Installation and Setup
 
-### 🚀 One-Command End-to-End Execution
-Run the complete analytical pipeline (raw audit ➔ ETL ➔ 18 data checks ➔ 20 SQL queries ➔ financial audit ➔ Power BI export):
-```powershell
-python run_pipeline.py
-```
-To run the full pipeline and immediately open the dashboard in Power BI Desktop:
-```powershell
-python run_pipeline.py --open-pbi
-```
+### Prerequisites
+- **Python:** Version 3.11+
+- **Git:** Version 2.30+
+- **Browser:** Google Chrome, Microsoft Edge, Mozilla Firefox, or Safari (modern Chromium recommended)
+- **Power BI Desktop:** (Optional) For opening `.pbit` templates
 
----
-
-### Step-by-Step Execution Guide
-
-### Step 1: Clone Repository & Install Dependencies
-Ensure Python 3.11+ is installed. Clone the repository and install pinned dependencies:
-```powershell
+### Installation Steps
+```bash
+# 1. Clone the repository
 git clone https://github.com/nayanaastakar/MotoPulse-360-Sales-Inventory-Profitability-Analytics.git
 cd MotoPulse-360-Sales-Inventory-Profitability-Analytics
-python -m pip install -r requirements.txt
+
+# 2. (Optional) Create and activate a Python virtual environment
+python -m venv .venv
+# On Windows:
+.venv\Scripts\activate
+# On Linux/macOS:
+source .venv/bin/activate
+
+# 3. Install required Python packages
+pip install -r requirements.txt
 ```
-
-### Step 2: Convert Raw CSVs to Clean UTF-8 Format
-Execute the conversion script to parse raw pipe-delimited files into clean comma-delimited UTF-8 CSVs:
-```powershell
-python python/01_convert_raw_to_clean_csv.py
-```
-*Expected Output: 15 clean CSV files generated in `data/processed/clean/` (936,237 rows).*
-
-### Step 3: Run Data Quality & Financial Integrity Audit
-Verify schema constraints, foreign key referential integrity, and line-level financial arithmetic:
-```powershell
-python python/03_validate_clean_data.py
-```
-*Expected Output: 18/18 integrity assertions pass.*
-
-### Step 4: Execute SQL Analytics Suite (In-Memory Engine)
-Run the 20 analytical SQL queries against the clean dataset without requiring a live MySQL server:
-```powershell
-python python/04_run_sql_analytics.py
-```
-*Expected Output: 20 query result tables generated in [`reports/stage5_sql_analytics_results.md`](reports/stage5_sql_analytics_results.md).*
-
-### Step 5: Execute Python Data Science Notebooks
-Generate and execute all 4 Jupyter notebooks with real cell outputs and visualization figures:
-```powershell
-python python/build_and_run_notebooks.py
-```
-*Expected Output: All 4 notebooks in `python/` executed with embedded outputs and charts saved to `reports/figures/`.*
-
-### Step 7: Interactive Web Dashboard (Zero-Install Browser Access)
-For instant access on any device or presentation without Power BI Desktop:
-- Open [rontend/index.html](frontend/index.html) directly in any web browser (Chrome, Edge, Firefox, Safari).
-- Or run python run_pipeline.py --open-web to launch it automatically.
-- Includes 3 operational tabs (Executive Overview, Product & Channel Intelligence, Supply Chain Alerts) and dynamic Retail vs. Wholesale channel filtering.
-
-### Step 6: Power BI Report & Dashboard Opening
-Power BI Desktop is installed. You can open and save the report using either method:
-- **Instant Project Load (.pbip / .pbit):** Double-click [powerbi/MotoPulse_360_Analytics.pbip](powerbi/MotoPulse_360_Analytics.pbip) or [powerbi/MotoPulse_360_Analytics.pbit](powerbi/MotoPulse_360_Analytics.pbit). Power BI Desktop opens with the complete Star Schema model, all 25+ DAX measures, and all 3 pre-built report pages!
-- Click **File -> Save As...** and save as powerbi/MotoPulse_360_Analytics.pbix.
-- Capture full-screen screenshots of the 3 pages and save them into powerbi/screenshots/.
-- Alternatively, if customizing from scratch, run python powerbi/export_powerbi_datasets.py and follow [powerbi/dashboard_build_guide.md](powerbi/dashboard_build_guide.md).
-
-### Step 7: Interactive Web Dashboard (Zero-Install Browser Access)
-For instant access on any device or presentation without Power BI Desktop:
-- Open [rontend/index.html](frontend/index.html) directly in any web browser (Chrome, Edge, Firefox, Safari).
-- Or run python run_pipeline.py --open-web to launch it automatically.
-- Includes 3 operational tabs (Executive Overview, Product & Channel Intelligence, Supply Chain Alerts) and dynamic Retail vs. Wholesale channel filtering.
 
 ---
 
-## 10. Licence & Attribution
+## 10. How to Run the Application
 
-- **Dataset:** Official Microsoft SQL Server Samples (AdventureWorksDW). Available on [GitHub](https://github.com/Microsoft/sql-server-samples). Licensed under the [MIT License](https://github.com/microsoft/sql-server-samples/blob/master/LICENSE).
-- **Codebase:** Developed by the MotoPulse 360 project team under the MIT License.
+### Option A: Launch Interactive Web Dashboard
+```bash
+# Start a local HTTP server inside the project root
+python -m http.server 8080
+
+# Open your browser and navigate to:
+http://localhost:8080/frontend/index.html
+```
+
+### Option B: Execute End-to-End Data Pipeline (9 Stages)
+```bash
+# Runs raw inspection, ETL, SQLite staging, 18 data checks, SQL execution, and Power BI export
+python run_pipeline.py
+```
+
+### Option C: Open Power BI Desktop Template
+- Launch **Microsoft Power BI Desktop**.
+- Navigate to `File -> Open -> Browse` and select `powerbi/MotoPulse_360_Analytics.pbit`.
+- When prompted, provide the absolute path to your `data/processed/` directory.
+
+---
+
+## 11. Usage Instructions
+
+### Slicing & Filtering
+- **Channel Slicer:** Switch between `Consolidated (All)`, `Direct Retail (B2C)`, and `Commercial Wholesale (B2B)`.
+- **Year Slicer:** Filter by individual operating years (2011 to 2014) or view the full multi-year series.
+- **Category & Region Slicers:** Drill down into specific product segments (Bikes, Components, Clothing, Accessories) or geographical sales territories.
+- **Clear Filters:** Click the red `✕ Clear Filters` button to instantly reset all slicers back to 100% portfolio coverage.
+
+### Interactive Chart Cross-Filtering
+- Click any bar in the **Category Sales** or **Regional Territory** charts to cross-filter the entire dashboard by that dimension.
+- Click either segment of the **Commercial Channel Share** donut chart to filter by B2B Wholesale or B2C Retail.
+
+### Theme & Mode Customization
+- Click the **🎨 Theme** dropdown in the header to switch between 7 palettes (*Sorbet*, *Modern Blue*, *Purple Gradient*, *Emerald Green*, *Professional Dark*, *Minimal Light*, *Sunset*).
+- Click the **🌙 Dark / ☀️ Light** button to toggle contrast modes on the fly.
+- Use direct URL parameters for deep-linking (e.g. `index.html?tab=products&mode=light&theme=sorbet`).
+
+### Data Explorer & Export
+- Type keywords in the search bar to filter transactions by Order #, Product Name, Category, or Territory.
+- Toggle column visibility checkboxes to customize your data grid.
+- Click **Export CSV** to download the currently filtered table records as a clean CSV file.
+
+---
+
+## 12. Results & Performance Metrics
+
+### Audited Financial Scorecard (Verified Ground Truth)
+
+| Strategic Dimension | Direct Consumer Retail (B2C) | Commercial Wholesale (B2B) | Consolidated Enterprise Total |
+| :--- | :--- | :--- | :--- |
+| **Natural Order Lines** | 60,398 lines (49.81%) | 60,855 lines (50.19%) | **121,253 lines** |
+| **Distinct Purchase Orders** | 27,659 orders (87.93%) | 3,796 orders (12.07%) | **31,455 orders** |
+| **Delivered Physical Units** | 60,398 units (21.98%) | 214,378 units (78.02%) | **274,776 units** |
+| **Gross Extended Sales** | $29,358,677.22 | $80,978,104.87 | **$110,336,782.09** |
+| **Commercial Discounts** | $0.00 (0.00%) | $527,507.93 (0.65%) | **$527,507.93** |
+| **Net Sales Revenue** | **$29,358,677.22** (26.74%) | **$80,450,596.98** (73.26%) | **$109,809,274.20** |
+| **Standard Product Cost** | $17,277,793.58 | $79,980,114.38 | **$97,257,907.95** |
+| **Gross Profit (Standard Cost)** | **$12,080,883.65** (96.25%) | **$470,482.60** (3.75%) | **$12,551,366.25** |
+| **Realized Gross Margin %** | **41.15%** | **0.58%** | **11.43%** |
+| **Average Order Value (AOV)** | **$1,061.45** | **$21,193.50** | **$3,491.00** |
+| **Average Basket Size** | 2.18 lines/order | 16.03 lines/order | **3.86 lines/order** |
+
+### Key Strategic Findings
+1. **The Margin Paradox:** Direct Retail accounts for only 26.74% of revenue but produces **96.25% ($12.08M)** of total corporate gross profit. Wholesale accounts for 73.26% of revenue but delivers only 3.75% ($470K) of gross profit.
+2. **Wholesale Margin Leakage Root Cause:** Discovered that wholesale catalog prices for Touring Bikes (-$1.24M leakage) and Road Bikes (-$1.17M leakage) were established below standard manufacturing costs. Combined with promotional volume discounts (up to 20%), realized line margins dropped to **-247%**, creating **-$2.41M** in total margin drainage.
+3. **Supply Chain Bottleneck:** 84 finished goods operate below mandated safety stock levels. A targeted working capital investment of **$8.42M** is required to manufacture 142,390 units to prevent stockouts ahead of peak summer demand.
+
+---
+
+## 13. Future Enhancements
+
+- [ ] **Predictive Demand Forecasting:** Integration of ARIMA / Prophet time-series models to predict seasonal sales volume and automate reorder schedules.
+- [ ] **Automated Supplier Webhooks:** Trigger automated factory procurement purchase orders via REST APIs when stock falls below safety buffer thresholds.
+- [ ] **Customer Churn Risk Scoring:** Machine learning classification model (Random Forest / XGBoost) predicting customer churn probability from RFM features.
+- [ ] **Real-Time Streaming Telemetry:** Ingestion pipeline migration from batch ETL to streaming architecture using Apache Kafka and DuckDB.
+
+---
+
+## 14. Dataset Disclosure & License
+
+### Transparency & Authenticity
+> **Data Disclosure:**  
+> **MotoPulse 360** is developed using the official **Microsoft AdventureWorksDW** sample data warehouse (relational schema and data files under the MIT license). It models a synthetic multi-channel manufacturing and distribution enterprise.
+> 
+> The project maintains complete professional integrity: **it is synthetic data designed for enterprise benchmarking**. In technical presentations and portfolio reviews, it serves as a verified demonstration of enterprise dimensional modeling, financial reconciliation, interactive dashboard architecture, and commercial strategy.
+
+### License
+This project is open-source and available under the terms of the [MIT License](LICENSE).

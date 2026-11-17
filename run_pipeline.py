@@ -73,6 +73,11 @@ STAGES = [
         "Stage 8: Power BI Distribution Template (.pbit) Packaging",
         [sys.executable, os.path.join("powerbi", "package_pbit.py")],
         "Packaged portable Power BI Template archive."
+    ),
+    (
+        "Stage 9: Web Analytics Dashboard Asset Compilation",
+        [sys.executable, os.path.join("python", "prepare_dashboard_data.py")],
+        "Compiled verified Star Schema datasets and transaction records into frontend/dashboard_data.js."
     )
 ]
 
@@ -137,7 +142,7 @@ def main():
         
     total_elapsed = time.time() - start_total
     print_executive_scorecard()
-    print(f"[OK] All 8 pipeline stages executed successfully in {total_elapsed:.2f} seconds!")
+    print(f"[OK] All {len(STAGES)} pipeline stages executed successfully in {total_elapsed:.2f} seconds!")
     print(f"Web Dashboard:  frontend/index.html")
     print(f"Power BI File:  powerbi/MotoPulse_360_Analytics.pbip / .pbix")
     print(f"Audit Reports:  reports/executive_summary.md | financial_reconciliation_audit.md")

@@ -67,6 +67,9 @@
     .custom-scroll::-webkit-scrollbar-track { background: rgba(30, 41, 59, 0.4); }
     .custom-scroll::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.5); border-radius: 3px; }
 
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
     /* Chart clickable cursor */
     canvas { cursor: pointer; }
 
@@ -100,7 +103,7 @@
   </style>
   <script src="dashboard_data.js"></script>
 </head>
-<body class="min-h-screen lg:h-screen lg:overflow-hidden flex flex-col selection:bg-brand-500 selection:text-white">
+<body class="min-h-screen overflow-x-hidden overflow-y-auto lg:h-screen lg:overflow-hidden flex flex-col selection:bg-brand-500 selection:text-white">
 
   <!-- ============================================================== -->
   <!-- 1. HEADER (Branding, Navigation, Themes, Print, GitHub)       -->
@@ -183,13 +186,13 @@
       </div>
     </div>
 
-    <!-- Mobile Navigation Tab Bar -->
-    <div class="lg:hidden flex border-t border-theme bg-theme-card px-3 py-1.5 gap-1.5 overflow-x-auto text-xs">
-      <button onclick="switchTab('overview')" class="tab-btn px-2.5 py-1 rounded-lg btn-primary-theme whitespace-nowrap">Overview</button>
-      <button onclick="switchTab('products')" class="tab-btn px-2.5 py-1 rounded-lg text-theme-muted whitespace-nowrap">Products & Margin</button>
-      <button onclick="switchTab('channels')" class="tab-btn px-2.5 py-1 rounded-lg text-theme-muted whitespace-nowrap">Channels & Resellers</button>
-      <button onclick="switchTab('inventory')" class="tab-btn px-2.5 py-1 rounded-lg text-theme-muted whitespace-nowrap">Supply Chain Alerts</button>
-      <button onclick="switchTab('explorer')" class="tab-btn px-2.5 py-1 rounded-lg text-theme-muted whitespace-nowrap">Data Explorer</button>
+    <!-- Mobile Navigation Tab Bar (Touch-friendly & Reactive) -->
+    <div class="lg:hidden flex items-center border-t border-theme bg-theme-card px-2 sm:px-4 py-1.5 gap-1.5 overflow-x-auto no-scrollbar text-xs flex-shrink-0">
+      <button onclick="switchTab('overview')" id="mobile-tab-overview" class="tab-btn px-2.5 py-1 rounded-lg font-medium btn-primary-theme shadow whitespace-nowrap">Overview</button>
+      <button onclick="switchTab('products')" id="mobile-tab-products" class="tab-btn px-2.5 py-1 rounded-lg font-medium text-theme-muted hover:text-theme-main whitespace-nowrap">Products & Margin</button>
+      <button onclick="switchTab('channels')" id="mobile-tab-channels" class="tab-btn px-2.5 py-1 rounded-lg font-medium text-theme-muted hover:text-theme-main whitespace-nowrap">Channels & Resellers</button>
+      <button onclick="switchTab('inventory')" id="mobile-tab-inventory" class="tab-btn px-2.5 py-1 rounded-lg font-medium text-theme-muted hover:text-theme-main whitespace-nowrap">Supply Chain Alerts</button>
+      <button onclick="switchTab('explorer')" id="mobile-tab-explorer" class="tab-btn px-2.5 py-1 rounded-lg font-medium text-theme-muted hover:text-theme-main whitespace-nowrap">Data Explorer</button>
     </div>
   </header>
 
@@ -197,10 +200,10 @@
   <!-- 2. POWER BI DYNAMIC SLICERS BAR (Compact Single Row)        -->
   <!-- ============================================================== -->
   <section class="border-b border-theme bg-theme-elevated py-1.5 px-3 sm:px-4 lg:px-6 flex-shrink-0">
-    <div class="w-full flex flex-wrap lg:flex-nowrap items-center justify-between gap-2 text-xs">
+    <div class="w-full flex flex-col md:flex-row md:items-center justify-between gap-2 text-xs">
       
-      <!-- Slicers Row: 4 Controls neatly aligned -->
-      <div class="flex flex-wrap items-center gap-1.5 flex-1 min-w-0">
+      <!-- Slicers Row: Touch scrollable on mobile, neatly aligned on desktop -->
+      <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 flex-1 min-w-0">
         
         <div class="flex items-center gap-1 text-theme-muted font-bold uppercase tracking-wider text-[10px] mr-1 flex-shrink-0">
           <svg class="w-3.5 h-3.5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
@@ -208,7 +211,7 @@
         </div>
 
         <!-- Channel Slicer -->
-        <div class="flex items-center bg-theme-card rounded-md border border-theme px-2 py-0.5">
+        <div class="flex items-center bg-theme-card rounded-md border border-theme px-2 py-0.5 flex-shrink-0">
           <span class="text-theme-muted mr-1 text-[11px] font-medium">Channel:</span>
           <select id="slicer-channel" onchange="setSlicer('channel', this.value)" class="bg-transparent border-none text-theme-main text-xs focus:ring-0 outline-none cursor-pointer font-medium py-0">
             <option value="all">Consolidated (All)</option>
@@ -218,7 +221,7 @@
         </div>
 
         <!-- Year Slicer -->
-        <div class="flex items-center bg-theme-card rounded-md border border-theme px-2 py-0.5">
+        <div class="flex items-center bg-theme-card rounded-md border border-theme px-2 py-0.5 flex-shrink-0">
           <span class="text-theme-muted mr-1 text-[11px] font-medium">Year:</span>
           <select id="slicer-year" onchange="setSlicer('year', this.value)" class="bg-transparent border-none text-theme-main text-xs focus:ring-0 outline-none cursor-pointer font-medium py-0">
             <option value="all">All Years (2011-2014)</option>
@@ -230,7 +233,7 @@
         </div>
 
         <!-- Category Slicer -->
-        <div class="flex items-center bg-theme-card rounded-md border border-theme px-2 py-0.5">
+        <div class="flex items-center bg-theme-card rounded-md border border-theme px-2 py-0.5 flex-shrink-0">
           <span class="text-theme-muted mr-1 text-[11px] font-medium">Category:</span>
           <select id="slicer-category" onchange="setSlicer('category', this.value)" class="bg-transparent border-none text-theme-main text-xs focus:ring-0 outline-none cursor-pointer font-medium py-0">
             <option value="all">All Categories</option>
@@ -242,7 +245,7 @@
         </div>
 
         <!-- Region Slicer -->
-        <div class="flex items-center bg-theme-card rounded-md border border-theme px-2 py-0.5">
+        <div class="flex items-center bg-theme-card rounded-md border border-theme px-2 py-0.5 flex-shrink-0">
           <span class="text-theme-muted mr-1 text-[11px] font-medium">Region:</span>
           <select id="slicer-region" onchange="setSlicer('region', this.value)" class="bg-transparent border-none text-theme-main text-xs focus:ring-0 outline-none cursor-pointer font-medium py-0">
             <option value="all">All Regions</option>
@@ -295,20 +298,15 @@
       </div>
     </div>
   </div>
-      <div class="text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 text-[11px]">
-        Reconciled to $0.00 Penny Parity
-      </div>
-    </div>
-  </div>
 
   <!-- ============================================================== -->
   <!-- 4. MASTER RECALCULATING KPI CARDS GRID (Compact 4x2 Grid)   -->
   <!-- ============================================================== -->
-  <section class="w-full px-3 sm:px-4 lg:px-6 pt-1.5 flex-shrink-0">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-2">
+  <section class="w-full px-2 sm:px-4 lg:px-6 pt-1.5 flex-shrink-0">
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-1.5 sm:gap-2">
       
       <!-- 1. Net Sales Revenue -->
-      <div class="glass-card rounded-xl px-3 py-1.5 flex flex-col justify-between h-[58px]">
+      <div class="glass-card rounded-xl px-2.5 sm:px-3 py-1.5 flex flex-col justify-between min-h-[56px] lg:h-[58px]">
         <div class="flex items-center justify-between text-theme-muted text-[11px] font-medium leading-none">
           <span class="truncate">Net Sales Revenue</span>
           <span id="kpi-sales-badge" class="px-1.5 py-0.5 rounded text-[10px] font-semibold flex-shrink-0 leading-none" style="background: var(--theme-bg-elevated); color: var(--theme-text-main); border: 1px solid var(--theme-border);">100% Volume</span>
@@ -320,7 +318,7 @@
       </div>
 
       <!-- 2. Gross Profit -->
-      <div class="glass-card rounded-xl px-3 py-1.5 flex flex-col justify-between h-[58px]">
+      <div class="glass-card rounded-xl px-2.5 sm:px-3 py-1.5 flex flex-col justify-between min-h-[56px] lg:h-[58px]">
         <div class="flex items-center justify-between text-theme-muted text-[11px] font-medium leading-none">
           <span class="truncate">Gross Profit (Std Cost)</span>
           <span class="px-1.5 py-0.5 rounded text-[10px] font-semibold flex-shrink-0 leading-none" style="background: var(--theme-bg-elevated); color: #6d7f4f; border: 1px solid var(--theme-border);">Managerial</span>
@@ -332,7 +330,7 @@
       </div>
 
       <!-- 3. Gross Margin % -->
-      <div class="glass-card rounded-xl px-3 py-1.5 flex flex-col justify-between h-[58px]">
+      <div class="glass-card rounded-xl px-2.5 sm:px-3 py-1.5 flex flex-col justify-between min-h-[56px] lg:h-[58px]">
         <div class="flex items-center justify-between text-theme-muted text-[11px] font-medium leading-none">
           <span class="truncate">Gross Margin %</span>
           <span id="kpi-margin-badge" class="px-1.5 py-0.5 rounded text-[10px] font-semibold flex-shrink-0 leading-none" style="background: var(--theme-bg-elevated); color: #BA9A91; border: 1px solid var(--theme-border);">11.43%</span>
@@ -344,7 +342,7 @@
       </div>
 
       <!-- 4. Distinct Purchase Orders -->
-      <div class="glass-card rounded-xl px-3 py-1.5 flex flex-col justify-between h-[58px]">
+      <div class="glass-card rounded-xl px-2.5 sm:px-3 py-1.5 flex flex-col justify-between min-h-[56px] lg:h-[58px]">
         <div class="flex items-center justify-between text-theme-muted text-[11px] font-medium leading-none">
           <span class="truncate">Distinct Orders</span>
           <span class="px-1.5 py-0.5 rounded text-[10px] font-semibold flex-shrink-0 leading-none" style="background: var(--theme-bg-elevated); color: var(--theme-text-main); border: 1px solid var(--theme-border);">Volume</span>
@@ -356,7 +354,7 @@
       </div>
 
       <!-- 5. Physical Units Delivered -->
-      <div class="glass-card rounded-xl px-3 py-1.5 flex flex-col justify-between h-[58px]">
+      <div class="glass-card rounded-xl px-2.5 sm:px-3 py-1.5 flex flex-col justify-between min-h-[56px] lg:h-[58px]">
         <div class="flex items-center justify-between text-theme-muted text-[11px] font-medium leading-none">
           <span class="truncate">Delivered Physical Units</span>
           <span class="px-1.5 py-0.5 rounded text-[10px] font-semibold flex-shrink-0 leading-none" style="background: var(--theme-bg-elevated); color: var(--theme-text-main); border: 1px solid var(--theme-border);">Production</span>
@@ -368,7 +366,7 @@
       </div>
 
       <!-- 6. Average Order Value (AOV) -->
-      <div class="glass-card rounded-xl px-3 py-1.5 flex flex-col justify-between h-[58px]">
+      <div class="glass-card rounded-xl px-2.5 sm:px-3 py-1.5 flex flex-col justify-between min-h-[56px] lg:h-[58px]">
         <div class="flex items-center justify-between text-theme-muted text-[11px] font-medium leading-none">
           <span class="truncate">Average Order Value</span>
           <span class="px-1.5 py-0.5 rounded text-[10px] font-semibold flex-shrink-0 leading-none" style="background: var(--theme-bg-elevated); color: var(--theme-text-main); border: 1px solid var(--theme-border);">Order Level</span>
@@ -380,7 +378,7 @@
       </div>
 
       <!-- 7. Critical Stock Shortage SKUs -->
-      <div class="glass-card rounded-xl px-3 py-1.5 flex flex-col justify-between h-[58px]" style="border-left: 3px solid #BA9A91;">
+      <div class="glass-card rounded-xl px-2.5 sm:px-3 py-1.5 flex flex-col justify-between min-h-[56px] lg:h-[58px]" style="border-left: 3px solid #BA9A91;">
         <div class="flex items-center justify-between text-theme-muted text-[11px] font-medium leading-none">
           <span class="truncate">Supply Chain Alerts</span>
           <span class="px-1.5 py-0.5 rounded text-[10px] font-semibold flex-shrink-0 leading-none" style="background: var(--theme-bg-elevated); color: #BA9A91; border: 1px solid var(--theme-border);">Action</span>
@@ -392,7 +390,7 @@
       </div>
 
       <!-- 8. Volume Discount Concessions -->
-      <div class="glass-card rounded-xl px-3 py-1.5 flex flex-col justify-between h-[58px]" style="border-left: 3px solid #B7C396;">
+      <div class="glass-card rounded-xl px-2.5 sm:px-3 py-1.5 flex flex-col justify-between min-h-[56px] lg:h-[58px]" style="border-left: 3px solid #B7C396;">
         <div class="flex items-center justify-between text-theme-muted text-[11px] font-medium leading-none">
           <span class="truncate">Discounts Deducted</span>
           <span class="px-1.5 py-0.5 rounded text-[10px] font-semibold flex-shrink-0 leading-none" style="background: var(--theme-bg-elevated); color: var(--theme-text-main); border: 1px solid var(--theme-border);">Drain</span>
@@ -409,7 +407,7 @@
   <!-- ============================================================== -->
   <!-- 5. TABBED DASHBOARD VIEWS                                      -->
   <!-- ============================================================== -->
-  <main class="flex-1 w-full px-3 sm:px-4 lg:px-6 py-2 overflow-hidden flex flex-col min-h-0">
+  <main class="flex-1 w-full px-2 sm:px-4 lg:px-6 py-2 overflow-y-auto lg:overflow-hidden flex flex-col min-h-0 custom-scroll">
 
     <!-- ============================================================== -->
     <!-- TAB 1: EXECUTIVE OVERVIEW                                      -->
@@ -432,7 +430,7 @@
             </div>
           </div>
 
-          <div class="w-full flex-1 relative min-h-[140px]">
+          <div class="w-full flex-1 relative min-h-[160px] sm:min-h-[180px] lg:min-h-[140px]">
             <canvas id="chart-monthly-trend"></canvas>
           </div>
           
@@ -455,7 +453,7 @@
             <span class="text-[9px] text-theme-muted bg-theme-elevated border border-theme px-1.5 py-0.5 rounded font-medium">Click slice</span>
           </div>
 
-          <div class="w-full flex-1 relative flex items-center justify-center min-h-[120px]">
+          <div class="w-full flex-1 relative flex items-center justify-center min-h-[150px] sm:min-h-[160px] lg:min-h-[120px]">
             <canvas id="chart-channel-share"></canvas>
           </div>
 
@@ -474,7 +472,7 @@
       </div>
 
       <!-- Charts Row 2: Category Breakdown & Territory Distribution + Executive Findings -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 flex-1 min-h-0">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 flex-1 min-h-0">
         
         <!-- Category Sales Bar Chart (Click to filter) -->
         <div class="glass-card rounded-xl p-2.5 flex flex-col justify-between min-h-0">
@@ -485,7 +483,7 @@
             </div>
             <span class="text-[9px] text-theme-muted bg-theme-elevated border border-theme px-1.5 py-0.5 rounded font-medium">Filterable</span>
           </div>
-          <div class="w-full flex-1 relative min-h-[120px]">
+          <div class="w-full flex-1 relative min-h-[150px] sm:min-h-[160px] lg:min-h-[120px]">
             <canvas id="chart-category-sales"></canvas>
           </div>
         </div>
@@ -499,7 +497,7 @@
             </div>
             <span class="text-[9px] text-theme-muted bg-theme-elevated border border-theme px-1.5 py-0.5 rounded font-medium">Filterable</span>
           </div>
-          <div class="w-full flex-1 relative min-h-[120px]">
+          <div class="w-full flex-1 relative min-h-[150px] sm:min-h-[160px] lg:min-h-[120px]">
             <canvas id="chart-territory-sales"></canvas>
           </div>
         </div>
@@ -533,7 +531,7 @@
     <!-- ============================================================== -->
     <!-- TAB 2: PRODUCT & PROFITABILITY                                 -->
     <!-- ============================================================== -->
-    <div id="view-products" class="hidden h-full flex flex-col gap-2 min-h-0">
+    <div id="view-products" class="hidden h-full flex flex-col gap-2 min-h-0 overflow-y-auto lg:overflow-visible custom-scroll pb-6 lg:pb-0">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 h-full min-h-0">
         
         <!-- Top 10 Best Sellers Bar Chart -->
@@ -568,7 +566,7 @@
     <!-- ============================================================== -->
     <!-- TAB 3: CHANNELS & RESELLERS                                    -->
     <!-- ============================================================== -->
-    <div id="view-channels" class="hidden h-full flex flex-col gap-2 min-h-0">
+    <div id="view-channels" class="hidden h-full flex flex-col gap-2 min-h-0 overflow-y-auto lg:overflow-visible custom-scroll pb-6 lg:pb-0">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 h-full min-h-0">
 
         <!-- Volume Discount Margin Drainage Card & Chart -->
@@ -617,10 +615,10 @@
     <!-- ============================================================== -->
     <!-- TAB 4: SUPPLY CHAIN & STOCK HEALTH                             -->
     <!-- ============================================================== -->
-    <div id="view-inventory" class="hidden h-full flex flex-col gap-3 min-h-0">
+    <div id="view-inventory" class="hidden h-full flex flex-col gap-3 min-h-0 overflow-y-auto lg:overflow-visible custom-scroll pb-6 lg:pb-0">
       
       <!-- Stock Health Cards -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 flex-shrink-0">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 flex-shrink-0">
         <div class="glass-card rounded-xl p-3.5">
           <span class="text-xs text-theme-muted font-medium">Total Active SKUs</span>
           <div class="text-xl font-bold text-theme-main mt-0.5">606 Products</div>
@@ -756,7 +754,7 @@
       </div>
 
       <!-- Main Data Table Container with Internal Scroll -->
-      <div class="glass-card rounded-xl overflow-hidden flex-1 min-h-0 flex flex-col">
+      <div class="glass-card rounded-xl overflow-hidden flex-1 min-h-[320px] lg:min-h-0 flex flex-col">
         <div class="overflow-y-auto overflow-x-auto custom-scroll flex-1 min-h-0">
           <table class="w-full text-left text-xs border-collapse">
             <thead class="bg-theme-elevated text-theme-muted uppercase text-[10px] tracking-wider font-semibold cursor-pointer select-none sticky top-0 z-10 border-b border-theme">
@@ -828,10 +826,10 @@
   <!-- ============================================================== -->
   <!-- 7. FOOTER (Compact Single Line)                             -->
   <!-- ============================================================== -->
-  <footer class="border-t border-theme bg-theme-card py-1 px-3 sm:px-4 lg:px-6 text-[10px] text-theme-muted flex items-center justify-between gap-2 flex-shrink-0">
-    <div class="truncate">MotoPulse 360 · Production Analytics Suite · MySQL 8 · Python 3.11 · Power BI Desktop · Sub-millisecond Cross-Filtering</div>
+  <footer class="border-t border-theme bg-theme-card py-1 px-2 sm:px-4 lg:px-6 text-[10px] text-theme-muted flex flex-col sm:flex-row items-center justify-between gap-1 flex-shrink-0 text-center sm:text-left">
+    <div class="truncate max-w-full">MotoPulse 360 · Production Analytics Suite · MySQL 8 · Python 3.11 · Power BI Desktop</div>
     <div class="flex items-center gap-3 flex-shrink-0">
-      <span>Verified Ground Truth: $0.00 Penny Parity</span>
+      <span class="hidden sm:inline">Verified: $0.00 Penny Parity</span>
       <a href="https://github.com/nayanaastakar/MotoPulse-360-Sales-Inventory-Profitability-Analytics" target="_blank" class="hover:text-theme-main transition underline">GitHub Repo</a>
     </div>
   </footer>
@@ -1276,6 +1274,16 @@
       // Re-render active Charts
       renderAllCharts(filtered);
     }
+
+
+    // Window resize handler for smooth responsive chart recalculation
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (window.renderAllCharts) window.renderAllCharts();
+      }, 150);
+    });
 
     // Helper formatters
     function formatCurrency(val) {
@@ -1939,21 +1947,24 @@
     // G. TAB NAVIGATION
     // ==========================================
     function switchTab(tabId) {
+      const activeClass = "tab-btn px-2.5 py-1 rounded-lg font-medium transition-all btn-primary-theme shadow whitespace-nowrap";
+      const inactiveClass = "tab-btn px-2.5 py-1 rounded-lg font-medium text-theme-muted hover:text-theme-main transition-all whitespace-nowrap";
+
       ['overview', 'products', 'channels', 'inventory', 'explorer'].forEach(t => {
         const el = document.getElementById('view-' + t);
         const btn = document.getElementById('tab-' + t);
-        if (t === tabId) {
-          el.classList.remove('hidden');
-          if (btn) {
-            btn.className = "tab-btn px-2.5 py-1 rounded-lg font-medium transition-all btn-primary-theme shadow";
-          }
-        } else {
-          el.classList.add('hidden');
-          if (btn) {
-            btn.className = "tab-btn px-2.5 py-1 rounded-lg font-medium text-theme-muted hover:text-theme-main transition-all";
-          }
+        const mBtn = document.getElementById('mobile-tab-' + t);
+        const isActive = (t === tabId);
+
+        if (el) {
+          if (isActive) el.classList.remove('hidden');
+          else el.classList.add('hidden');
         }
+        if (btn) btn.className = isActive ? activeClass : inactiveClass;
+        if (mBtn) mBtn.className = isActive ? activeClass : inactiveClass;
       });
+
+      if (window.renderAllCharts) window.renderAllCharts();
     }
 
     // ==========================================

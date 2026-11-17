@@ -69,6 +69,34 @@
 
     /* Chart clickable cursor */
     canvas { cursor: pointer; }
+
+    /* Form controls & Dropdown Select Styling for High-Contrast Visibility */
+    select {
+      color-scheme: light dark;
+      background-color: var(--theme-bg-card);
+      color: var(--theme-text-main);
+    }
+    .dark select,
+    html.dark select {
+      color-scheme: dark !important;
+      background-color: #1a2219 !important;
+      color: #f4f6f2 !important;
+    }
+    html:not(.dark) select {
+      color-scheme: light !important;
+      background-color: #ffffff !important;
+      color: #242c22 !important;
+    }
+    select option {
+      background-color: #ffffff !important;
+      color: #1e293b !important;
+      padding: 6px 12px;
+    }
+    .dark select option,
+    html.dark select option {
+      background-color: #1a2219 !important;
+      color: #f4f6f2 !important;
+    }
   </style>
   <script src="dashboard_data.js"></script>
 </head>
@@ -505,120 +533,69 @@
     <!-- ============================================================== -->
     <!-- TAB 2: PRODUCT & PROFITABILITY                                 -->
     <!-- ============================================================== -->
-    <div id="view-products" class="hidden h-full flex flex-col gap-2 min-h-0 overflow-y-auto custom-scroll">
-
-      <!-- Critical Margin Alert Card -->
-      <div class="glass-card rounded-2xl p-5 border border-rose-500/30 bg-gradient-to-r from-theme-card to-rose-950/20">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <span class="text-xs uppercase tracking-wider font-bold text-rose-400">Root-Cause Analysis</span>
-            <h2 class="text-base font-bold text-theme-main mt-1">Negative Margin Leakage in Wholesale Road & Touring Bikes</h2>
-            <p class="text-xs text-theme-muted mt-1 max-w-3xl">
-              Empirical SQL audits confirmed that wholesale dealer catalog prices on finished Touring and Road bikes were established below standard manufacturing costs.
-              When combined with promotional volume discounts (up to 20%), realized line margins plunged down to <strong>-247%</strong>, generating over <strong>-$2.4M</strong> in aggregate margin drainage.
-            </p>
-          </div>
-          <span class="px-3.5 py-1.5 rounded-xl bg-rose-500/15 text-rose-400 border border-rose-500/30 text-xs font-bold whitespace-nowrap self-start md:self-auto">
-            -$2,415,208 Leakage
-          </span>
-        </div>
-      </div>
-
-      <!-- Top 10 Products Chart & Pareto Curve Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div id="view-products" class="hidden h-full flex flex-col gap-2 min-h-0">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 h-full min-h-0">
         
         <!-- Top 10 Best Sellers Bar Chart -->
-        <div class="glass-card rounded-2xl p-5">
-          <div class="flex items-center justify-between mb-4">
+        <div class="glass-card rounded-xl p-3.5 flex flex-col h-full min-h-0">
+          <div class="flex items-center justify-between mb-2 flex-shrink-0">
             <div>
-              <h2 class="text-sm font-bold text-theme-main tracking-tight">Top 10 Revenue Generating SKUs (SCD-Safe)</h2>
-              <p class="text-xs text-theme-muted">Aggregated across historical SCD Type 2 product keys</p>
+              <h2 class="text-xs font-bold text-theme-main tracking-tight">Top 10 Revenue Generating SKUs (SCD-Safe)</h2>
+              <p class="text-[11px] text-theme-muted">Aggregated across historical SCD Type 2 product keys</p>
             </div>
           </div>
-          <div class="w-full h-64 relative">
+          <div class="w-full flex-1 min-h-0 relative">
             <canvas id="chart-top-products"></canvas>
           </div>
         </div>
 
         <!-- Pareto 80/20 ABC Classification Donut -->
-        <div class="glass-card rounded-2xl p-5">
-          <div class="flex items-center justify-between mb-4">
+        <div class="glass-card rounded-xl p-3.5 flex flex-col h-full min-h-0">
+          <div class="flex items-center justify-between mb-2 flex-shrink-0">
             <div>
-              <h2 class="text-sm font-bold text-theme-main tracking-tight">Pareto ABC Revenue Concentration</h2>
-              <p class="text-xs text-theme-muted">63 Class A products drive 79.9% of company revenue</p>
+              <h2 class="text-xs font-bold text-theme-main tracking-tight">Pareto ABC Revenue Concentration</h2>
+              <p class="text-[11px] text-theme-muted">63 Class A products drive 79.9% of company revenue</p>
             </div>
           </div>
-          <div class="w-full h-64 relative flex items-center justify-center">
+          <div class="w-full flex-1 min-h-0 relative flex items-center justify-center">
             <canvas id="chart-pareto-abc"></canvas>
           </div>
         </div>
 
       </div>
-
-      <!-- Subcategory Financial Matrix Table -->
-      <div class="glass-card rounded-2xl p-5">
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-          <div>
-            <h2 class="text-sm font-bold text-theme-main tracking-tight">Subcategory Financial Performance Matrix</h2>
-            <p class="text-xs text-theme-muted">Click any subcategory row to filter the entire dashboard</p>
-          </div>
-          <span class="text-xs text-theme-muted">Showing filtered metrics</span>
-        </div>
-
-        <div class="overflow-x-auto custom-scroll rounded-xl border border-theme">
-          <table class="w-full text-left text-xs border-collapse">
-            <thead class="bg-theme-elevated text-theme-muted uppercase text-[10px] tracking-wider font-semibold">
-              <tr>
-                <th class="py-2.5 px-3">Category</th>
-                <th class="py-2.5 px-3">Subcategory</th>
-                <th class="py-2.5 px-3 text-right">Units Sold</th>
-                <th class="py-2.5 px-3 text-right">Net Sales Revenue</th>
-                <th class="py-2.5 px-3 text-right">Gross Profit</th>
-                <th class="py-2.5 px-3 text-right">Gross Margin %</th>
-                <th class="py-2.5 px-3 text-right">Health Status</th>
-              </tr>
-            </thead>
-            <tbody id="subcategory-table-body" class="divide-y divide-theme font-mono">
-              <!-- Rendered dynamically -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-
     </div>
 
     <!-- ============================================================== -->
     <!-- TAB 3: CHANNELS & RESELLERS                                    -->
     <!-- ============================================================== -->
-    <div id="view-channels" class="hidden h-full flex flex-col gap-2 min-h-0 overflow-y-auto custom-scroll">
+    <div id="view-channels" class="hidden h-full flex flex-col gap-2 min-h-0">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 h-full min-h-0">
 
-      <!-- Volume Discount Margin Drainage Card & Chart -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-        <div class="glass-card rounded-2xl p-5 lg:col-span-2">
-          <div class="flex items-center justify-between mb-4">
+        <!-- Volume Discount Margin Drainage Card & Chart -->
+        <div class="glass-card rounded-xl p-3.5 lg:col-span-2 flex flex-col h-full min-h-0">
+          <div class="flex items-center justify-between mb-2 flex-shrink-0">
             <div>
-              <h2 class="text-sm font-bold text-theme-main tracking-tight">Volume Discount Depth vs Realized Gross Margin</h2>
-              <p class="text-xs text-theme-muted">Notice margin collapsing from +3.06% down to -247% as discount rate increases</p>
+              <h2 class="text-xs font-bold text-theme-main tracking-tight">Volume Discount Depth vs Realized Gross Margin</h2>
+              <p class="text-[11px] text-theme-muted">Notice margin collapsing from +3.06% down to -247% as discount rate increases</p>
             </div>
           </div>
-          <div class="w-full h-64 relative">
+          <div class="w-full flex-1 min-h-0 relative">
             <canvas id="chart-discount-margin"></canvas>
           </div>
         </div>
 
         <!-- Customer Deciles Spend Concentration -->
-        <div class="glass-card rounded-2xl p-5 flex flex-col justify-between">
-          <div>
-            <h2 class="text-sm font-bold text-theme-main tracking-tight">Retail Customer Spend Deciles</h2>
-            <p class="text-xs text-theme-muted">NTILE(10) Consumer Lifetime Value Breakdown</p>
+        <div class="glass-card rounded-xl p-3.5 flex flex-col justify-between h-full min-h-0">
+          <div class="flex-shrink-0">
+            <h2 class="text-xs font-bold text-theme-main tracking-tight">Retail Customer Spend Deciles</h2>
+            <p class="text-[11px] text-theme-muted">NTILE(10) Consumer Lifetime Value Breakdown</p>
           </div>
 
-          <div class="w-full h-52 relative my-2 flex items-center justify-center">
+          <div class="w-full flex-1 min-h-0 relative my-2 flex items-center justify-center">
             <canvas id="chart-customer-deciles"></canvas>
           </div>
 
-          <div class="text-xs text-theme-muted border-t border-theme pt-3 space-y-1">
+          <div class="text-[11px] text-theme-muted border-t border-theme pt-2 space-y-1 flex-shrink-0">
             <div class="flex justify-between">
               <span class="text-blue-400 font-semibold">Decile 1 (Top 10%):</span>
               <span class="font-bold text-theme-main">$11.83M (40.3%)</span>
@@ -635,98 +612,91 @@
         </div>
 
       </div>
-
-      <!-- Reseller Business Types Table -->
-      <div class="glass-card rounded-2xl p-5">
-        <div class="flex items-center justify-between mb-4">
-          <div>
-            <h2 class="text-sm font-bold text-theme-main tracking-tight">Commercial Wholesale Partner Performance by Business Type</h2>
-            <p class="text-xs text-theme-muted">Audited metrics from 701 active commercial reseller accounts</p>
-          </div>
-        </div>
-
-        <div class="overflow-x-auto rounded-xl border border-theme">
-          <table class="w-full text-left text-xs border-collapse">
-            <thead class="bg-theme-elevated text-theme-muted uppercase text-[10px] tracking-wider font-semibold">
-              <tr>
-                <th class="py-2.5 px-3">Partner Business Type</th>
-                <th class="py-2.5 px-3 text-right">Active Accounts</th>
-                <th class="py-2.5 px-3 text-right">Wholesale POs</th>
-                <th class="py-2.5 px-3 text-right">Units Purchased</th>
-                <th class="py-2.5 px-3 text-right">Net Sales Revenue</th>
-                <th class="py-2.5 px-3 text-right">Average Order Value</th>
-                <th class="py-2.5 px-3 text-right">Realized Margin %</th>
-                <th class="py-2.5 px-3 text-right">Strategic Role</th>
-              </tr>
-            </thead>
-            <tbody id="reseller-table-body" class="divide-y divide-theme font-mono">
-              <!-- Rendered dynamically -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-
     </div>
 
     <!-- ============================================================== -->
     <!-- TAB 4: SUPPLY CHAIN & STOCK HEALTH                             -->
     <!-- ============================================================== -->
-    <div id="view-inventory" class="hidden h-full flex flex-col gap-2 min-h-0 overflow-y-auto custom-scroll">
-
+    <div id="view-inventory" class="hidden h-full flex flex-col gap-3 min-h-0">
+      
       <!-- Stock Health Cards -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="glass-card rounded-2xl p-4">
-          <span class="text-xs text-theme-muted">Total Active SKUs</span>
-          <div class="text-2xl font-bold text-theme-main mt-1">606 Products</div>
-          <span class="text-[11px] text-theme-muted">100% catalog coverage</span>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 flex-shrink-0">
+        <div class="glass-card rounded-xl p-3.5">
+          <span class="text-xs text-theme-muted font-medium">Total Active SKUs</span>
+          <div class="text-xl font-bold text-theme-main mt-0.5">606 Products</div>
+          <span class="text-[10px] text-theme-muted">100% catalog coverage</span>
         </div>
-        <div class="glass-card rounded-2xl p-4 border border-rose-500/30">
-          <span class="text-xs text-rose-400 font-semibold">Critical Shortage (< Safety Stock)</span>
-          <div class="text-2xl font-bold text-rose-400 mt-1">84 SKUs</div>
-          <span class="text-[11px] text-rose-400/80">Stock deficit vs buffer</span>
+        <div class="glass-card rounded-xl p-3.5 border border-rose-500/30">
+          <span class="text-xs text-rose-400 font-semibold">Critical Shortage (&lt; Safety Stock)</span>
+          <div class="text-xl font-bold text-rose-400 mt-0.5">84 SKUs</div>
+          <span class="text-[10px] text-rose-400/80">Stock deficit vs buffer</span>
         </div>
-        <div class="glass-card rounded-2xl p-4 border border-amber-500/30">
+        <div class="glass-card rounded-xl p-3.5 border border-amber-500/30">
           <span class="text-xs text-amber-400 font-semibold">Reorder Recommended</span>
-          <div class="text-2xl font-bold text-amber-400 mt-1">112 SKUs</div>
-          <span class="text-[11px] text-amber-400/80">Below standard reorder point</span>
+          <div class="text-xl font-bold text-amber-400 mt-0.5">112 SKUs</div>
+          <span class="text-[10px] text-amber-400/80">Below standard reorder point</span>
         </div>
-        <div class="glass-card rounded-2xl p-4 border border-emerald-500/30">
+        <div class="glass-card rounded-xl p-3.5 border border-emerald-500/30">
           <span class="text-xs text-emerald-400 font-semibold">Total Unit Deficit</span>
-          <div class="text-2xl font-bold text-emerald-400 mt-1">142,390 Units</div>
-          <span class="text-[11px] text-theme-muted">Restock procurement volume</span>
+          <div class="text-xl font-bold text-emerald-400 mt-0.5">142,390 Units</div>
+          <span class="text-[10px] text-theme-muted">Restock procurement volume</span>
         </div>
       </div>
 
-      <!-- Priority Procurement Replenishment Action Grid -->
-      <div class="glass-card rounded-2xl p-5">
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+      <!-- Executive Supply Chain Strategic Posture Cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 flex-1 min-h-0">
+        <div class="glass-card rounded-xl p-4 flex flex-col justify-between">
           <div>
-            <h2 class="text-sm font-bold text-theme-main tracking-tight">Priority Procurement Action Grid (Top Critical SKUs)</h2>
-            <p class="text-xs text-theme-muted">Finished goods operating in severe deficit ranked by units required</p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-theme-main">Procurement Urgency Status</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/15 text-rose-400 border border-rose-500/30">Action Required</span>
+            </div>
+            <p class="text-xs text-theme-muted mt-2 leading-relaxed">
+              84 high-velocity finished goods are currently running below safety stock buffer. Lead times for frames and wheel assemblies require immediate supplier PO releases to prevent fulfillment stockouts.
+            </p>
           </div>
-          <span class="text-xs px-2.5 py-1 rounded bg-rose-500/15 text-rose-400 border border-rose-500/30 font-semibold">
-            Urgent Factory Requisitions
-          </span>
+          <div class="pt-3 border-t border-theme">
+            <div class="flex justify-between text-xs">
+              <span class="text-theme-muted">Safety Buffer Compliance:</span>
+              <span class="font-bold text-rose-400">86.1%</span>
+            </div>
+          </div>
         </div>
 
-        <div class="overflow-x-auto custom-scroll rounded-xl border border-theme">
-          <table class="w-full text-left text-xs border-collapse font-mono">
-            <thead class="bg-theme-elevated text-theme-muted uppercase text-[10px] tracking-wider font-sans font-semibold">
-              <tr>
-                <th class="py-2.5 px-3">Product Name</th>
-                <th class="py-2.5 px-3 text-right">Units On Hand</th>
-                <th class="py-2.5 px-3 text-right">Safety Stock</th>
-                <th class="py-2.5 px-3 text-right">Reorder Point</th>
-                <th class="py-2.5 px-3 text-right">Deficit Volume</th>
-                <th class="py-2.5 px-3 text-right">Est. Unit Cost</th>
-                <th class="py-2.5 px-3 text-right">Capital Required</th>
-                <th class="py-2.5 px-3 text-right font-sans">Action Trigger</th>
-              </tr>
-            </thead>
-            <tbody id="inventory-table-body" class="divide-y divide-theme">
-              <!-- Rendered dynamically -->
-            </tbody>
-          </table>
+        <div class="glass-card rounded-xl p-4 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-theme-main">Capital Allocation Estimate</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30">Budget Committed</span>
+            </div>
+            <p class="text-xs text-theme-muted mt-2 leading-relaxed">
+              Total estimated working capital required to replenish 142,390 deficit units back to target safety stock levels stands at <strong>$8.42M</strong> based on standard manufacturing bill-of-materials costs.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-theme">
+            <div class="flex justify-between text-xs">
+              <span class="text-theme-muted">Est. Working Capital:</span>
+              <span class="font-bold text-amber-400">$8,421,500</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-xl p-4 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-theme-main">Distribution Center Balance</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">Regional Routing</span>
+            </div>
+            <p class="text-xs text-theme-muted mt-2 leading-relaxed">
+              Wholesale shipments to Southwest and Northwest regional hubs represent 58% of back-ordered demand. Rebalancing inventory across active warehouse facilities reduces single-node delivery bottlenecks.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-theme">
+            <div class="flex justify-between text-xs">
+              <span class="text-theme-muted">Warehouse Service Level:</span>
+              <span class="font-bold text-emerald-400">97.4%</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1082,6 +1052,18 @@
       root.style.setProperty('--theme-accent', themeConfig.accent);
 
       document.getElementById('theme-selector').value = activeTheme;
+
+      // Ensure native select controls and dropdown popups have crystal-clear contrast
+      root.style.colorScheme = isDarkMode ? 'dark' : 'light';
+      const optBg = isDarkMode ? (modeConfig.bgCard.includes('rgba') ? '#1a2219' : modeConfig.bgCard) : '#ffffff';
+      const optColor = isDarkMode ? '#f4f6f2' : '#1e293b';
+      document.querySelectorAll('select').forEach(sel => {
+        sel.style.colorScheme = isDarkMode ? 'dark' : 'light';
+      });
+      document.querySelectorAll('select option').forEach(opt => {
+        opt.style.backgroundColor = optBg;
+        opt.style.color = optColor;
+      });
 
       if (window.renderAllCharts) window.renderAllCharts();
     }
@@ -1692,6 +1674,7 @@
     // ==========================================
     function renderSubcategoriesTable(filteredCube) {
       const tbody = document.getElementById('subcategory-table-body');
+      if (!tbody) return;
       tbody.innerHTML = '';
 
       const subMap = {};
@@ -1735,6 +1718,7 @@
 
     function renderResellerTable() {
       const tbody = document.getElementById('reseller-table-body');
+      if (!tbody) return;
       tbody.innerHTML = '';
       const rTypes = [
         { type: 'Warehouse', accounts: 219, orders: 1335, units: 111993, netSales: 38726913.48, aov: 29008.92, marginPct: -0.01 },
@@ -1761,6 +1745,7 @@
 
     function renderInventoryTable() {
       const tbody = document.getElementById('inventory-table-body');
+      if (!tbody) return;
       tbody.innerHTML = '';
       const items = window.MOTOPULSE_DATA.inventory ? window.MOTOPULSE_DATA.inventory.urgentItems : [];
       items.slice(0, 15).forEach(item => {
